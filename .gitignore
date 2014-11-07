@@ -1,0 +1,21 @@
+# Vim temporary files.
+*.swp
+
+# autotools stuff.
+aclocal.m4
+autom4te.cache/
+config.log
+configure
+Makefile
+Makefile.in
+config.status
+depcomp
+install-sh
+missing
+.deps
+
+# Executables.
+apertium-xml2cpp
+
+# C++ object files.
+*.o
