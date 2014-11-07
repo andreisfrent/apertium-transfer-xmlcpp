@@ -13,6 +13,7 @@ depcomp
 install-sh
 missing
 .deps
+.dirstamp
 
 # Executables.
 apertium-xml2cpp
