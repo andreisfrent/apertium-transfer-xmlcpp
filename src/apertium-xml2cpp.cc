@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "ASTBuilder.h"
 #include "ast-cls/ASTNode.h"
 
@@ -11,6 +13,7 @@ ASTNode *buildASTFromStdin() {
 }
 
 int main(int argc, char *argv[]) {
+  std::wcerr << L"XML-to-C++ compiler for structural transfer in Apertium." << std::endl;
   ASTNode *root = buildASTFromStdin();
   return 0;
 }
