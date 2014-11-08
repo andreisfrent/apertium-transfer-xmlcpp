@@ -49,7 +49,25 @@ ASTNode *ASTNode::FromXMLNode(const XMLNode& xml_node) {
 }
 
 ASTNode *ASTNode::UninitializedByTag(const std::wstring& tag) {
+  if (tag == L"action") return new ASTNode_Action();
+  if (tag == L"attr-item") return new ASTNode_AttrItem();
+  if (tag == L"cat-item") return new ASTNode_CatItem();
+  if (tag == L"clip") return new ASTNode_Clip();
+  if (tag == L"def-attr") return new ASTNode_DefAttr();
+  if (tag == L"def-cat") return new ASTNode_DefCat();
+  if (tag == L"def-var") return new ASTNode_DefVar();
+  if (tag == L"let") return new ASTNode_Let();
+  if (tag == L"lit-tag") return new ASTNode_LitTag();
+  if (tag == L"lu") return new ASTNode_Lu();
+  if (tag == L"out") return new ASTNode_Out();
+  if (tag == L"pattern") return new ASTNode_Pattern();
+  if (tag == L"pattern-item") return new ASTNode_PatternItem();
   if (tag == L"*") return new ASTNode_Root();
+  if (tag == L"rule") return new ASTNode_Rule();
+  if (tag == L"section-def-attrs") return new ASTNode_SectionDefAttrs();
+  if (tag == L"section-def-cats") return new ASTNode_SectionDefCats();
+  if (tag == L"section-def-vars") return new ASTNode_SectionDefVars();
+  if (tag == L"section-rules") return new ASTNode_SectionRules();
   if (tag == L"transfer") return new ASTNode_Transfer();
   return NULL;
 }
