@@ -7,7 +7,8 @@
 namespace apertium {
 namespace xml2cpp {
 XMLTree::XMLTree() {
-  root_ = new XMLNode(L"document");
+  root_ = new XMLNode(L"*");
+  root_->set_line_no(-1);
   current_path_.push(root_);
 }
 
