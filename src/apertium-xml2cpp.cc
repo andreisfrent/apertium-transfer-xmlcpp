@@ -5,7 +5,7 @@
 
 #include "parsing/XMLParser.h"
 #include "parsing/XMLTree.h"
-#include "ast-cls/ASTNode.h"
+#include "ast/nodes/ASTNode.h"
 
 using apertium::xml2cpp::ASTNode;
 using apertium::xml2cpp::XMLParser;
