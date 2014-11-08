@@ -1,32 +1,25 @@
-#ifndef __APERTIUM_XML2CPP_AST_BUILDER_H
-#define __APERTIUM_XML2CPP_AST_BUILDER_H
+#ifndef __APERTIUM_XML2CPP_XML_PARSER_H
+#define __APERTIUM_XML2CPP_XML_PARSER_H
 
 #include <libxml/xmlreader.h>
 #include <string>
 
-// Forward class declaration.
 namespace apertium {
 namespace xml2cpp {
-class ASTNode;
-} // xml2cpp
-} // apertium
-
-namespace apertium {
-namespace xml2cpp {
-class ASTBuilder {
+class XMLParser {
  public:
   /// Construct the builder from a file descriptor (to be used whenever the XML
   /// is fed to stdin).
-  explicit ASTBuilder(int fd);
+  explicit XMLParser(int fd);
 
   /// Construct the builder from a file.
-  explicit ASTBuilder(char *filename);
+  explicit XMLParser(char *filename);
 
   /// Destructor.
-  ~ASTBuilder();
+  ~XMLParser();
 
   /// Build the abstract syntax tree and returns its root node.
-  ASTNode *Build();
+  void Parse();
 
   /// This method is directly called by the destructor and frees any used
   /// resources. Its main purpose is to be able to free resources when throwing
@@ -34,10 +27,10 @@ class ASTBuilder {
   void FreeResources();
 
  private:
-  ASTBuilder(ASTBuilder&);
-  ASTBuilder(ASTBuilder&&);
-  ASTBuilder& operator=(ASTBuilder&);
-  ASTBuilder& operator=(ASTBuilder&&);
+  XMLParser(XMLParser&);
+  XMLParser(XMLParser&&);
+  XMLParser& operator=(XMLParser&);
+  XMLParser& operator=(XMLParser&&);
 
   std::wstring GetCurrentElementName();
 

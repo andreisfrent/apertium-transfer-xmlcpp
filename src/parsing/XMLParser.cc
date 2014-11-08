@@ -1,6 +1,7 @@
-#include "ASTBuilder.h"
+#include "XMLParser.h"
 
 #include <codecvt>
+#include <cstdlib>
 #include <iostream>
 #include <libxml/xmlreader.h>
 #include <locale>
@@ -10,7 +11,7 @@
 
 namespace apertium {
 namespace xml2cpp {
-ASTBuilder::ASTBuilder(int fd) {
+XMLParser::XMLParser(int fd) {
   xmlReader_ = xmlReaderForFd(fd, NULL, NULL, 0);
   if (xmlReader_ == NULL) {
     FreeResources();
@@ -18,22 +19,22 @@ ASTBuilder::ASTBuilder(int fd) {
   }
 }
 
-ASTBuilder::ASTBuilder(char *filename) {
+XMLParser::XMLParser(char *filename) {
   xmlReader_ = xmlReaderForFile(filename, NULL, 0);
 }
 
-void ASTBuilder::FreeResources() {
+void XMLParser::FreeResources() {
   if (xmlReader_ != NULL) {
     xmlFreeTextReader(xmlReader_);
     xmlReader_ = NULL;
   }
 }
 
-ASTBuilder::~ASTBuilder() {
+XMLParser::~XMLParser() {
   FreeResources();
 }
 
-std::wstring ASTBuilder::GetCurrentElementName() {
+std::wstring XMLParser::GetCurrentElementName() {
   xmlChar * xml_tag = xmlTextReaderName(xmlReader_);
   std::wstring_convert<std::codecvt_utf8<wchar_t>, wchar_t> cvt;
   std::wstring result = cvt.from_bytes((const char*) xml_tag);
@@ -41,7 +42,7 @@ std::wstring ASTBuilder::GetCurrentElementName() {
   return result;
 }
 
-ASTNode *ASTBuilder::Build() {
+void XMLParser::Parse() {
   // We assume the XML reader member is sane here.
   int ret = xmlTextReaderRead(xmlReader_);
   std::wstring indentation(L"");
@@ -68,8 +69,6 @@ ASTNode *ASTBuilder::Build() {
   if (ret == -1) {
     throw std::wstring(L"Error! Could not parse input as XML.");
   }
-
-  return NULL;
 }
 } // namespace xml2cpp
 } // namespace apertium
