@@ -1,13 +1,10 @@
 #include "XMLParser.h"
 
-#include <codecvt>
-#include <cstdlib>
 #include <iostream>
 #include <libxml/xmlreader.h>
-#include <locale>
 #include <string>
 
-#include "ast-cls/ASTNode.h"
+#include "XMLUtil.h"
 
 namespace apertium {
 namespace xml2cpp {
@@ -34,21 +31,13 @@ XMLParser::~XMLParser() {
   FreeResources();
 }
 
-std::wstring XMLParser::GetCurrentElementName() {
-  xmlChar * xml_tag = xmlTextReaderName(xmlReader_);
-  std::wstring_convert<std::codecvt_utf8<wchar_t>, wchar_t> cvt;
-  std::wstring result = cvt.from_bytes((const char*) xml_tag);
-  free(xml_tag);
-  return result;
-}
-
 void XMLParser::Parse() {
   // We assume the XML reader member is sane here.
   int ret = xmlTextReaderRead(xmlReader_);
   std::wstring indentation(L"");
   while (ret == 1) {
     int node_type = xmlTextReaderNodeType(xmlReader_);
-    std::wstring tag = GetCurrentElementName();
+    std::wstring tag = XMLUtil::GetCurrentElementName(xmlReader_);
     if (node_type == XML_READER_TYPE_ELEMENT) {
       std::wcout << indentation << L"+ " << tag << std::endl;
       indentation += L"  ";
