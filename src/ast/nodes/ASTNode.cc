@@ -39,5 +39,9 @@ ASTNode *ASTNode::UninitializedByTag(const std::wstring& tag) {
   if (tag == L"transfer") return new ASTNode_Transfer();
   return NULL;
 }
+
+ASTNode *ASTNode::NewRootNode() {
+  return new ASTNode_Root();
+}
 }; // namespace xml2cpp
 }; // namespace apertium

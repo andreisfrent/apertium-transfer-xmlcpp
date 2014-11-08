@@ -26,6 +26,7 @@ class ASTNode {
 
   static ASTNode *FromXMLNode(const XMLNode& xml_node);
   static ASTNode *UninitializedByTag(const std::wstring& tag);
+  static ASTNode *NewRootNode();
 
  private:
   ASTNode(ASTNode&);
