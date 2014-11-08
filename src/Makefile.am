@@ -8,4 +8,5 @@ apertium_xml2cpp_SOURCES = \
   parsing/XMLTree.cc \
   parsing/XMLParser.cc \
   parsing/XMLNode.cc \
-  ast/nodes/ASTNode.cc
+  ast/nodes/ASTNode.cc \
+  ast/nodes/ASTNode_Transfer.cc
