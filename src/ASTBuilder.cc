@@ -1,7 +1,9 @@
 #include "ASTBuilder.h"
 
+#include <codecvt>
 #include <iostream>
 #include <libxml/xmlreader.h>
+#include <locale>
 #include <string>
 
 #include "ast-cls/ASTNode.h"
@@ -31,24 +33,32 @@ ASTBuilder::~ASTBuilder() {
   FreeResources();
 }
 
+std::wstring ASTBuilder::GetCurrentElementName() {
+  xmlChar * xml_tag = xmlTextReaderName(xmlReader_);
+  std::wstring_convert<std::codecvt_utf8<wchar_t>, wchar_t> cvt;
+  std::wstring result = cvt.from_bytes((const char*) xml_tag);
+  free(xml_tag);
+  return result;
+}
+
 ASTNode *ASTBuilder::Build() {
   // We assume the XML reader member is sane here.
   int ret = xmlTextReaderRead(xmlReader_);
-  std::string indentation("");
+  std::wstring indentation(L"");
   while (ret == 1) {
     int node_type = xmlTextReaderNodeType(xmlReader_);
-    xmlChar * xml_tag = xmlTextReaderName(xmlReader_);
+    std::wstring tag = GetCurrentElementName();
     if (node_type == XML_READER_TYPE_ELEMENT) {
-      std::cout << indentation << "+ " << xml_tag << std::endl;
-      indentation += "  ";
+      std::wcout << indentation << L"+ " << tag << std::endl;
+      indentation += L"  ";
       if (xmlTextReaderIsEmptyElement(xmlReader_)) {
         indentation = indentation.substr(0, indentation.size() - 2);
-        std::cout << indentation << "- " << xml_tag << std::endl;
+        std::wcout << indentation << L"- " << tag << std::endl;
       }
     }
     if (node_type == XML_READER_TYPE_END_ELEMENT) {
       indentation = indentation.substr(0, indentation.size() - 2);
-      std::cout << indentation << "- " << xml_tag << std::endl;
+      std::wcout << indentation << L"- " << tag << std::endl;
     }
 
     // Advance to next node in XML stream.

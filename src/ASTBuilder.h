@@ -2,6 +2,7 @@
 #define __APERTIUM_XML2CPP_AST_BUILDER_H
 
 #include <libxml/xmlreader.h>
+#include <string>
 
 // Forward class declaration.
 namespace apertium {
@@ -37,6 +38,8 @@ class ASTBuilder {
   ASTBuilder(ASTBuilder&&);
   ASTBuilder& operator=(ASTBuilder&);
   ASTBuilder& operator=(ASTBuilder&&);
+
+  std::wstring GetCurrentElementName();
 
   xmlTextReaderPtr xmlReader_;
 };
