@@ -1,12 +1,12 @@
 #include "XMLParser.h"
 
-#include <iostream>
 #include <libxml/xmlreader.h>
 #include <string>
 
 #include "XMLUtil.h"
 #include "XMLTree.h"
 #include "XMLNode.h"
+using namespace std;
 
 namespace apertium {
 namespace xml2cpp {
@@ -48,6 +48,8 @@ void XMLParser::Parse(XMLTree *tree) {
       if (node_type == XML_READER_TYPE_ELEMENT) {
         XMLNode *current_node = tree->Descend(tag);
         XMLUtil::AddAttributesToXMLNode(xmlReader_, current_node);
+        int line_no = XML_GET_LINE(xmlTextReaderCurrentNode(xmlReader_));
+        current_node->set_line_no(line_no);
       }
 
       // On exit (or empty nodes) ascend in the XML tree.

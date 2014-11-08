@@ -42,5 +42,13 @@ const std::wstring& XMLNode::get_tag() const {
 const std::unordered_map<std::wstring, std::wstring>& XMLNode::get_attrs() const {
   return attrs_;
 }
+
+void XMLNode::set_line_no(int line_no) {
+  line_no_ = line_no;
+}
+
+int XMLNode::get_line_no() const {
+  return line_no_;
+}
 } // namespace xml2cpp
 } // namespace apertium

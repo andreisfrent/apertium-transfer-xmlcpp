@@ -20,11 +20,14 @@ class XMLNode {
   void set_tag(const std::wstring& tag);
   const std::wstring& get_tag() const;
   const std::unordered_map<std::wstring, std::wstring>& get_attrs() const;
+  void set_line_no(int line_no);
+  int get_line_no() const;
 
  private:
   std::unordered_map<std::wstring, std::wstring> attrs_;
   std::vector<XMLNode*> children_;
   std::wstring tag_;
+  int line_no_;
 };
 } // namespace xml2cpp
 } // namespace apertium
