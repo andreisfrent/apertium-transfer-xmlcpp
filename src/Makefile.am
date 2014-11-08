@@ -11,4 +11,5 @@ apertium_xml2cpp_SOURCES = \
   ast/AST.cc \
   ast/nodes/ASTNode.cc \
   ast/nodes/ASTNode_Root.cc \
+  ast/nodes/ASTNode_Undefined.cc \
   ast/nodes/ASTNode_Transfer.cc

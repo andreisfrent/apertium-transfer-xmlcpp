@@ -51,7 +51,7 @@ ASTNode *ASTNode::FromXMLNode(const XMLNode& xml_node) {
 ASTNode *ASTNode::UninitializedByTag(const std::wstring& tag) {
   if (tag == L"*") return new ASTNode_Root();
   if (tag == L"transfer") return new ASTNode_Transfer();
-  return NULL;
+  return new ASTNode_Undefined();
 }
 }; // namespace xml2cpp
 }; // namespace apertium

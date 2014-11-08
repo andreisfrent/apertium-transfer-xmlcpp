@@ -7,7 +7,6 @@ namespace xml2cpp {
 
 namespace {
 ASTNode *BuildSubTree(const XMLNode& xml_node) {
-  // FIXME Leaks memory if FromXMLNode returns NULL.
   ASTNode *ast_node = ASTNode::FromXMLNode(xml_node);
   for (const XMLNode *xml_child : xml_node.get_children()) {
     ASTNode *ast_child = BuildSubTree(*xml_child);
