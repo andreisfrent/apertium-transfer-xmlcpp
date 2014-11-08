@@ -39,6 +39,7 @@ void XMLParser::Parse() {
     int node_type = xmlTextReaderNodeType(xmlReader_);
     std::wstring tag = XMLUtil::GetCurrentElementName(xmlReader_);
     if (node_type == XML_READER_TYPE_ELEMENT) {
+      XMLUtil::AddAttributesToXMLNode(xmlReader_, NULL);
       std::wcout << indentation << L"+ " << tag << std::endl;
       indentation += L"  ";
       if (xmlTextReaderIsEmptyElement(xmlReader_)) {
