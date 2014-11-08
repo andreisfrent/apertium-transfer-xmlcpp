@@ -11,7 +11,31 @@ ASTNode::ASTNode() {
 ASTNode::~ASTNode() {
 }
 
-ASTNode* ASTNode::FromXMLNode(const XMLNode& xml_node) {
+int ASTNode::get_line_no() const {
+  return line_no_;
+}
+
+void ASTNode::set_line_no(int line_no) {
+  line_no_ = line_no;
+}
+
+const std::wstring& ASTNode::get_tag() const {
+  return tag_;
+}
+
+void ASTNode::set_tag(const std::wstring& tag) {
+  tag_ = tag;
+}
+
+ASTNode *ASTNode::FromXMLNode(const XMLNode& xml_node) {
+  ASTNode *node = UninitializedByTag(xml_node.get_tag());
+  node->set_tag(xml_node.get_tag());
+  node->Initialize(xml_node.get_attrs());
+  return node;
+}
+
+ASTNode *ASTNode::UninitializedByTag(const std::wstring& tag) {
+  if (tag == L"transfer") return new ASTNode_Transfer();
   return NULL;
 }
 }; // namespace xml2cpp
