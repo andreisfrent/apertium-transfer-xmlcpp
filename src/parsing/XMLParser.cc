@@ -1,6 +1,7 @@
 #include "XMLParser.h"
 
 #include <libxml/xmlreader.h>
+#include <stdexcept>
 #include <string>
 
 #include "XMLUtil.h"
@@ -14,7 +15,7 @@ XMLParser::XMLParser(int fd) {
   xml_reader_ = xmlReaderForFd(fd, NULL, NULL, 0);
   if (xml_reader_ == NULL) {
     FreeResources();
-    throw std::wstring(L"Error! Could not initialize XML parser.");
+    throw std::runtime_error("Error! Could not initialize XML parser.");
   }
 }
 
@@ -64,7 +65,7 @@ void XMLParser::Parse(XMLTree *tree) {
   }
 
   if (ret == -1) {
-    throw std::wstring(L"Error! Could not parse input as XML.");
+    throw std::runtime_error("Error! Could not parse input as XML.");
   }
 }
 } // namespace xml2cpp

@@ -21,9 +21,9 @@ int main(int argc, char *argv[]) {
     XMLParser xml_parser(0);
     XMLTree xml_tree;
     xml_parser.Parse(&xml_tree);
-    std::unique_ptr<AST> ast(AST::FromXMLTree(xml_tree));
-  } catch (std::wstring& ex) {
-    std::wcerr << ex << std::endl;
+    AST ast(xml_tree);
+  } catch (std::exception& ex) {
+    std::cerr << ex.what() << std::endl;
   }
 
   xmlCleanupParser();
