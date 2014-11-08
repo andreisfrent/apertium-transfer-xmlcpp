@@ -12,9 +12,6 @@ class ASTNode_Transfer : public ASTNode {
  public:
   ASTNode_Transfer();
   ~ASTNode_Transfer();
-
-  void Initialize(
-      const std::unordered_map<std::wstring, std::wstring>& attrs) override;
 };
 } // namespace xml2cpp
 } // namespace apertium
