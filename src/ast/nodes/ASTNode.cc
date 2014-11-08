@@ -34,6 +34,10 @@ void ASTNode::AddChild(ASTNode *child) {
   children_.push_back(child);
 }
 
+void ASTNode::Initialize(
+    const std::unordered_map<std::wstring, std::wstring>& attrs) {
+}
+
 ASTNode *ASTNode::FromXMLNode(const XMLNode& xml_node) {
   ASTNode *node = UninitializedByTag(xml_node.get_tag());
   if (node != NULL) {

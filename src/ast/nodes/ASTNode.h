@@ -14,7 +14,7 @@ class ASTNode {
   virtual ~ASTNode();
 
   virtual void Initialize(
-      const std::unordered_map<std::wstring, std::wstring>& attrs) = 0;
+      const std::unordered_map<std::wstring, std::wstring>& attrs);
   // TODO virtual void FillMetadata(...);
   // TODO virtual void Validate(..., metadata);
   // TODO virtual void GenerateCode(..., metadata);
