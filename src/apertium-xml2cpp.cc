@@ -1,4 +1,7 @@
 #include <iostream>
+#include <libxml/xmlreader.h>
+#include <memory>
+#include <string>
 
 #include "ASTBuilder.h"
 #include "ast-cls/ASTNode.h"
@@ -6,14 +9,16 @@
 using apertium::xml2cpp::ASTNode;
 using apertium::xml2cpp::ASTBuilder;
 
-ASTNode *buildASTFromStdin() {
-  ASTBuilder builder(0);
-  ASTNode *root = builder.build();
-  return root;
-}
-
 int main(int argc, char *argv[]) {
   std::wcerr << L"XML-to-C++ compiler for structural transfer in Apertium." << std::endl;
-  ASTNode *root = buildASTFromStdin();
+  xmlInitParser();
+
+  try {
+    ASTBuilder builder(0);
+    std::unique_ptr<ASTNode> root(builder.Build());
+  } catch (std::wstring& ex) {
+    std::wcerr << ex << std::endl;
+  }
+  xmlCleanupParser();
   return 0;
 }

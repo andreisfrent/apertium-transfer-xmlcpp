@@ -25,7 +25,12 @@ class ASTBuilder {
   ~ASTBuilder();
 
   /// Build the abstract syntax tree and returns its root node.
-  ASTNode *build();
+  ASTNode *Build();
+
+  /// This method is directly called by the destructor and frees any used
+  /// resources. Its main purpose is to be able to free resources when throwing
+  /// an exception from the constructor.
+  void FreeResources();
 
  private:
   ASTBuilder(ASTBuilder&);
