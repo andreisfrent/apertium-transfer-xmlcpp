@@ -50,5 +50,10 @@ void XMLNode::set_line_no(int line_no) {
 int XMLNode::get_line_no() const {
   return line_no_;
 }
+
+const std::vector<XMLNode*>& XMLNode::get_children() const {
+  return children_;
+}
+
 } // namespace xml2cpp
 } // namespace apertium

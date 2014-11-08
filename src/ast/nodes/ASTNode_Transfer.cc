@@ -9,6 +9,9 @@ namespace xml2cpp {
 ASTNode_Transfer::ASTNode_Transfer() : ASTNode() {
 }
 
+ASTNode_Transfer::~ASTNode_Transfer() {
+}
+
 void ASTNode_Transfer::Initialize(
     const std::unordered_map<std::wstring, std::wstring>& attrs) {
   // TODO

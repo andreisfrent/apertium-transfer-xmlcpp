@@ -8,12 +8,12 @@ namespace apertium {
 namespace xml2cpp {
 class AST {
  public:
-  AST();
   ~AST();
 
   static AST *FromXMLTree(const XMLTree& xml_tree);
 
  private:
+  AST(ASTNode *root);
   AST(AST&);
   AST(AST&&);
   AST& operator=(AST&);

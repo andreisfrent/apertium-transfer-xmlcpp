@@ -22,6 +22,7 @@ class XMLNode {
   const std::unordered_map<std::wstring, std::wstring>& get_attrs() const;
   void set_line_no(int line_no);
   int get_line_no() const;
+  const std::vector<XMLNode*>& get_children() const;
 
  private:
   std::unordered_map<std::wstring, std::wstring> attrs_;

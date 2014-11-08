@@ -11,7 +11,7 @@ namespace xml2cpp {
 class ASTNode {
  public:
   ASTNode();
-  ~ASTNode();
+  virtual ~ASTNode();
 
   virtual void Initialize(
       const std::unordered_map<std::wstring, std::wstring>& attrs) = 0;

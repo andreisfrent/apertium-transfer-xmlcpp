@@ -35,5 +35,9 @@ XMLNode *XMLTree::Ascend() {
   return ret;
 }
 
+const XMLNode *XMLTree::get_root() const {
+  return root_;
+}
+
 } // namespace xml2cpp
 } // namespace apertium

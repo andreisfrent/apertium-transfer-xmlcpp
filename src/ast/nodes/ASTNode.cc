@@ -9,6 +9,9 @@ ASTNode::ASTNode() {
 }
 
 ASTNode::~ASTNode() {
+  for (ASTNode *child : children_) {
+    delete child;
+  }
 }
 
 int ASTNode::get_line_no() const {
@@ -33,9 +36,11 @@ void ASTNode::AddChild(ASTNode *child) {
 
 ASTNode *ASTNode::FromXMLNode(const XMLNode& xml_node) {
   ASTNode *node = UninitializedByTag(xml_node.get_tag());
-  node->set_tag(xml_node.get_tag());
-  node->set_line_no(xml_node.get_line_no());
-  node->Initialize(xml_node.get_attrs());
+  if (node != NULL) {
+    node->set_tag(xml_node.get_tag());
+    node->set_line_no(xml_node.get_line_no());
+    node->Initialize(xml_node.get_attrs());
+  }
   return node;
 }
 

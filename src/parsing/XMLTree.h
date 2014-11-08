@@ -21,6 +21,7 @@ class XMLTree {
   XMLNode *Descend();
   XMLNode *Descend(const std::wstring& tag);
   XMLNode *Ascend();
+  const XMLNode *get_root() const;
 
  private:
   XMLNode *root_;
