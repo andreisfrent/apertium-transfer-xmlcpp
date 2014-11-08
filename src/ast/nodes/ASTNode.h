@@ -23,6 +23,7 @@ class ASTNode {
   int get_line_no() const;
   void set_tag(const std::wstring& tag);
   const std::wstring& get_tag() const;
+  void AddChild(ASTNode* child);
 
   static ASTNode *FromXMLNode(const XMLNode& xml_node);
   static ASTNode *UninitializedByTag(const std::wstring& tag);
@@ -34,8 +35,10 @@ class ASTNode {
   ASTNode& operator=(ASTNode&);
   ASTNode& operator=(ASTNode&&);
 
+ protected:
   int line_no_;
   std::wstring tag_;
+  std::vector<ASTNode*> children_;
 };
 } // namespace xml2cpp
 } // namespace apertium

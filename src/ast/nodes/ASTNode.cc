@@ -27,6 +27,10 @@ void ASTNode::set_tag(const std::wstring& tag) {
   tag_ = tag;
 }
 
+void ASTNode::AddChild(ASTNode *child) {
+  children_.push_back(child);
+}
+
 ASTNode *ASTNode::FromXMLNode(const XMLNode& xml_node) {
   ASTNode *node = UninitializedByTag(xml_node.get_tag());
   node->set_tag(xml_node.get_tag());
