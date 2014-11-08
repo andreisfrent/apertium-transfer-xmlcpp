@@ -27,11 +27,11 @@ std::wstring XMLUtil::GetCurrentElementName(xmlTextReaderPtr xml_reader_ptr) {
 void XMLUtil::AddAttributesToXMLNode(xmlTextReaderPtr xml_reader_ptr, XMLNode *xml_node) {
   xmlNodePtr raw_node = xmlTextReaderCurrentNode(xml_reader_ptr);
   for(xmlAttrPtr attr = raw_node->properties; attr != NULL; attr = attr->next) {
-    std::wstring attr_name = ConvertXMLCharToWString(attr->name);
+    std::wstring attr_key = ConvertXMLCharToWString(attr->name);
     xmlChar *raw_attr_value = xmlTextReaderGetAttribute(xml_reader_ptr, attr->name);
     std::wstring attr_value = ConvertXMLCharToWString(raw_attr_value);
     free(raw_attr_value);
-    std::wcout << attr_name << L" -> " << attr_value << std::endl;
+    xml_node->AddAttribute(attr_key, attr_value);
   }
 }
 } // namespace xml2cpp

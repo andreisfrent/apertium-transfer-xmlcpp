@@ -10,11 +10,16 @@ namespace xml2cpp {
 class XMLNode {
  public:
   explicit XMLNode(const std::wstring& tag);
+  XMLNode();
   ~XMLNode();
 
   void AddAttribute(const std::wstring& key, const std::wstring& value);
   void AddChild(XMLNode *child);
-  bool IsLeaf();
+  bool IsLeaf() const;
+
+  void set_tag(const std::wstring& tag);
+  const std::wstring& get_tag() const;
+  const std::unordered_map<std::wstring, std::wstring>& get_attrs() const;
 
  private:
   std::unordered_map<std::wstring, std::wstring> attrs_;

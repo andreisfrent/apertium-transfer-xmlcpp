@@ -4,6 +4,13 @@
 #include <libxml/xmlreader.h>
 #include <string>
 
+// Forward declaration.
+namespace apertium {
+namespace xml2cpp {
+class XMLTree;
+} // namespace xml2cpp
+} // namespace apertium
+
 namespace apertium {
 namespace xml2cpp {
 class XMLParser {
@@ -18,8 +25,8 @@ class XMLParser {
   /// Destructor.
   ~XMLParser();
 
-  /// Build the abstract syntax tree and returns its root node.
-  void Parse();
+  /// Build an XMLTree from the input.
+  void Parse(XMLTree *xml_tree);
 
   /// This method is directly called by the destructor and frees any used
   /// resources. Its main purpose is to be able to free resources when throwing

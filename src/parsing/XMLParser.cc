@@ -5,6 +5,8 @@
 #include <string>
 
 #include "XMLUtil.h"
+#include "XMLTree.h"
+#include "XMLNode.h"
 
 namespace apertium {
 namespace xml2cpp {
@@ -31,25 +33,28 @@ XMLParser::~XMLParser() {
   FreeResources();
 }
 
-void XMLParser::Parse() {
+void XMLParser::Parse(XMLTree *tree) {
   // We assume the XML reader member is sane here.
   int ret = xmlTextReaderRead(xmlReader_);
-  std::wstring indentation(L"");
   while (ret == 1) {
     int node_type = xmlTextReaderNodeType(xmlReader_);
     std::wstring tag = XMLUtil::GetCurrentElementName(xmlReader_);
-    if (node_type == XML_READER_TYPE_ELEMENT) {
-      XMLUtil::AddAttributesToXMLNode(xmlReader_, NULL);
-      std::wcout << indentation << L"+ " << tag << std::endl;
-      indentation += L"  ";
-      if (xmlTextReaderIsEmptyElement(xmlReader_)) {
-        indentation = indentation.substr(0, indentation.size() - 2);
-        std::wcout << indentation << L"- " << tag << std::endl;
+
+    // We only deal with <> and </>.
+    if (node_type == XML_READER_TYPE_ELEMENT ||
+        node_type == XML_READER_TYPE_END_ELEMENT) {
+
+      // On entry descend in the XML tree.
+      if (node_type == XML_READER_TYPE_ELEMENT) {
+        XMLNode *current_node = tree->Descend(tag);
+        XMLUtil::AddAttributesToXMLNode(xmlReader_, current_node);
       }
-    }
-    if (node_type == XML_READER_TYPE_END_ELEMENT) {
-      indentation = indentation.substr(0, indentation.size() - 2);
-      std::wcout << indentation << L"- " << tag << std::endl;
+
+      // On exit (or empty nodes) ascend in the XML tree.
+      if (node_type == XML_READER_TYPE_END_ELEMENT ||
+          xmlTextReaderIsEmptyElement(xmlReader_)) {
+        tree->Ascend();
+      }
     }
 
     // Advance to next node in XML stream.
