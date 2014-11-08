@@ -41,7 +41,7 @@ class XMLParser {
 
   std::wstring GetCurrentElementName();
 
-  xmlTextReaderPtr xmlReader_;
+  xmlTextReaderPtr xml_reader_;
 };
 } // namespace xml2cpp
 } // namespace apertium

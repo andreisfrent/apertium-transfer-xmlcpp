@@ -11,21 +11,21 @@ using namespace std;
 namespace apertium {
 namespace xml2cpp {
 XMLParser::XMLParser(int fd) {
-  xmlReader_ = xmlReaderForFd(fd, NULL, NULL, 0);
-  if (xmlReader_ == NULL) {
+  xml_reader_ = xmlReaderForFd(fd, NULL, NULL, 0);
+  if (xml_reader_ == NULL) {
     FreeResources();
     throw std::wstring(L"Error! Could not initialize XML parser.");
   }
 }
 
 XMLParser::XMLParser(char *filename) {
-  xmlReader_ = xmlReaderForFile(filename, NULL, 0);
+  xml_reader_ = xmlReaderForFile(filename, NULL, 0);
 }
 
 void XMLParser::FreeResources() {
-  if (xmlReader_ != NULL) {
-    xmlFreeTextReader(xmlReader_);
-    xmlReader_ = NULL;
+  if (xml_reader_ != NULL) {
+    xmlFreeTextReader(xml_reader_);
+    xml_reader_ = NULL;
   }
 }
 
@@ -35,10 +35,10 @@ XMLParser::~XMLParser() {
 
 void XMLParser::Parse(XMLTree *tree) {
   // We assume the XML reader member is sane here.
-  int ret = xmlTextReaderRead(xmlReader_);
+  int ret = xmlTextReaderRead(xml_reader_);
   while (ret == 1) {
-    int node_type = xmlTextReaderNodeType(xmlReader_);
-    std::wstring tag = XMLUtil::GetCurrentElementName(xmlReader_);
+    int node_type = xmlTextReaderNodeType(xml_reader_);
+    std::wstring tag = XMLUtil::GetCurrentElementName(xml_reader_);
 
     // We only deal with <> and </>.
     if (node_type == XML_READER_TYPE_ELEMENT ||
@@ -47,20 +47,20 @@ void XMLParser::Parse(XMLTree *tree) {
       // On entry descend in the XML tree.
       if (node_type == XML_READER_TYPE_ELEMENT) {
         XMLNode *current_node = tree->Descend(tag);
-        XMLUtil::AddAttributesToXMLNode(xmlReader_, current_node);
-        int line_no = XML_GET_LINE(xmlTextReaderCurrentNode(xmlReader_));
+        XMLUtil::AddAttributesToXMLNode(xml_reader_, current_node);
+        int line_no = XML_GET_LINE(xmlTextReaderCurrentNode(xml_reader_));
         current_node->set_line_no(line_no);
       }
 
       // On exit (or empty nodes) ascend in the XML tree.
       if (node_type == XML_READER_TYPE_END_ELEMENT ||
-          xmlTextReaderIsEmptyElement(xmlReader_)) {
+          xmlTextReaderIsEmptyElement(xml_reader_)) {
         tree->Ascend();
       }
     }
 
     // Advance to next node in XML stream.
-    ret = xmlTextReaderRead(xmlReader_);
+    ret = xmlTextReaderRead(xml_reader_);
   }
 
   if (ret == -1) {
