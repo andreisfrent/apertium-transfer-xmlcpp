@@ -1,6 +1,9 @@
 #ifndef __APERTIUM_XML2CPP_AST_NODE_SECTIONDEFCATS_H
 #define __APERTIUM_XML2CPP_AST_NODE_SECTIONDEFCATS_H
 
+#include <string>
+#include <unordered_map>
+
 #include "ASTNode.h"
 
 namespace apertium {
@@ -9,6 +12,9 @@ class ASTNode_SectionDefCats : public ASTNode {
  public:
   ASTNode_SectionDefCats();
   ~ASTNode_SectionDefCats();
+
+  void Initialize(
+      const std::unordered_map<std::wstring, std::wstring>& attrs) override;
 };
 } // namespace xml2cpp
 } // namespace apertium
