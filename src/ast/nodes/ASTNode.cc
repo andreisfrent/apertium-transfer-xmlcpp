@@ -1,5 +1,7 @@
 #include "ASTNode.h"
 
+#include <iostream>
+
 #include "../../parsing/XMLNode.h"
 #include "node_types.h"
 
@@ -36,6 +38,7 @@ void ASTNode::AddChild(ASTNode *child) {
 
 void ASTNode::Initialize(
     const std::unordered_map<std::wstring, std::wstring>& attrs) {
+  std::wcerr << L"Initialize() unimplemented for " << tag_ << "." << std::endl;
 }
 
 ASTNode *ASTNode::FromXMLNode(const XMLNode& xml_node) {
