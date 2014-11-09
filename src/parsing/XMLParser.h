@@ -28,17 +28,7 @@ class XMLParser {
   /// Build an XMLTree from the input.
   void Parse(XMLTree *xml_tree);
 
-  /// This method is directly called by the destructor and frees any used
-  /// resources. Its main purpose is to be able to free resources when throwing
-  /// an exception from the constructor.
-  void FreeResources();
-
  private:
-  XMLParser(XMLParser&);
-  XMLParser(XMLParser&&);
-  XMLParser& operator=(XMLParser&);
-  XMLParser& operator=(XMLParser&&);
-
   std::wstring GetCurrentElementName();
 
   xmlTextReaderPtr xml_reader_;

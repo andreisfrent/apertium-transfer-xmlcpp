@@ -1,6 +1,5 @@
 #include <apertium_xml2cpp.h>
 #include <libxml/xmlreader.h>
-#include <stdexcept>
 #include <string>
 
 namespace apertium {
@@ -8,8 +7,7 @@ namespace xml2cpp {
 XMLParser::XMLParser(int fd) {
   xml_reader_ = xmlReaderForFd(fd, NULL, NULL, 0);
   if (xml_reader_ == NULL) {
-    FreeResources();
-    throw std::runtime_error("Error! Could not initialize XML parser.");
+    Error::Fatal(L"Could not initialize the XML parser.");
   }
 }
 
@@ -17,15 +15,11 @@ XMLParser::XMLParser(char *filename) {
   xml_reader_ = xmlReaderForFile(filename, NULL, 0);
 }
 
-void XMLParser::FreeResources() {
+XMLParser::~XMLParser() {
   if (xml_reader_ != NULL) {
     xmlFreeTextReader(xml_reader_);
     xml_reader_ = NULL;
   }
-}
-
-XMLParser::~XMLParser() {
-  FreeResources();
 }
 
 void XMLParser::Parse(XMLTree *tree) {
@@ -59,7 +53,7 @@ void XMLParser::Parse(XMLTree *tree) {
   }
 
   if (ret == -1) {
-    throw std::runtime_error("Error! Could not parse input as XML.");
+    Error::Fatal(L"Could not parse input as XML.");
   }
 }
 } // namespace xml2cpp
