@@ -1,8 +1,5 @@
-#include "XMLTree.h"
-
+#include <apertium_xml2cpp.h>
 #include <string>
-
-#include "XMLNode.h"
 
 namespace apertium {
 namespace xml2cpp {

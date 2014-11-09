@@ -1,5 +1,4 @@
-#include "Error.h"
-
+#include <apertium_xml2cpp.h>
 #include <cstdlib>
 #include <iostream>
 #include <string>

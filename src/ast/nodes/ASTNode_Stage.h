@@ -1,7 +1,7 @@
 #ifndef __APERTIUM_XML2CPP_AST_NODE_STAGE_H
 #define __APERTIUM_XML2CPP_AST_NODE_STAGE_H
 
-#include "ASTNode.h"
+#include <apertium_xml2cpp.h>
 
 namespace apertium {
 namespace xml2cpp {

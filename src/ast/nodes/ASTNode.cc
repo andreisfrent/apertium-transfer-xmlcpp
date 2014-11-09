@@ -1,5 +1,4 @@
-#include "ASTNode.h"
-
+#include <apertium_xml2cpp.h>
 #include <iostream>
 
 namespace apertium {

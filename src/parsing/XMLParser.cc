@@ -1,13 +1,7 @@
-#include "XMLParser.h"
-
+#include <apertium_xml2cpp.h>
 #include <libxml/xmlreader.h>
 #include <stdexcept>
 #include <string>
-
-#include "XMLUtil.h"
-#include "XMLTree.h"
-#include "XMLNode.h"
-using namespace std;
 
 namespace apertium {
 namespace xml2cpp {

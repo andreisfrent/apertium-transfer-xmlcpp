@@ -1,5 +1,4 @@
-#include "XMLNode.h"
-
+#include <apertium_xml2cpp.h>
 #include <string>
 #include <unordered_map>
 #include <vector>

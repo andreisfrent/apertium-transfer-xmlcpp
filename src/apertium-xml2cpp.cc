@@ -1,12 +1,7 @@
+#include <apertium_xml2cpp.h>
 #include <iostream>
 #include <libxml/xmlreader.h>
-#include <memory>
 #include <string>
-
-#include "parsing/XMLParser.h"
-#include "parsing/XMLTree.h"
-#include "ast/nodes/ASTNode.h"
-#include "ast/AST.h"
 
 using apertium::xml2cpp::ASTNode;
 using apertium::xml2cpp::XMLParser;

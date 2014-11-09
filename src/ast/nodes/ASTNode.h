@@ -1,9 +1,8 @@
 #ifndef __APERTIUM_XML2CPP_AST_NODE_H
 #define __APERTIUM_XML2CPP_AST_NODE_H
 
+#include <apertium_xml2cpp.h>
 #include <string>
-
-#include "../../parsing/XMLNode.h"
 
 namespace apertium {
 namespace xml2cpp {

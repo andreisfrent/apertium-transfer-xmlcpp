@@ -1,13 +1,10 @@
-#include "XMLUtil.h"
-
+#include <apertium_xml2cpp.h>
 #include <codecvt>
 #include <cstdlib>
 #include <iostream>
 #include <libxml/xmlreader.h>
 #include <locale>
 #include <string>
-
-#include "XMLNode.h"
 
 namespace apertium {
 namespace xml2cpp {

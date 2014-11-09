@@ -1,13 +1,9 @@
 #ifndef __APERTIUM_XML2CPP_AST_NODE_ROOT_H
 #define __APERTIUM_XML2CPP_AST_NODE_ROOT_H
 
+#include <apertium_xml2cpp.h>
 #include <string>
 #include <unordered_map>
-
-#include "ASTNode.h"
-#include "ASTNode_Transfer.h"
-#include "ASTNode_Interchunk.h"
-#include "ASTNode_Postchunk.h"
 
 namespace apertium {
 namespace xml2cpp {

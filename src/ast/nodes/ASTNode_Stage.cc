@@ -1,5 +1,4 @@
-#include "ASTNode_Stage.h"
-#include "ASTNode.h"
+#include <apertium_xml2cpp.h>
 
 namespace apertium {
 namespace xml2cpp {

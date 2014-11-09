@@ -1,8 +1,7 @@
 #ifndef __APERTIUM_XML2CPP_NEW_AST_H
 #define __APERTIUM_XML2CPP_NEW_AST_H
 
-#include "../parsing/XMLTree.h"
-#include "nodes/ASTNode_Root.h"
+#include <apertium_xml2cpp.h>
 
 namespace apertium {
 namespace xml2cpp {
