@@ -17,6 +17,10 @@ class ASTNode_Transfer : public ASTNode {
       const std::unordered_map<std::wstring, std::wstring>& attrs) override;
 
  private:
+  // Attribute processing.
+  void SetDefaultAttrs();
+  void HandleAttr_default(const std::wstring& value);
+
   int operation_mode_;
 };
 } // namespace xml2cpp
