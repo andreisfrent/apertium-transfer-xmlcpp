@@ -9,7 +9,6 @@ apertium_xml2cpp_SOURCES = \
   parsing/XMLParser.cc \
   parsing/XMLNode.cc \
   ast/AST.cc \
-  ast/nodes/ASTNode.cc \
 	ast/nodes/ASTNode_Action.cc \
 	ast/nodes/ASTNode_AttrItem.cc \
 	ast/nodes/ASTNode_CatItem.cc \
@@ -28,5 +27,8 @@ apertium_xml2cpp_SOURCES = \
 	ast/nodes/ASTNode_SectionDefCats.cc \
 	ast/nodes/ASTNode_SectionDefVars.cc \
 	ast/nodes/ASTNode_SectionRules.cc \
+  ast/nodes/ASTNode.cc \
+  ast/nodes/ASTNode_Interchunk.cc \
+  ast/nodes/ASTNode_Postchunk.cc \
   ast/nodes/ASTNode_Root.cc \
   ast/nodes/ASTNode_Transfer.cc

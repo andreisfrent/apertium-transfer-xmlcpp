@@ -72,6 +72,8 @@ ASTNode *ASTNode::UninitializedByTag(const std::wstring& tag) {
   if (tag == L"section-def-vars") return new ASTNode_SectionDefVars();
   if (tag == L"section-rules") return new ASTNode_SectionRules();
   if (tag == L"transfer") return new ASTNode_Transfer();
+  if (tag == L"interchunk") return new ASTNode_Interchunk();
+  if (tag == L"postchunk") return new ASTNode_Postchunk();
   return NULL;
 }
 }; // namespace xml2cpp

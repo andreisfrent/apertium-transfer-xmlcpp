@@ -20,3 +20,5 @@
 #include "ASTNode_SectionDefVars.h"
 #include "ASTNode_SectionRules.h"
 #include "ASTNode_Transfer.h"
+#include "ASTNode_Interchunk.h"
+#include "ASTNode_Postchunk.h"
