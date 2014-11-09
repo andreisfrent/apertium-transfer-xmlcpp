@@ -1,13 +1,9 @@
-#include "ASTNode_Interchunk.h"
-#include "ASTNode.h"
-
-#include <string>
-#include <unordered_map>
+#include <apertium_xml2cpp.h>
 
 namespace apertium {
 namespace xml2cpp {
 ASTNode_Interchunk::ASTNode_Interchunk(const XMLNode *xml_node)
-    : ASTNode(xml_node) {
+    : ASTNode_Stage(xml_node) {
 }
 
 ASTNode_Interchunk::~ASTNode_Interchunk() {

@@ -10,6 +10,7 @@ apertium_xml2cpp_SOURCES = \
   parsing/XMLNode.cc \
   ast/nodes/ASTNode.cc \
   ast/nodes/ASTNode_Root.cc \
+  ast/nodes/ASTNode_Stage.cc \
   ast/nodes/ASTNode_Interchunk.cc \
   ast/nodes/ASTNode_Postchunk.cc \
   ast/nodes/ASTNode_Transfer.cc \

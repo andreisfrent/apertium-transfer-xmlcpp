@@ -5,7 +5,8 @@
 namespace apertium {
 namespace xml2cpp {
 ASTNode::ASTNode(const XMLNode *xml_node) {
-  // TODO
+  set_line_no(xml_node->get_line_no());
+  set_tag(xml_node->get_tag());
 }
 
 ASTNode::~ASTNode() {

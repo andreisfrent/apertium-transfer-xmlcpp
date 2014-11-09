@@ -1,14 +1,11 @@
 #ifndef __APERTIUM_XML2CPP_AST_NODE_POSTCHUNK_H
 #define __APERTIUM_XML2CPP_AST_NODE_POSTCHUNK_H
 
-#include <string>
-#include <unordered_map>
-
-#include "ASTNode.h"
+#include <apertium_xml2cpp.h>
 
 namespace apertium {
 namespace xml2cpp {
-class ASTNode_Postchunk : public ASTNode {
+class ASTNode_Postchunk : public ASTNode_Stage {
  public:
   ASTNode_Postchunk(const XMLNode *xml_node);
   ~ASTNode_Postchunk();

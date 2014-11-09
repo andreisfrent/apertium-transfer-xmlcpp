@@ -1,13 +1,9 @@
-#include "ASTNode_Transfer.h"
-#include "ASTNode.h"
-
-#include <string>
-#include <unordered_map>
+#include <apertium_xml2cpp.h>
 
 namespace apertium {
 namespace xml2cpp {
 ASTNode_Transfer::ASTNode_Transfer(const XMLNode *xml_node)
-    : ASTNode(xml_node) {
+    : ASTNode_Stage(xml_node) {
 }
 
 ASTNode_Transfer::~ASTNode_Transfer() {
