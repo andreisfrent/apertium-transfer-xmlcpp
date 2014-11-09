@@ -13,4 +13,5 @@ apertium_xml2cpp_SOURCES = \
   ast/nodes/ASTNode_Interchunk.cc \
   ast/nodes/ASTNode_Postchunk.cc \
   ast/nodes/ASTNode_Transfer.cc \
-  ast/AST.cc
+  ast/AST.cc \
+  error/Error.cc
