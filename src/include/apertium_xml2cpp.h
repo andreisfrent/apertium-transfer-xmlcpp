@@ -13,9 +13,9 @@
 
 #include "../ast/nodes/ASTNode.h"
 #include "../ast/nodes/ASTNode_Stage.h"
-#include "../ast/nodes/ASTNode_Postchunk.h"
-#include "../ast/nodes/ASTNode_Transfer.h"
-#include "../ast/nodes/ASTNode_Interchunk.h"
+#include "../ast/nodes/ASTNode_StagePostchunk.h"
+#include "../ast/nodes/ASTNode_StageTransfer.h"
+#include "../ast/nodes/ASTNode_StageInterchunk.h"
 #include "../ast/nodes/ASTNode_Root.h"
 
 #include "../ast/AST.h"

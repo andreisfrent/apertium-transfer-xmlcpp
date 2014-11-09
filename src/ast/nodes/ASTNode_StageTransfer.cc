@@ -2,11 +2,11 @@
 
 namespace apertium {
 namespace xml2cpp {
-ASTNode_Transfer::ASTNode_Transfer(const XMLNode *xml_node)
+ASTNode_StageTransfer::ASTNode_StageTransfer(const XMLNode *xml_node)
     : ASTNode_Stage(xml_node) {
 }
 
-ASTNode_Transfer::~ASTNode_Transfer() {
+ASTNode_StageTransfer::~ASTNode_StageTransfer() {
 }
 } // namespace xml2cpp
 } // namespace apertium

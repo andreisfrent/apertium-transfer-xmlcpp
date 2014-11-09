@@ -15,11 +15,11 @@ ASTNode_Root::ASTNode_Root(const XMLNode *xml_node)
 
   stage_ = NULL;
   if (xml_child_tag == L"transfer") {
-    stage_ = new ASTNode_Transfer(xml_child);
+    stage_ = new ASTNode_StageTransfer(xml_child);
   } else if (xml_child_tag == L"interchunk") {
-    stage_ = new ASTNode_Interchunk(xml_child);
+    stage_ = new ASTNode_StageInterchunk(xml_child);
   } else if (xml_child_tag == L"postchunk") {
-    stage_ = new ASTNode_Postchunk(xml_child);
+    stage_ = new ASTNode_StagePostchunk(xml_child);
   } else {
     Error::Fatal(L"Transfer stage unknown (should be one of <transfer>, <interchunk>, <postchunk>).");
   }

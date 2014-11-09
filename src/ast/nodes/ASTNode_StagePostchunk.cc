@@ -2,11 +2,11 @@
 
 namespace apertium {
 namespace xml2cpp {
-ASTNode_Postchunk::ASTNode_Postchunk(const XMLNode *xml_node)
+ASTNode_StagePostchunk::ASTNode_StagePostchunk(const XMLNode *xml_node)
     : ASTNode_Stage(xml_node) {
 }
 
-ASTNode_Postchunk::~ASTNode_Postchunk() {
+ASTNode_StagePostchunk::~ASTNode_StagePostchunk() {
 }
 } // namespace xml2cpp
 } // namespace apertium
