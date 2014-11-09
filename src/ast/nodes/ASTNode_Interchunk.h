@@ -10,11 +10,8 @@ namespace apertium {
 namespace xml2cpp {
 class ASTNode_Interchunk : public ASTNode {
  public:
-  ASTNode_Interchunk();
+  ASTNode_Interchunk(const XMLNode *xml_node);
   ~ASTNode_Interchunk();
-
-  void Initialize(
-      const std::unordered_map<std::wstring, std::wstring>& attrs) override;
 };
 } // namespace xml2cpp
 } // namespace apertium
