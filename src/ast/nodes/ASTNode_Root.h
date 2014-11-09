@@ -12,6 +12,9 @@ class ASTNode_Root : public ASTNode {
  public:
   ASTNode_Root();
   ~ASTNode_Root();
+
+  void Initialize(
+      const std::unordered_map<std::wstring, std::wstring>& attrs) override;
 };
 } // namespace xml2cpp
 } // namespace apertium
