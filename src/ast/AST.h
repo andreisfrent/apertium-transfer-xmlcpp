@@ -10,6 +10,8 @@ class AST {
   AST(const XMLTree& xml_tree);
   ~AST();
 
+  void PrintDebugInfo() const;
+
  private:
   ASTNode_Root *root_;
 };

@@ -53,8 +53,8 @@ void ASTNode_GlobalLists::HandleListElementDefinition(
   lists_[list_name].insert(list_item);
 }
 
-void ASTNode_GlobalLists::PrintLists() {
-  Error::Debug("List definitions:");
+void ASTNode_GlobalLists::PrintDebugInfo(const std::wstring& indentation) const {
+  Error::Debug(indentation, "List definitions:");
   for (const auto& kv : lists_) {
     std::wstringstream wss;
     wss << kv.first << L" = [";
@@ -67,7 +67,7 @@ void ASTNode_GlobalLists::PrintLists() {
       ++item_index;
     }
     wss << L"]";
-    Error::Debug("  ", wss.str());
+    Error::Debug(indentation, "  ", wss.str());
   }
 }
 } // namespace xml2cpp

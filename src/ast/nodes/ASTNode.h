@@ -20,8 +20,7 @@ class ASTNode {
   int get_line_no() const;
   void set_tag(const std::wstring& tag);
   const std::wstring& get_tag() const;
-  void PrintDebugInfo() const;
-  virtual void PrintDebugInfo(const std::string& indentation) const;
+  virtual void PrintDebugInfo(const std::wstring& indentation = L"") const;
 
  protected:
   int line_no_;

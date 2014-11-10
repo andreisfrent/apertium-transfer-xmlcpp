@@ -17,6 +17,7 @@ int main(int argc, char *argv[]) {
     XMLTree xml_tree;
     xml_parser.Parse(&xml_tree);
     AST ast(xml_tree);
+    ast.PrintDebugInfo();
   } catch (std::exception& ex) {
     std::cerr << ex.what() << std::endl;
   }

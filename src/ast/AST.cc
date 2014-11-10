@@ -10,5 +10,9 @@ AST::AST(const XMLTree& xml_tree) {
 AST::~AST() {
   delete root_;
 }
+
+void AST::PrintDebugInfo() const {
+  root_->PrintDebugInfo();
+}
 } // namespace apertium
 } // namespace xml2cpp

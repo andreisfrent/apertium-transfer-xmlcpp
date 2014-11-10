@@ -14,7 +14,7 @@ class ASTNode_GlobalLists : public ASTNode {
   ASTNode_GlobalLists(const XMLNode *xml_node);
   ~ASTNode_GlobalLists();
 
-  void PrintLists();
+  void PrintDebugInfo(const std::wstring& indentation = L"") const override;
 
  private:
   std::unordered_map<std::wstring, std::set<std::wstring>> lists_;

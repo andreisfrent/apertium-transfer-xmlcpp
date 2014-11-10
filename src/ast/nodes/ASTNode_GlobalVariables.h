@@ -13,7 +13,7 @@ class ASTNode_GlobalVariables : public ASTNode {
   ASTNode_GlobalVariables(const XMLNode *xml_node);
   ~ASTNode_GlobalVariables();
 
-  void PrintVariableNames();
+  void PrintDebugInfo(const std::wstring& indentation = L"") const override;
 
  private:
   std::set<std::wstring> var_names_;

@@ -32,11 +32,7 @@ void ASTNode::set_tag(const std::wstring& tag) {
   tag_ = tag;
 }
 
-void ASTNode::PrintDebugInfo() const {
-  PrintDebugInfo("");
-}
-
-void ASTNode::PrintDebugInfo(const std::string& indentation) const {
+void ASTNode::PrintDebugInfo(const std::wstring& indentation) const {
   // Do nothing.
 }
 } // namespace xml2cpp

@@ -17,9 +17,11 @@ ASTNode_Stage::ASTNode_Stage(const XMLNode *xml_node)
   }
 
   FillWithEmptySections();
+}
 
-  global_variables_->PrintVariableNames();
-  global_lists_->PrintLists();
+void ASTNode_Stage::PrintDebugInfo(const std::wstring& indentation) const {
+  global_variables_->PrintDebugInfo(indentation);
+  global_lists_->PrintDebugInfo(indentation);
 }
 
 ASTNode_Stage::~ASTNode_Stage() {

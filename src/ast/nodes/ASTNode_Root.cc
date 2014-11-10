@@ -25,6 +25,10 @@ ASTNode_Root::ASTNode_Root(const XMLNode *xml_node)
   }
 }
 
+void ASTNode_Root::PrintDebugInfo(const std::wstring& indentation) const {
+  stage_->PrintDebugInfo(indentation);
+}
+
 ASTNode_Root::~ASTNode_Root() {
   if (stage_) {
     delete stage_;

@@ -38,10 +38,11 @@ void ASTNode_GlobalVariables::HandleVariableDefinition(const XMLNode *xml_node) 
   var_names_.insert(var_name);
 }
 
-void ASTNode_GlobalVariables::PrintVariableNames() {
-  Error::Debug("Global variables:");
+void ASTNode_GlobalVariables::PrintDebugInfo(
+    const std::wstring& indentation) const {
+  Error::Debug(indentation, "Global variables:");
   for (const std::wstring& name : var_names_) {
-    Error::Debug("  ", name);
+    Error::Debug(indentation, "  ", name);
   }
 }
 } // namespace xml2cpp
