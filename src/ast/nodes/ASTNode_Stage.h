@@ -17,6 +17,7 @@ class ASTNode_Stage : public ASTNode {
   void HandleXMLChild_section_def_vars(const XMLNode *xml_child);
   void HandleXMLChild_section_def_lists(const XMLNode *xml_child);
   void HandleXMLChild_section_def_cats(const XMLNode *xml_child);
+  void HandleXMLChild_section_def_attrs(const XMLNode *xml_child);
   void FillWithEmptySections();
   void CheckMandatorySections() const;
 
@@ -24,6 +25,7 @@ class ASTNode_Stage : public ASTNode {
   ASTNode_GlobalVariables *global_variables_;
   ASTNode_GlobalLists *global_lists_;
   ASTNode_Categories *lexical_categories_;
+  ASTNode_Attributes *attributes_;
 };
 } // namespace xml2cpp
 } // namespace apertium

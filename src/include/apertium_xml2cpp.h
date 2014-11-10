@@ -15,6 +15,7 @@
 #include "../ast/nodes/ASTNode_GlobalVariables.h"
 #include "../ast/nodes/ASTNode_GlobalLists.h"
 #include "../ast/nodes/ASTNode_Categories.h"
+#include "../ast/nodes/ASTNode_Attributes.h"
 #include "../ast/nodes/ASTNode_Stage.h"
 #include "../ast/nodes/ASTNode_StagePostchunk.h"
 #include "../ast/nodes/ASTNode_StageTransfer.h"

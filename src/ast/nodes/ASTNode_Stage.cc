@@ -13,6 +13,8 @@ ASTNode_Stage::ASTNode_Stage(const XMLNode *xml_node)
       HandleXMLChild_section_def_lists(xml_child);
     } else if (xml_child->get_tag() == L"section-def-cats") {
       HandleXMLChild_section_def_cats(xml_child);
+    } else if (xml_child->get_tag() == L"section-def-attrs") {
+      HandleXMLChild_section_def_attrs(xml_child);
     } else {
       Error::Warning("Unrecognized section <", xml_child->get_tag(), ">.");
     }
@@ -26,12 +28,14 @@ void ASTNode_Stage::PrintDebugInfo(const std::wstring& indentation) const {
   global_variables_->PrintDebugInfo(indentation);
   global_lists_->PrintDebugInfo(indentation);
   lexical_categories_->PrintDebugInfo(indentation);
+  attributes_->PrintDebugInfo(indentation);
 }
 
 ASTNode_Stage::~ASTNode_Stage() {
   if (global_variables_) delete global_variables_;
   if (global_lists_) delete global_lists_;
   if (lexical_categories_) delete lexical_categories_;
+  if (attributes_) delete attributes_;
 }
 
 void ASTNode_Stage::HandleXMLChild_section_def_lists(const XMLNode *xml_child) {
@@ -58,6 +62,14 @@ void ASTNode_Stage::HandleXMLChild_section_def_cats(const XMLNode *xml_child) {
   }
 }
 
+void ASTNode_Stage::HandleXMLChild_section_def_attrs(const XMLNode *xml_child) {
+  if (attributes_ == NULL) {
+    attributes_ = new ASTNode_Attributes(xml_child);
+  } else {
+    Error::Fatal("Multiple <section-def-attrs> detected.");
+  }
+}
+
 void ASTNode_Stage::FillWithEmptySections() {
   if (!global_variables_) global_variables_ = new ASTNode_GlobalVariables();
   if (!global_lists_) global_lists_ = new ASTNode_GlobalLists();
@@ -65,12 +77,14 @@ void ASTNode_Stage::FillWithEmptySections() {
 
 void ASTNode_Stage::CheckMandatorySections() const {
   if (!lexical_categories_) Error::Fatal("Mandatory <section-def-cats> missing.");
+  if (!attributes_) Error::Fatal("Mandatory <section-def-attrs> missing.");
 }
 
 void ASTNode_Stage::SetSectionPointersToNull() {
   global_variables_ = NULL;
   global_lists_ = NULL;
   lexical_categories_ = NULL;
+  attributes_ = NULL;
 }
 } // namespace xml2cpp
 } // namespace apertium
