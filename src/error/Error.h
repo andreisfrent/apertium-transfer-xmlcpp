@@ -33,6 +33,20 @@ class Error {
      std::wcout << "\033[1;33mWARNING\033[0m ";
      _Out(t_args...);
   }
+
+  template<typename ... TArgs>
+  static void Info(TArgs ... t_args) {
+     std::wcout << "\033[1;32mINFO\033[0m ";
+     _Out(t_args...);
+  }
+
+  template<typename ... TArgs>
+  static void Debug(TArgs ... t_args) {
+     std::wcout << "\033[1;34mDEBUG\033[0m ";
+     _Out(t_args...);
+  }
+
+  static void Unimplemented(const std::string& method_name);
 };
 } // namespace xml2cpp
 } // namespace apertium

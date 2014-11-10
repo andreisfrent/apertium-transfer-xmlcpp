@@ -8,7 +8,8 @@ namespace apertium {
 namespace xml2cpp {
 class ASTNode {
  public:
-  ASTNode(const XMLNode *xml_node);
+  ASTNode();
+  explicit ASTNode(const XMLNode *xml_node);
   virtual ~ASTNode();
 
   // TODO virtual void FillMetadata(...);

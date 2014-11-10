@@ -8,6 +8,11 @@ ASTNode::ASTNode(const XMLNode *xml_node) {
   set_tag(xml_node->get_tag());
 }
 
+ASTNode::ASTNode() {
+  set_line_no(-1);
+  set_tag(L"% VIRTUAL-TAG %");
+}
+
 ASTNode::~ASTNode() {
 }
 

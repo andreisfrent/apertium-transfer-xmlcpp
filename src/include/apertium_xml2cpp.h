@@ -12,6 +12,7 @@
 #include "../parsing/XMLUtil.h"
 
 #include "../ast/nodes/ASTNode.h"
+#include "../ast/nodes/ASTNode_GlobalVariables.h"
 #include "../ast/nodes/ASTNode_Stage.h"
 #include "../ast/nodes/ASTNode_StagePostchunk.h"
 #include "../ast/nodes/ASTNode_StageTransfer.h"
