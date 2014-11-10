@@ -32,16 +32,10 @@ void ASTNode_GlobalVariables::HandleVariableDefinition(const XMLNode *xml_node) 
   }
 
   const std::wstring& var_name = xml_node->get_attrs().find(L"n")->second;
-  if (IsValidVariableName(var_name)) {
-    var_names_.insert(var_name);
-  } else {
-    Error::Fatal("Variable name \"", var_name, "\" is not valid.");
+  if (var_names_.find(var_name) != var_names_.end()) {
+    Error::Warning("Multiple definitions of global variable \"", var_name, "\".");
   }
-}
-
-bool ASTNode_GlobalVariables::IsValidVariableName(const std::wstring& var_name) {
-  Error::Unimplemented("ASTNode_GlobalVariables::IsValidVariableName");
-  return true;
+  var_names_.insert(var_name);
 }
 
 void ASTNode_GlobalVariables::PrintVariableNames() {

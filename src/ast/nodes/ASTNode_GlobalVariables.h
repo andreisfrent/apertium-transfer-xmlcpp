@@ -19,7 +19,6 @@ class ASTNode_GlobalVariables : public ASTNode {
   std::set<std::wstring> var_names_;
 
   void HandleVariableDefinition(const XMLNode *xml_node);
-  bool IsValidVariableName(const std::wstring& var_name);
 };
 } // namespace xml2cpp
 } // namespace apertium
