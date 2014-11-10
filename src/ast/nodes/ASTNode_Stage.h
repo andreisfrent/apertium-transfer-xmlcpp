@@ -13,10 +13,12 @@ class ASTNode_Stage : public ASTNode {
  private:
   void SetSectionPointersToNull();
   void HandleXMLChild_section_def_vars(const XMLNode *xml_child);
+  void HandleXMLChild_section_def_lists(const XMLNode *xml_child);
   void FillWithEmptySections();
 
  protected:
   ASTNode_GlobalVariables *global_variables_;
+  ASTNode_GlobalLists *global_lists_;
 };
 } // namespace xml2cpp
 } // namespace apertium

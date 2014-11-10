@@ -14,6 +14,13 @@
   <section-def-vars>
     <def-var n="blank"/>
   </section-def-vars>
+  <section-def-lists>
+    <def-list n="list_1">
+      <list-item v="first"/>
+      <list-item v="second"/>
+      <list-item v="third"/>
+    </def-list>
+  </section-def-lists>
   <section-rules>
     <rule>
       <pattern>
