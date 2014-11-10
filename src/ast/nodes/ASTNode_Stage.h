@@ -18,12 +18,14 @@ class ASTNode_Stage : public ASTNode {
   void HandleXMLChild_section_def_lists(const XMLNode *xml_child);
   void HandleXMLChild_section_def_cats(const XMLNode *xml_child);
   void HandleXMLChild_section_def_attrs(const XMLNode *xml_child);
+  void HandleXMLChild_section_def_macros(const XMLNode *xml_child);
   void FillWithEmptySections();
   void CheckMandatorySections() const;
 
  protected:
   ASTNode_GlobalVariables *global_variables_;
   ASTNode_GlobalLists *global_lists_;
+  ASTNode_GlobalMacros *global_macros_;
   ASTNode_Categories *lexical_categories_;
   ASTNode_Attributes *attributes_;
 };

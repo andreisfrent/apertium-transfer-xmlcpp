@@ -16,7 +16,9 @@ apertium_xml2cpp_SOURCES = \
   ast/nodes/ASTNode_StageTransfer.cc \
   ast/nodes/ASTNode_GlobalVariables.cc \
   ast/nodes/ASTNode_GlobalLists.cc \
+  ast/nodes/ASTNode_GlobalMacros.cc \
   ast/nodes/ASTNode_Categories.cc \
   ast/nodes/ASTNode_Attributes.cc \
+  ast/nodes/ASTNode_Macro.cc \
   ast/AST.cc \
   error/Error.cc
