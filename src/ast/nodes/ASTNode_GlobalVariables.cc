@@ -10,7 +10,7 @@ ASTNode_GlobalVariables::ASTNode_GlobalVariables(const XMLNode *xml_node)
     if (xml_child->get_tag() == L"def-var") {
       HandleVariableDefinition(xml_child);
     } else {
-      Error::Fatal("Unexpected <", xml_child->get_tag(), "> in global variables section.");
+      Error::Fatal(*xml_child, "Unexpected <", xml_child->get_tag(), "> in global variables section.");
     }
   }
 }
@@ -24,16 +24,16 @@ ASTNode_GlobalVariables::~ASTNode_GlobalVariables() {
 
 void ASTNode_GlobalVariables::HandleVariableDefinition(const XMLNode *xml_node) {
   if (xml_node->get_children().size() != 0) {
-    Error::Fatal("Encountered <def-var> tag with children.");
+    Error::Fatal(*xml_node, "Encountered <def-var> tag with children.");
   }
 
   if (xml_node->get_attrs().find(L"n") == xml_node->get_attrs().end()) {
-    Error::Fatal("Global variable name is missing.");
+    Error::Fatal(*xml_node, "Global variable name is missing.");
   }
 
   const std::wstring& var_name = xml_node->get_attrs().find(L"n")->second;
   if (var_names_.find(var_name) != var_names_.end()) {
-    Error::Warning("Multiple definitions of global variable \"", var_name, "\".");
+    Error::Warning(*xml_node, "Multiple definitions of global variable \"", var_name, "\".");
   }
   var_names_.insert(var_name);
 }

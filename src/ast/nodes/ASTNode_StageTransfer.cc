@@ -16,7 +16,7 @@ void ASTNode_StageTransfer::HandleXMLAttrs(const XMLNode *xml_node) {
     if (kv.first == L"default") {
       HandleXMLAttr_default(kv.second);
     } else {
-      Error::Warning("Ignoring attribute \"", kv.first, "\".");
+      Error::Warning(*xml_node, "Ignoring attribute \"", kv.first, "\".");
     }
   }
 }
@@ -31,7 +31,7 @@ void ASTNode_StageTransfer::HandleXMLAttr_default(const std::wstring& value) {
   } else if (value == L"chunk") {
     transfer_mode_ = kChunk;
   } else {
-    Error::Fatal("Unrecognized transfer mode \"", value, "\".");
+    Error::Fatal(*this, "Unrecognized transfer mode \"", value, "\".");
   }
 }
 

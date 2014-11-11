@@ -11,7 +11,7 @@ ASTNode_GlobalMacros::ASTNode_GlobalMacros(const XMLNode *xml_node)
     if (xml_child->get_tag() == L"def-macro") {
       HandleMacroDefinition(xml_child);
     } else {
-      Error::Fatal("Unexpected <", xml_child->get_tag(), "> in macros definition section.");
+      Error::Fatal(*xml_child, "Unexpected <", xml_child->get_tag(), "> in macros definition section.");
     }
   }
 }
@@ -24,12 +24,12 @@ ASTNode_GlobalMacros::~ASTNode_GlobalMacros() {
 
 void ASTNode_GlobalMacros::HandleMacroDefinition(const XMLNode *xml_node) {
   if (xml_node->get_attrs().find(L"n") == xml_node->get_attrs().end()) {
-    Error::Fatal("Macro name is missing.");
+    Error::Fatal(*xml_node, "Macro name is missing.");
   }
 
   const std::wstring& macro_name = xml_node->get_attrs().find(L"n")->second;
   if (macros_.find(macro_name) != macros_.end()) {
-    Error::Warning("Multiple definitions of macro \"", macro_name, "\".");
+    Error::Warning(*xml_node, "Multiple definitions of macro \"", macro_name, "\".");
   }
 
   macros_[macro_name] = new ASTNode_Macro(xml_node);

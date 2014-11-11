@@ -5,7 +5,7 @@ namespace xml2cpp {
 ASTNode_StageInterchunk::ASTNode_StageInterchunk(const XMLNode *xml_node)
     : ASTNode_Stage(xml_node) {
   if (xml_node->get_attrs().size() != 0) {
-    Error::Warning("Extra attributes on <", xml_node->get_tag(), ">.");
+    Error::Warning(*xml_node, "Extra attributes on <", xml_node->get_tag(), ">.");
   }
 }
 

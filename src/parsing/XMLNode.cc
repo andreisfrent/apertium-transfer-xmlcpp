@@ -2,6 +2,7 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
+#include <iostream>
 
 namespace apertium {
 namespace xml2cpp {
@@ -24,6 +25,7 @@ void XMLNode::AddAttribute(const std::wstring& key, const std::wstring& value) {
 
 void XMLNode::AddChild(XMLNode *child) {
   children_.push_back(child);
+  children_by_tag_[child->get_tag()].push_back(child);
 }
 
 bool XMLNode::IsLeaf() const {
@@ -54,5 +56,19 @@ const std::vector<XMLNode*>& XMLNode::get_children() const {
   return children_;
 }
 
+const std::vector<XMLNode*>& XMLNode::GetChildrenByTag(const std::wstring& tag) const {
+  static std::vector<XMLNode*> empty_vector;
+  const auto& it = children_by_tag_.find(tag);
+  if (it != children_by_tag_.end()) {
+    return it->second;
+  } else {
+    return empty_vector;
+  }
+}
 } // namespace xml2cpp
 } // namespace apertium
+
+std::wostream& operator <<(std::wostream& stream, const apertium::xml2cpp::XMLNode& xml_node) {
+  stream << "Line " << xml_node.get_line_no() << " [<" << xml_node.get_tag() << ">]: ";
+  return stream;
+}

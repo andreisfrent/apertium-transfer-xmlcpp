@@ -11,7 +11,7 @@ ASTNode_Attributes::ASTNode_Attributes(const XMLNode *xml_node)
     if (xml_child->get_tag() == L"def-attr") {
       HandleAttrDefinition(xml_child);
     } else {
-      Error::Fatal("Unexpected <", xml_child->get_tag(), "> in attributes definition section.");
+      Error::Fatal(*xml_node, "Unexpected <", xml_child->get_tag(), "> in attributes definition section.");
     }
   }
 }
@@ -21,12 +21,12 @@ ASTNode_Attributes::~ASTNode_Attributes() {
 
 void ASTNode_Attributes::HandleAttrDefinition(const XMLNode *xml_node) {
   if (xml_node->get_attrs().find(L"n") == xml_node->get_attrs().end()) {
-    Error::Fatal("Attribute name is missing.");
+    Error::Fatal(*xml_node, "Attribute name is missing.");
   }
 
   const std::wstring& attribute = xml_node->get_attrs().find(L"n")->second;
   if (attributes_.find(attribute) != attributes_.end()) {
-    Error::Warning("Multiple definitions of attribute \"", attribute, "\".");
+    Error::Warning(*xml_node, "Multiple definitions of attribute \"", attribute, "\".");
   }
   attributes_.insert(std::make_pair(attribute, std::set<std::wstring>()));
 
@@ -34,7 +34,7 @@ void ASTNode_Attributes::HandleAttrDefinition(const XMLNode *xml_node) {
     if (xml_child->get_tag() == L"attr-item") {
       HandleAttrItemDefinition(xml_child, attribute);
     } else {
-      Error::Fatal("Unexpected <", xml_child->get_tag(), "> in definition of attribute \"", attribute, "\".");
+      Error::Fatal(*xml_child, "Unexpected <", xml_child->get_tag(), "> in definition of attribute \"", attribute, "\".");
     }
   }
 }
@@ -42,7 +42,7 @@ void ASTNode_Attributes::HandleAttrDefinition(const XMLNode *xml_node) {
 void ASTNode_Attributes::HandleAttrItemDefinition(
     const XMLNode *xml_node, const std::wstring& attribute) {
   if (xml_node->get_attrs().find(L"tags") == xml_node->get_attrs().end()) {
-    Error::Fatal("Attribute item tags missing.");
+    Error::Fatal(*xml_node, "Attribute item tags missing.");
   }
 
   const std::wstring& attribute_item = xml_node->get_attrs().find(L"tags")->second;

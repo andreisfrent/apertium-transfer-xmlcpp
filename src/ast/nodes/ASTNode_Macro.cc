@@ -16,10 +16,10 @@ void ASTNode_Macro::HandleXMLAttributes(const XMLNode *xml_node) {
   const auto& attrs = xml_node->get_attrs();
 
   if (attrs.find(L"n") == attrs.end()) {
-    Error::Fatal("Macro name is missing.");
+    Error::Fatal(*xml_node, "Macro name is missing.");
   }
   if (attrs.find(L"npar") == attrs.end()) {
-    Error::Fatal("Parameter count attribute is mising on <def-macro>.");
+    Error::Fatal(*xml_node, "Parameter count attribute is mising on <def-macro>.");
   }
 
   name_ = attrs.find(L"n")->second;
@@ -27,7 +27,7 @@ void ASTNode_Macro::HandleXMLAttributes(const XMLNode *xml_node) {
 
   for (const auto& kv : attrs) {
     if (kv.first != L"n" && kv.first != L"npar") {
-      Error::Warning("Unknown attribute \"", kv.first, "\" on <def-macro>");
+      Error::Warning(*xml_node, "Unknown attribute \"", kv.first, "\" on <def-macro>");
     }
   }
 }

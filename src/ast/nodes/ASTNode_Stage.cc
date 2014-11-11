@@ -20,7 +20,7 @@ ASTNode_Stage::ASTNode_Stage(const XMLNode *xml_node)
     } else if (xml_child->get_tag() == L"section-rules") {
       HandleXMLChild_section_rules(xml_child);
     } else {
-      Error::Warning("Unrecognized section <", xml_child->get_tag(), ">.");
+      Error::Warning(*xml_node, "Unrecognized section <", xml_child->get_tag(), ">.");
     }
   }
 
@@ -50,7 +50,7 @@ void ASTNode_Stage::HandleXMLChild_section_def_lists(const XMLNode *xml_child) {
   if (global_lists_ == NULL) {
     global_lists_ = new ASTNode_GlobalLists(xml_child);
   } else {
-    Error::Fatal("Multiple <section-def-lists> detected.");
+    Error::Fatal(*xml_child, "Multiple <section-def-lists> detected.");
   }
 }
 
@@ -58,7 +58,7 @@ void ASTNode_Stage::HandleXMLChild_section_def_vars(const XMLNode *xml_child) {
   if (global_variables_ == NULL) {
     global_variables_ = new ASTNode_GlobalVariables(xml_child);
   } else {
-    Error::Fatal("Multiple <section-def-vars> detected.");
+    Error::Fatal(*xml_child, "Multiple <section-def-vars> detected.");
   }
 }
 
@@ -66,7 +66,7 @@ void ASTNode_Stage::HandleXMLChild_section_def_macros(const XMLNode *xml_child) 
   if (global_macros_ == NULL) {
     global_macros_ = new ASTNode_GlobalMacros(xml_child);
   } else {
-    Error::Fatal("Multiple <section-def-macros> detected.");
+    Error::Fatal(*xml_child, "Multiple <section-def-macros> detected.");
   }
 }
 
@@ -74,7 +74,7 @@ void ASTNode_Stage::HandleXMLChild_section_def_cats(const XMLNode *xml_child) {
   if (lexical_categories_ == NULL) {
     lexical_categories_ = new ASTNode_Categories(xml_child);
   } else {
-    Error::Fatal("Multiple <section-def-cats> detected.");
+    Error::Fatal(*xml_child, "Multiple <section-def-cats> detected.");
   }
 }
 
@@ -82,7 +82,7 @@ void ASTNode_Stage::HandleXMLChild_section_def_attrs(const XMLNode *xml_child) {
   if (attributes_ == NULL) {
     attributes_ = new ASTNode_Attributes(xml_child);
   } else {
-    Error::Fatal("Multiple <section-def-attrs> detected.");
+    Error::Fatal(*xml_child, "Multiple <section-def-attrs> detected.");
   }
 }
 
@@ -90,7 +90,7 @@ void ASTNode_Stage::HandleXMLChild_section_rules(const XMLNode *xml_child) {
   if (rules_ == NULL) {
     rules_ = new ASTNode_Rules(xml_child);
   } else {
-    Error::Fatal("Multiple <section-rules> detected.");
+    Error::Fatal(*xml_child, "Multiple <section-rules> detected.");
   }
 }
 
@@ -101,9 +101,9 @@ void ASTNode_Stage::FillWithEmptySections() {
 }
 
 void ASTNode_Stage::CheckMandatorySections() const {
-  if (!lexical_categories_) Error::Fatal("Mandatory <section-def-cats> missing.");
-  if (!attributes_) Error::Fatal("Mandatory <section-def-attrs> missing.");
-  if (!rules_) Error::Fatal("Mandatory <section-rules> missing.");
+  if (!lexical_categories_) Error::Fatal(*this, "Mandatory <section-def-cats> missing.");
+  if (!attributes_) Error::Fatal(*this, "Mandatory <section-def-attrs> missing.");
+  if (!rules_) Error::Fatal(*this, "Mandatory <section-rules> missing.");
 }
 
 void ASTNode_Stage::SetSectionPointersToNull() {

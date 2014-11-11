@@ -37,3 +37,8 @@ void ASTNode::PrintDebugInfo(const std::wstring& indentation) const {
 }
 } // namespace xml2cpp
 } // namespace apertium
+
+std::wostream& operator <<(std::wostream& stream, const apertium::xml2cpp::ASTNode& ast_node) {
+  stream << "Line " << ast_node.get_line_no() << " [<" << ast_node.get_tag() << ">]: ";
+  return stream;
+}

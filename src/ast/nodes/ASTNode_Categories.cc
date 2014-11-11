@@ -17,7 +17,7 @@ CategoryItem::CategoryItem(const XMLNode *xml_node) {
     } else if (kv.first == L"tags") {
       this->tags = kv.second;
     } else {
-      Error::Fatal("Unknown attribute \"", kv.first, "\" of <cat-item>.");
+      Error::Fatal(*xml_node, "Unknown attribute \"", kv.first, "\" of <cat-item>.");
     }
   }
 }
@@ -28,7 +28,7 @@ ASTNode_Categories::ASTNode_Categories(const XMLNode *xml_node)
     if (xml_child->get_tag() == L"def-cat") {
       HandleCatDefinition(xml_child);
     } else {
-      Error::Fatal("Unexpected <", xml_child->get_tag(), "> in category definition section.");
+      Error::Fatal(*xml_child, "Unexpected <", xml_child->get_tag(), "> in category definition section.");
     }
   }
 }
@@ -38,12 +38,12 @@ ASTNode_Categories::~ASTNode_Categories() {
 
 void ASTNode_Categories::HandleCatDefinition(const XMLNode *xml_node) {
   if (xml_node->get_attrs().find(L"n") == xml_node->get_attrs().end()) {
-    Error::Fatal("Category name is missing.");
+    Error::Fatal(*xml_node, "Category name is missing.");
   }
 
   const std::wstring& category = xml_node->get_attrs().find(L"n")->second;
   if (categories_.find(category) != categories_.end()) {
-    Error::Warning("Multiple definitions of category \"", category, "\".");
+    Error::Warning(*xml_node, "Multiple definitions of category \"", category, "\".");
   }
   categories_.insert(std::make_pair(category, std::vector<CategoryItem>()));
 
@@ -51,7 +51,7 @@ void ASTNode_Categories::HandleCatDefinition(const XMLNode *xml_node) {
     if (xml_child->get_tag() == L"cat-item") {
       categories_[category].push_back(CategoryItem(xml_child));
     } else {
-      Error::Fatal("Unexpected <", xml_child->get_tag(), "> in definition of category \"", category, "\".");
+      Error::Fatal(*xml_child, "Unexpected <", xml_child->get_tag(), "> in definition of category \"", category, "\".");
     }
   }
 }

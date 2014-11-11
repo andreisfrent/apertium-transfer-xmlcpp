@@ -4,6 +4,7 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
+#include <iostream>
 
 namespace apertium {
 namespace xml2cpp {
@@ -23,14 +24,17 @@ class XMLNode {
   void set_line_no(int line_no);
   int get_line_no() const;
   const std::vector<XMLNode*>& get_children() const;
+  const std::vector<XMLNode*>& GetChildrenByTag(const std::wstring& tag) const;
 
  private:
   std::unordered_map<std::wstring, std::wstring> attrs_;
   std::vector<XMLNode*> children_;
+  std::unordered_map<std::wstring, std::vector<XMLNode*>> children_by_tag_;
   std::wstring tag_;
   int line_no_;
 };
 } // namespace xml2cpp
 } // namespace apertium
 
+std::wostream& operator <<(std::wostream& stream, const apertium::xml2cpp::XMLNode& xml_node);
 #endif

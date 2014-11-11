@@ -11,6 +11,9 @@ class ASTNode_Rule : public ASTNode {
   ~ASTNode_Rule();
 
   void PrintDebugInfo(const std::wstring& indentation = L"") const override;
+  void HandleXMLNode_pattern(const XMLNode *xml_node);
+  void HandleXMLNode_pattern_item(const XMLNode *xml_node);
+  void HandleXMLNode_action(const XMLNode *xml_node);
 
  private:
   std::vector<std::wstring> pattern_; // cat refs.

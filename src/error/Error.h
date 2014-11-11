@@ -5,44 +5,47 @@
 #include <iostream>
 #include <string>
 
+#include "../parsing/XMLNode.h"
+#include "../ast/nodes/ASTNode.h"
+
 namespace apertium {
 namespace xml2cpp {
 class Error {
  private:
   template<typename T>
   static void _Out(const T& t) {
-    std::wcout << t << std::endl;
+    std::wcerr << t << std::endl;
   }
 
   template<typename T, typename ... TArgs>
-  static void _Out(const T& t, TArgs ... t_args) {
-    std::wcout << t;
+  static void _Out(const T& t, const TArgs& ... t_args) {
+    std::wcerr << t;
     _Out(t_args...);
   }
 
  public:
   template<typename ... TArgs>
-  static void Fatal(TArgs ... t_args) {
-     std::wcout << "\033[1;31mFATAL\033[0m ";
+  static void Fatal(const TArgs& ... t_args) {
+     std::wcerr << "\033[1;31mFATAL\033[0m ";
      _Out(t_args...);
      exit(-1);
   }
 
   template<typename ... TArgs>
-  static void Warning(TArgs ... t_args) {
-     std::wcout << "\033[1;33mWARNING\033[0m ";
+  static void Warning(const TArgs& ... t_args) {
+     std::wcerr << "\033[1;33mWARNING\033[0m ";
      _Out(t_args...);
   }
 
   template<typename ... TArgs>
-  static void Info(TArgs ... t_args) {
-     std::wcout << "\033[1;32mINFO\033[0m ";
+  static void Info(const TArgs& ... t_args) {
+     std::wcerr << "\033[1;32mINFO\033[0m ";
      _Out(t_args...);
   }
 
   template<typename ... TArgs>
-  static void Debug(TArgs ... t_args) {
-     std::wcout << "\033[1;34mDEBUG\033[0m ";
+  static void Debug(const TArgs& ... t_args) {
+     std::wcerr << "\033[1;34mDEBUG\033[0m ";
      _Out(t_args...);
   }
 

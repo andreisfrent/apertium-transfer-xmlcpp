@@ -29,4 +29,5 @@ class ASTNode {
 } // namespace xml2cpp
 } // namespace apertium
 
+std::wostream& operator <<(std::wostream& stream, const apertium::xml2cpp::ASTNode& ast_node);
 #endif

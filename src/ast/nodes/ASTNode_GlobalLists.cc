@@ -11,7 +11,7 @@ ASTNode_GlobalLists::ASTNode_GlobalLists(const XMLNode *xml_node)
     if (xml_child->get_tag() == L"def-list") {
       HandleListDefinition(xml_child);
     } else {
-      Error::Fatal("Unexpected <", xml_child->get_tag(), "> in lists definition section.");
+      Error::Fatal(*xml_child, "Unexpected <", xml_child->get_tag(), "> in lists definition section.");
     }
   }
 }
@@ -25,12 +25,12 @@ ASTNode_GlobalLists::~ASTNode_GlobalLists() {
 
 void ASTNode_GlobalLists::HandleListDefinition(const XMLNode *xml_node) {
   if (xml_node->get_attrs().find(L"n") == xml_node->get_attrs().end()) {
-    Error::Fatal("List name is missing.");
+    Error::Fatal(*xml_node, "List name is missing.");
   }
 
   const std::wstring& list_name = xml_node->get_attrs().find(L"n")->second;
   if (lists_.find(list_name) != lists_.end()) {
-    Error::Warning("Multiple definitions of list \"", list_name, "\".");
+    Error::Warning(*xml_node, "Multiple definitions of list \"", list_name, "\".");
   }
   lists_.insert(std::make_pair(list_name, std::set<std::wstring>()));
 
@@ -38,7 +38,7 @@ void ASTNode_GlobalLists::HandleListDefinition(const XMLNode *xml_node) {
     if (xml_child->get_tag() == L"list-item") {
       HandleListElementDefinition(xml_child, list_name);
     } else {
-      Error::Fatal("Unexpected <", xml_child->get_tag(), "> in definition of list \"", list_name, "\".");
+      Error::Fatal(*xml_child, "Unexpected <", xml_child->get_tag(), "> in definition of list \"", list_name, "\".");
     }
   }
 }
@@ -46,7 +46,7 @@ void ASTNode_GlobalLists::HandleListDefinition(const XMLNode *xml_node) {
 void ASTNode_GlobalLists::HandleListElementDefinition(
     const XMLNode *xml_node, const std::wstring& list_name) {
   if (xml_node->get_attrs().find(L"v") == xml_node->get_attrs().end()) {
-    Error::Fatal("List item value is missing.");
+    Error::Fatal(*xml_node, "List item value is missing.");
   }
 
   const std::wstring& list_item = xml_node->get_attrs().find(L"v")->second;

@@ -14,13 +14,8 @@ XMLTree::~XMLTree() {
 }
 
 XMLNode *XMLTree::Descend(const std::wstring& tag) {
-  XMLNode *new_node = Descend();
-  new_node->set_tag(tag);
-  return new_node;
-}
-
-XMLNode *XMLTree::Descend() {
   XMLNode *new_node = new XMLNode();
+  new_node->set_tag(tag);
   current_path_.top()->AddChild(new_node);
   current_path_.push(new_node);
   return new_node;

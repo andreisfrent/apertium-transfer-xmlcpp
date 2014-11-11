@@ -10,7 +10,7 @@ ASTNode_Rules::ASTNode_Rules(const XMLNode *xml_node)
     if (xml_child->get_tag() == L"rule") {
       HandleRuleDefinition(xml_child);
     } else {
-      Error::Fatal("Unexpected <", xml_child->get_tag(), "> in rules section.");
+      Error::Fatal(*xml_child, "Unexpected <", xml_child->get_tag(), "> in rules section.");
     }
   }
 }
