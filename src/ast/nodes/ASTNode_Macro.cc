@@ -31,5 +31,9 @@ void ASTNode_Macro::HandleXMLAttributes(const XMLNode *xml_node) {
     }
   }
 }
+
+void ASTNode_Macro::PrintDebugInfo(const std::wstring& indentation) const {
+  Error::Debug(indentation, "Macro ", name_, " of arity ", param_count_, ":");
+}
 } // namespace xml2cpp
 } // namespace apertium

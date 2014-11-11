@@ -11,6 +11,7 @@ class ASTNode_Macro : public ASTNode {
   ~ASTNode_Macro();
 
   void HandleXMLAttributes(const XMLNode *xml_node);
+  void PrintDebugInfo(const std::wstring& indentation = L"") const override;
 
  private:
   std::wstring name_;

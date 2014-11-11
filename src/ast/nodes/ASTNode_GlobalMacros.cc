@@ -38,7 +38,6 @@ void ASTNode_GlobalMacros::HandleMacroDefinition(const XMLNode *xml_node) {
 void ASTNode_GlobalMacros::PrintDebugInfo(const std::wstring& indentation) const {
   Error::Debug(indentation, "Macro definitions:");
   for (const auto& kv : macros_) {
-    Error::Debug(indentation, "  ", kv.first);
     kv.second->PrintDebugInfo(indentation + L"  ");
   }
 }
