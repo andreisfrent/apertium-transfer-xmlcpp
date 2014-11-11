@@ -14,7 +14,7 @@ class ASTNode_CodeBlock : public ASTNode {
   ~ASTNode_CodeBlock();
 
  private:
-  std::vector<std::wstring> statements_;
+  std::vector<ASTNode_Instruction*> instructions_;
 };
 } // namespace xml2cpp
 } // namespace apertium

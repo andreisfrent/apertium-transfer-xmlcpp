@@ -9,6 +9,8 @@ class ASTNode_Instruction : public ASTNode {
  public:
   ASTNode_Instruction(const XMLNode *xml_node);
   ~ASTNode_Instruction();
+
+  static ASTNode_Instruction *FromXMLNode(const XMLNode *xml_node);
 };
 } // namespace xml2cpp
 } // namespace apertium
