@@ -2,8 +2,8 @@
 
 namespace apertium {
 namespace xml2cpp {
-ASTNode_InstrPrototype::ASTNode_InstrPrototype(const XMLNode *xml_node) :
-  ASTNode_Instruction(xml_node) {
+ASTNode_InstrPrototype::ASTNode_InstrPrototype(const XMLNode *xml_node)
+    : ASTNode_Instruction(xml_node) {
   // TODO
 }
 
