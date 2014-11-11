@@ -15,6 +15,7 @@
 
 #include "../ast/nodes/ASTNode.h"
 #include "../ast/nodes/ASTNode_Instruction.h"
+#include "../ast/nodes/ASTNode_InstrPrototype.h"
 #include "../ast/nodes/ASTNode_CodeBlock.h"
 #include "../ast/nodes/ASTNode_Rule.h"
 #include "../ast/nodes/ASTNode_Rules.h"
