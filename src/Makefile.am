@@ -22,5 +22,7 @@ apertium_xml2cpp_SOURCES = \
   ast/nodes/ASTNode_Attributes.cc \
   ast/nodes/ASTNode_Macro.cc \
   ast/nodes/ASTNode_CodeBlock.cc \
+  ast/nodes/ASTNode_Rules.cc \
+  ast/nodes/ASTNode_Rule.cc \
   ast/AST.cc \
   error/Error.cc

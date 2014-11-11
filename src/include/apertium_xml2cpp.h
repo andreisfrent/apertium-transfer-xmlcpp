@@ -15,6 +15,8 @@
 
 #include "../ast/nodes/ASTNode.h"
 #include "../ast/nodes/ASTNode_CodeBlock.h"
+#include "../ast/nodes/ASTNode_Rule.h"
+#include "../ast/nodes/ASTNode_Rules.h"
 #include "../ast/nodes/ASTNode_Macro.h"
 #include "../ast/nodes/ASTNode_GlobalVariables.h"
 #include "../ast/nodes/ASTNode_GlobalLists.h"
