@@ -6,6 +6,8 @@
 
 #include "../error/Error.h"
 
+#include "../misc/StringUtil.h"
+
 #include "../parsing/XMLNode.h"
 #include "../parsing/XMLTree.h"
 #include "../parsing/XMLParser.h"

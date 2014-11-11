@@ -4,6 +4,7 @@ AUTOMAKE_OPTIONS = subdir-objects
 bin_PROGRAMS = apertium-xml2cpp
 apertium_xml2cpp_SOURCES = \
   apertium-xml2cpp.cc \
+  misc/StringUtil.cc \
   parsing/XMLUtil.cc \
   parsing/XMLTree.cc \
   parsing/XMLParser.cc \
