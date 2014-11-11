@@ -5,9 +5,11 @@ namespace xml2cpp {
 ASTNode_Macro::ASTNode_Macro(const XMLNode *xml_node)
     : ASTNode(xml_node) {
   HandleXMLAttributes(xml_node);
+  code_ = new ASTNode_CodeBlock(xml_node);
 }
 
 ASTNode_Macro::~ASTNode_Macro() {
+  if (code_) delete code_;
 }
 
 void ASTNode_Macro::HandleXMLAttributes(const XMLNode *xml_node) {

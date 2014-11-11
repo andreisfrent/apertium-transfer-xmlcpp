@@ -15,6 +15,7 @@ class ASTNode_Macro : public ASTNode {
  private:
   std::wstring name_;
   int param_count_;
+  ASTNode_CodeBlock *code_;
 };
 } // namespace xml2cpp
 } // namespace apertium
