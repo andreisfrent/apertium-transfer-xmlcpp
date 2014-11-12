@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transfer>
+  <section-def-cats>
+    <def-cat n="some_word_category">
+      <cat-item tags="mytag.*"/>
+    </def-cat>
+  </section-def-cats>
+  <section-def-attrs>
+    <def-attr n="some_feature_of_a_word">
+      <attr-item tags="myfeature"/>
+      <attr-item tags="myotherfeature"/>
+    </def-attr>
+  </section-def-attrs>
+  <section-def-vars>
+    <def-var n="blank"/>
+  </section-def-vars>
+  <section-def-lists>
+    <def-list n="list_1">
+      <list-item v="first"/>
+      <list-item v="second"/>
+      <list-item v="third"/>
+    </def-list>
+  </section-def-lists>
+  <section-rules>
+    <rule>
+      <pattern>
+        <pattern-item n="some_word_category"/>
+      </pattern>
+      <action>
+        <call-macro n="f_concord2">
+          <with-param pos="3"/>
+          <with-param pos="1"/>
+        </call-macro>
+      </action>
+    </rule>
+  </section-rules>
+</transfer>
