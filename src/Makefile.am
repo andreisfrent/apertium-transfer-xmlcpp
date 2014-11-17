@@ -29,5 +29,6 @@ apertium_xml2cpp_SOURCES = \
   ast/nodes/CallMacro.cc \
   ast/nodes/And.cc \
   ast/nodes/Or.cc \
+  ast/nodes/Not.cc \
   ast/AST.cc \
   error/Error.cc
