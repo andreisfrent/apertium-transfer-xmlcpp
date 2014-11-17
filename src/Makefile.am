@@ -10,20 +10,20 @@ apertium_xml2cpp_SOURCES = \
   parsing/XMLParser.cc \
   parsing/XMLNode.cc \
   ast/nodes/ASTNode.cc \
-  ast/nodes/ASTNode_Root.cc \
-  ast/nodes/ASTNode_Stage.cc \
-  ast/nodes/ASTNode_StageInterchunk.cc \
-  ast/nodes/ASTNode_StagePostchunk.cc \
-  ast/nodes/ASTNode_StageTransfer.cc \
-  ast/nodes/ASTNode_GlobalVariables.cc \
-  ast/nodes/ASTNode_GlobalLists.cc \
-  ast/nodes/ASTNode_GlobalMacros.cc \
-  ast/nodes/ASTNode_Categories.cc \
-  ast/nodes/ASTNode_Attributes.cc \
-  ast/nodes/ASTNode_Macro.cc \
-  ast/nodes/ASTNode_CodeBlock.cc \
-  ast/nodes/ASTNode_Rules.cc \
-  ast/nodes/ASTNode_Rule.cc \
+  ast/nodes/Root.cc \
+  ast/nodes/Stage.cc \
+  ast/nodes/StageInterchunk.cc \
+  ast/nodes/StagePostchunk.cc \
+  ast/nodes/StageTransfer.cc \
+  ast/nodes/GlobalVariables.cc \
+  ast/nodes/GlobalLists.cc \
+  ast/nodes/GlobalMacros.cc \
+  ast/nodes/Categories.cc \
+  ast/nodes/Attributes.cc \
+  ast/nodes/Macro.cc \
+  ast/nodes/CodeBlock.cc \
+  ast/nodes/Rules.cc \
+  ast/nodes/Rule.cc \
   ast/nodes/Statement.cc \
   ast/nodes/CallMacro.cc \
   ast/AST.cc \
