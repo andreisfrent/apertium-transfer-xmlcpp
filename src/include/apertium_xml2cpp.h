@@ -16,6 +16,8 @@
 #include "../ast/nodes/ASTNode.h"
 #include "../ast/nodes/Statement.h"
 #include "../ast/nodes/CallMacro.h"
+#include "../ast/nodes/Condition.h"
+#include "../ast/nodes/And.h"
 #include "../ast/nodes/CodeBlock.h"
 #include "../ast/nodes/Rule.h"
 #include "../ast/nodes/Rules.h"
