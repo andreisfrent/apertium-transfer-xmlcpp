@@ -3,7 +3,7 @@
 namespace apertium {
 namespace xml2cpp {
 ASTNode_CallMacro::ASTNode_CallMacro(const XMLNode *xml_node)
-    : ASTNode_Instruction(xml_node) {
+    : Statement(xml_node) {
   HandleXMLAttributes(xml_node);
   ExtractArgumentsFromXMLNode(xml_node);
 }

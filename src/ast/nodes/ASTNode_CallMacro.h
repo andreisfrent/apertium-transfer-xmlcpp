@@ -5,7 +5,7 @@
 
 namespace apertium {
 namespace xml2cpp {
-class ASTNode_CallMacro : public ASTNode_Instruction {
+class ASTNode_CallMacro : public Statement {
  public:
   ASTNode_CallMacro(const XMLNode *xml_node);
   ~ASTNode_CallMacro();

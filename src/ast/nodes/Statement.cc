@@ -2,14 +2,14 @@
 
 namespace apertium {
 namespace xml2cpp {
-ASTNode_Instruction::ASTNode_Instruction(const XMLNode *xml_node)
+Statement::Statement(const XMLNode *xml_node)
     : ASTNode(xml_node) {
 }
 
-ASTNode_Instruction::~ASTNode_Instruction() {
+Statement::~Statement() {
 }
 
-ASTNode_Instruction* ASTNode_Instruction::FromXMLNode(const XMLNode *xml_node) {
+Statement* Statement::FromXMLNode(const XMLNode *xml_node) {
   if (xml_node->get_tag() == L"call-macro") {
     return new ASTNode_CallMacro(xml_node);
   }
