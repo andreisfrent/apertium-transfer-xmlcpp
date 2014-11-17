@@ -1,14 +1,14 @@
-#ifndef __APERTIUM_XML2CPP_AST_NODE_CALLMACRO_H
-#define __APERTIUM_XML2CPP_AST_NODE_CALLMACRO_H
+#ifndef __APERTIUM_XML2CPP_CALLMACRO_H
+#define __APERTIUM_XML2CPP_CALLMACRO_H
 
 #include <apertium_xml2cpp.h>
 
 namespace apertium {
 namespace xml2cpp {
-class ASTNode_CallMacro : public Statement {
+class CallMacro : public Statement {
  public:
-  ASTNode_CallMacro(const XMLNode *xml_node);
-  ~ASTNode_CallMacro();
+  CallMacro(const XMLNode *xml_node);
+  ~CallMacro();
 
  private:
   std::wstring macro_;
