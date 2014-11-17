@@ -2,7 +2,7 @@
 
 namespace apertium {
 namespace xml2cpp {
-ASTNode_Rule::ASTNode_Rule(const XMLNode *xml_node)
+Rule::Rule(const XMLNode *xml_node)
     : ASTNode(xml_node) {
 
   const std::vector<XMLNode*>& pattern_nodes = xml_node->GetChildrenByTag(L"pattern");
@@ -32,11 +32,11 @@ ASTNode_Rule::ASTNode_Rule(const XMLNode *xml_node)
   HandleXMLNode_action(action_nodes[0]);
 }
 
-ASTNode_Rule::~ASTNode_Rule() {
+Rule::~Rule() {
   if (code_) delete code_;
 }
 
-void ASTNode_Rule::PrintDebugInfo(const std::wstring& indentation) const {
+void Rule::PrintDebugInfo(const std::wstring& indentation) const {
   std::wstringstream wss;
   wss << L"pattern: [";
   size_t item_index = 0;
@@ -51,7 +51,7 @@ void ASTNode_Rule::PrintDebugInfo(const std::wstring& indentation) const {
   Error::Debug(indentation, "  ", wss.str());
 }
 
-void ASTNode_Rule::HandleXMLNode_pattern(const XMLNode *xml_node) {
+void Rule::HandleXMLNode_pattern(const XMLNode *xml_node) {
   for (const XMLNode *xml_child : xml_node->get_children()) {
     if (xml_child->get_tag() == L"pattern-item") {
       HandleXMLNode_pattern_item(xml_child);
@@ -61,7 +61,7 @@ void ASTNode_Rule::HandleXMLNode_pattern(const XMLNode *xml_node) {
   }
 }
 
-void ASTNode_Rule::HandleXMLNode_pattern_item(const XMLNode *xml_node) {
+void Rule::HandleXMLNode_pattern_item(const XMLNode *xml_node) {
   if (xml_node->get_children().size() > 0) {
     Error::Fatal(*xml_node, "Unexpected children for <pattern-item>.");
   }
@@ -74,8 +74,8 @@ void ASTNode_Rule::HandleXMLNode_pattern_item(const XMLNode *xml_node) {
   pattern_.push_back(name_attr->second);
 }
 
-void ASTNode_Rule::HandleXMLNode_action(const XMLNode *xml_node) {
-  code_ = new ASTNode_CodeBlock(xml_node);
+void Rule::HandleXMLNode_action(const XMLNode *xml_node) {
+  code_ = new CodeBlock(xml_node);
 }
 } // namespace xml2cpp
 } // namespace apertium

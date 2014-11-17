@@ -4,7 +4,7 @@
 
 namespace apertium {
 namespace xml2cpp {
-ASTNode_Root::ASTNode_Root(const XMLNode *xml_node)
+Root::Root(const XMLNode *xml_node)
     : ASTNode(xml_node) {
   if (xml_node->get_children().size() != 1) {
     Error::Fatal(*xml_node, L"XML root node has more than one child.");
@@ -15,21 +15,21 @@ ASTNode_Root::ASTNode_Root(const XMLNode *xml_node)
 
   stage_ = NULL;
   if (xml_child_tag == L"transfer") {
-    stage_ = new ASTNode_StageTransfer(xml_child);
+    stage_ = new StageTransfer(xml_child);
   } else if (xml_child_tag == L"interchunk") {
-    stage_ = new ASTNode_StageInterchunk(xml_child);
+    stage_ = new StageInterchunk(xml_child);
   } else if (xml_child_tag == L"postchunk") {
-    stage_ = new ASTNode_StagePostchunk(xml_child);
+    stage_ = new StagePostchunk(xml_child);
   } else {
     Error::Fatal(*xml_node, L"Transfer stage unknown (should be one of <transfer>, <interchunk>, <postchunk>).");
   }
 }
 
-void ASTNode_Root::PrintDebugInfo(const std::wstring& indentation) const {
+void Root::PrintDebugInfo(const std::wstring& indentation) const {
   stage_->PrintDebugInfo(indentation);
 }
 
-ASTNode_Root::~ASTNode_Root() {
+Root::~Root() {
   if (stage_) {
     delete stage_;
   }

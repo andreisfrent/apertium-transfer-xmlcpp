@@ -7,15 +7,15 @@
 
 namespace apertium {
 namespace xml2cpp {
-class ASTNode_Rules : public ASTNode {
+class Rules : public ASTNode {
  public:
-  ASTNode_Rules(const XMLNode *xml_node);
-  ~ASTNode_Rules();
+  Rules(const XMLNode *xml_node);
+  ~Rules();
 
   void PrintDebugInfo(const std::wstring& indentation = L"") const override;
 
  private:
-  std::vector<ASTNode_Rule*> rules_;
+  std::vector<Rule*> rules_;
 
   void HandleRuleDefinition(const XMLNode *xml_node);
 };

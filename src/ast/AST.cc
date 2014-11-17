@@ -4,7 +4,7 @@ namespace apertium {
 namespace xml2cpp {
 AST::AST(const XMLTree& xml_tree) {
   const XMLNode *xml_root = xml_tree.get_root();
-  root_ = new ASTNode_Root(xml_root);
+  root_ = new Root(xml_root);
 }
 
 AST::~AST() {

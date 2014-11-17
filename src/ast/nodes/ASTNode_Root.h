@@ -6,15 +6,15 @@
 
 namespace apertium {
 namespace xml2cpp {
-class ASTNode_Root : public ASTNode {
+class Root : public ASTNode {
  public:
-  ASTNode_Root(const XMLNode *xml_node);
-  ~ASTNode_Root();
+  Root(const XMLNode *xml_node);
+  ~Root();
 
   void PrintDebugInfo(const std::wstring& indentation = L"") const override;
 
  private:
-  ASTNode_Stage *stage_;
+  Stage *stage_;
 };
 } // namespace xml2cpp
 } // namespace apertium

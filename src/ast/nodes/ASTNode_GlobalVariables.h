@@ -7,11 +7,11 @@
 
 namespace apertium {
 namespace xml2cpp {
-class ASTNode_GlobalVariables : public ASTNode {
+class GlobalVariables : public ASTNode {
  public:
-  ASTNode_GlobalVariables();
-  ASTNode_GlobalVariables(const XMLNode *xml_node);
-  ~ASTNode_GlobalVariables();
+  GlobalVariables();
+  GlobalVariables(const XMLNode *xml_node);
+  ~GlobalVariables();
 
   void PrintDebugInfo(const std::wstring& indentation = L"") const override;
 

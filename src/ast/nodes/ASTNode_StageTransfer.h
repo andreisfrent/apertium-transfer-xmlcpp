@@ -5,10 +5,10 @@
 
 namespace apertium {
 namespace xml2cpp {
-class ASTNode_StageTransfer : public ASTNode_Stage {
+class StageTransfer : public Stage {
  public:
-  ASTNode_StageTransfer(const XMLNode *xml_node);
-  ~ASTNode_StageTransfer();
+  StageTransfer(const XMLNode *xml_node);
+  ~StageTransfer();
 
   const int kLu = 0;
   const int kChunk = 1;

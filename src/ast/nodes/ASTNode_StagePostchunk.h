@@ -5,10 +5,10 @@
 
 namespace apertium {
 namespace xml2cpp {
-class ASTNode_StagePostchunk : public ASTNode_Stage {
+class StagePostchunk : public Stage {
  public:
-  ASTNode_StagePostchunk(const XMLNode *xml_node);
-  ~ASTNode_StagePostchunk();
+  StagePostchunk(const XMLNode *xml_node);
+  ~StagePostchunk();
 };
 } // namespace xml2cpp
 } // namespace apertium

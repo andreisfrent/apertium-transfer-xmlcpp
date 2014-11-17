@@ -2,16 +2,16 @@
 
 namespace apertium {
 namespace xml2cpp {
-ASTNode_StageTransfer::ASTNode_StageTransfer(const XMLNode *xml_node)
-    : ASTNode_Stage(xml_node) {
+StageTransfer::StageTransfer(const XMLNode *xml_node)
+    : Stage(xml_node) {
   SetDefaultAttrs();
   HandleXMLAttrs(xml_node);
 }
 
-ASTNode_StageTransfer::~ASTNode_StageTransfer() {
+StageTransfer::~StageTransfer() {
 }
 
-void ASTNode_StageTransfer::HandleXMLAttrs(const XMLNode *xml_node) {
+void StageTransfer::HandleXMLAttrs(const XMLNode *xml_node) {
   for (const auto& kv : xml_node->get_attrs()) {
     if (kv.first == L"default") {
       HandleXMLAttr_default(kv.second);
@@ -21,11 +21,11 @@ void ASTNode_StageTransfer::HandleXMLAttrs(const XMLNode *xml_node) {
   }
 }
 
-void ASTNode_StageTransfer::SetDefaultAttrs() {
+void StageTransfer::SetDefaultAttrs() {
   transfer_mode_ = kLu;
 }
 
-void ASTNode_StageTransfer::HandleXMLAttr_default(const std::wstring& value) {
+void StageTransfer::HandleXMLAttr_default(const std::wstring& value) {
   if (value == L"lu") {
     transfer_mode_ = kLu;
   } else if (value == L"chunk") {
@@ -35,7 +35,7 @@ void ASTNode_StageTransfer::HandleXMLAttr_default(const std::wstring& value) {
   }
 }
 
-int ASTNode_StageTransfer::get_transfer_mode() const {
+int StageTransfer::get_transfer_mode() const {
   return transfer_mode_;
 }
 } // namespace xml2cpp

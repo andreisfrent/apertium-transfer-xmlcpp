@@ -8,11 +8,11 @@
 
 namespace apertium {
 namespace xml2cpp {
-class ASTNode_GlobalLists : public ASTNode {
+class GlobalLists : public ASTNode {
  public:
-  ASTNode_GlobalLists();
-  ASTNode_GlobalLists(const XMLNode *xml_node);
-  ~ASTNode_GlobalLists();
+  GlobalLists();
+  GlobalLists(const XMLNode *xml_node);
+  ~GlobalLists();
 
   void PrintDebugInfo(const std::wstring& indentation = L"") const override;
 

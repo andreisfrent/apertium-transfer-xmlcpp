@@ -5,10 +5,10 @@
 
 namespace apertium {
 namespace xml2cpp {
-class ASTNode_Macro : public ASTNode {
+class Macro : public ASTNode {
  public:
-  ASTNode_Macro(const XMLNode *xml_node);
-  ~ASTNode_Macro();
+  Macro(const XMLNode *xml_node);
+  ~Macro();
 
   void HandleXMLAttributes(const XMLNode *xml_node);
   void PrintDebugInfo(const std::wstring& indentation = L"") const override;
@@ -16,7 +16,7 @@ class ASTNode_Macro : public ASTNode {
  private:
   std::wstring name_;
   int param_count_;
-  ASTNode_CodeBlock *code_;
+  CodeBlock *code_;
 };
 } // namespace xml2cpp
 } // namespace apertium

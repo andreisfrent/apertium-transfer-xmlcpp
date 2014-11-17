@@ -2,17 +2,17 @@
 
 namespace apertium {
 namespace xml2cpp {
-ASTNode_Macro::ASTNode_Macro(const XMLNode *xml_node)
+Macro::Macro(const XMLNode *xml_node)
     : ASTNode(xml_node) {
   HandleXMLAttributes(xml_node);
-  code_ = new ASTNode_CodeBlock(xml_node);
+  code_ = new CodeBlock(xml_node);
 }
 
-ASTNode_Macro::~ASTNode_Macro() {
+Macro::~Macro() {
   if (code_) delete code_;
 }
 
-void ASTNode_Macro::HandleXMLAttributes(const XMLNode *xml_node) {
+void Macro::HandleXMLAttributes(const XMLNode *xml_node) {
   const auto& attrs = xml_node->get_attrs();
 
   if (attrs.find(L"n") == attrs.end()) {
@@ -32,7 +32,7 @@ void ASTNode_Macro::HandleXMLAttributes(const XMLNode *xml_node) {
   }
 }
 
-void ASTNode_Macro::PrintDebugInfo(const std::wstring& indentation) const {
+void Macro::PrintDebugInfo(const std::wstring& indentation) const {
   Error::Debug(indentation, "Macro ", name_, " of arity ", param_count_, ":");
 }
 } // namespace xml2cpp

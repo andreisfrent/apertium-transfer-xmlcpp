@@ -5,7 +5,7 @@
 
 namespace apertium {
 namespace xml2cpp {
-ASTNode_GlobalLists::ASTNode_GlobalLists(const XMLNode *xml_node)
+GlobalLists::GlobalLists(const XMLNode *xml_node)
     : ASTNode(xml_node) {
   for (const XMLNode *xml_child : xml_node->get_children()) {
     if (xml_child->get_tag() == L"def-list") {
@@ -16,14 +16,14 @@ ASTNode_GlobalLists::ASTNode_GlobalLists(const XMLNode *xml_node)
   }
 }
 
-ASTNode_GlobalLists::ASTNode_GlobalLists()
+GlobalLists::GlobalLists()
     : ASTNode() {
 }
 
-ASTNode_GlobalLists::~ASTNode_GlobalLists() {
+GlobalLists::~GlobalLists() {
 }
 
-void ASTNode_GlobalLists::HandleListDefinition(const XMLNode *xml_node) {
+void GlobalLists::HandleListDefinition(const XMLNode *xml_node) {
   if (xml_node->get_attrs().find(L"n") == xml_node->get_attrs().end()) {
     Error::Fatal(*xml_node, "List name is missing.");
   }
@@ -43,7 +43,7 @@ void ASTNode_GlobalLists::HandleListDefinition(const XMLNode *xml_node) {
   }
 }
 
-void ASTNode_GlobalLists::HandleListElementDefinition(
+void GlobalLists::HandleListElementDefinition(
     const XMLNode *xml_node, const std::wstring& list_name) {
   if (xml_node->get_attrs().find(L"v") == xml_node->get_attrs().end()) {
     Error::Fatal(*xml_node, "List item value is missing.");
@@ -53,7 +53,7 @@ void ASTNode_GlobalLists::HandleListElementDefinition(
   lists_[list_name].insert(list_item);
 }
 
-void ASTNode_GlobalLists::PrintDebugInfo(const std::wstring& indentation) const {
+void GlobalLists::PrintDebugInfo(const std::wstring& indentation) const {
   Error::Debug(indentation, "List definitions:");
   for (const auto& kv : lists_) {
     std::wstringstream wss;

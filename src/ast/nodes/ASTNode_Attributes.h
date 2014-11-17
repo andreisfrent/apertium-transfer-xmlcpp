@@ -8,10 +8,10 @@
 
 namespace apertium {
 namespace xml2cpp {
-class ASTNode_Attributes : public ASTNode {
+class Attributes : public ASTNode {
  public:
-  ASTNode_Attributes(const XMLNode *xml_node);
-  ~ASTNode_Attributes();
+  Attributes(const XMLNode *xml_node);
+  ~Attributes();
 
   void PrintDebugInfo(const std::wstring& indentation = L"") const override;
 

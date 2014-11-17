@@ -4,7 +4,7 @@
 
 namespace apertium {
 namespace xml2cpp {
-ASTNode_Rules::ASTNode_Rules(const XMLNode *xml_node)
+Rules::Rules(const XMLNode *xml_node)
     : ASTNode(xml_node) {
   for (const XMLNode *xml_child : xml_node->get_children()) {
     if (xml_child->get_tag() == L"rule") {
@@ -15,19 +15,19 @@ ASTNode_Rules::ASTNode_Rules(const XMLNode *xml_node)
   }
 }
 
-ASTNode_Rules::~ASTNode_Rules() {
-  for (ASTNode_Rule *rule : rules_) {
+Rules::~Rules() {
+  for (Rule *rule : rules_) {
     delete rule;
   }
 }
 
-void ASTNode_Rules::HandleRuleDefinition(const XMLNode *xml_node) {
-  rules_.push_back(new ASTNode_Rule(xml_node));
+void Rules::HandleRuleDefinition(const XMLNode *xml_node) {
+  rules_.push_back(new Rule(xml_node));
 }
 
-void ASTNode_Rules::PrintDebugInfo(const std::wstring& indentation) const {
+void Rules::PrintDebugInfo(const std::wstring& indentation) const {
   Error::Debug(indentation, "Rules section contains ", rules_.size(), " rules.");
-  for (ASTNode_Rule *rule : rules_) {
+  for (Rule *rule : rules_) {
     rule->PrintDebugInfo(indentation + L"  ");
   }
 }

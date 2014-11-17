@@ -4,7 +4,7 @@
 
 namespace apertium {
 namespace xml2cpp {
-ASTNode_GlobalVariables::ASTNode_GlobalVariables(const XMLNode *xml_node)
+GlobalVariables::GlobalVariables(const XMLNode *xml_node)
     : ASTNode(xml_node) {
   for (const XMLNode *xml_child : xml_node->get_children()) {
     if (xml_child->get_tag() == L"def-var") {
@@ -15,14 +15,14 @@ ASTNode_GlobalVariables::ASTNode_GlobalVariables(const XMLNode *xml_node)
   }
 }
 
-ASTNode_GlobalVariables::ASTNode_GlobalVariables()
+GlobalVariables::GlobalVariables()
     : ASTNode() {
 }
 
-ASTNode_GlobalVariables::~ASTNode_GlobalVariables() {
+GlobalVariables::~GlobalVariables() {
 }
 
-void ASTNode_GlobalVariables::HandleVariableDefinition(const XMLNode *xml_node) {
+void GlobalVariables::HandleVariableDefinition(const XMLNode *xml_node) {
   if (xml_node->get_children().size() != 0) {
     Error::Fatal(*xml_node, "Encountered <def-var> tag with children.");
   }
@@ -38,7 +38,7 @@ void ASTNode_GlobalVariables::HandleVariableDefinition(const XMLNode *xml_node) 
   var_names_.insert(var_name);
 }
 
-void ASTNode_GlobalVariables::PrintDebugInfo(
+void GlobalVariables::PrintDebugInfo(
     const std::wstring& indentation) const {
   Error::Debug(indentation, "Global variables:");
   for (const std::wstring& name : var_names_) {

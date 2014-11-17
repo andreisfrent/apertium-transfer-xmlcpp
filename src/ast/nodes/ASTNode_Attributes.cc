@@ -5,7 +5,7 @@
 
 namespace apertium {
 namespace xml2cpp {
-ASTNode_Attributes::ASTNode_Attributes(const XMLNode *xml_node)
+Attributes::Attributes(const XMLNode *xml_node)
     : ASTNode(xml_node) {
   for (const XMLNode *xml_child : xml_node->get_children()) {
     if (xml_child->get_tag() == L"def-attr") {
@@ -16,10 +16,10 @@ ASTNode_Attributes::ASTNode_Attributes(const XMLNode *xml_node)
   }
 }
 
-ASTNode_Attributes::~ASTNode_Attributes() {
+Attributes::~Attributes() {
 }
 
-void ASTNode_Attributes::HandleAttrDefinition(const XMLNode *xml_node) {
+void Attributes::HandleAttrDefinition(const XMLNode *xml_node) {
   if (xml_node->get_attrs().find(L"n") == xml_node->get_attrs().end()) {
     Error::Fatal(*xml_node, "Attribute name is missing.");
   }
@@ -39,7 +39,7 @@ void ASTNode_Attributes::HandleAttrDefinition(const XMLNode *xml_node) {
   }
 }
 
-void ASTNode_Attributes::HandleAttrItemDefinition(
+void Attributes::HandleAttrItemDefinition(
     const XMLNode *xml_node, const std::wstring& attribute) {
   if (xml_node->get_attrs().find(L"tags") == xml_node->get_attrs().end()) {
     Error::Fatal(*xml_node, "Attribute item tags missing.");
@@ -49,7 +49,7 @@ void ASTNode_Attributes::HandleAttrItemDefinition(
   attributes_[attribute].insert(attribute_item);
 }
 
-void ASTNode_Attributes::PrintDebugInfo(const std::wstring& indentation) const {
+void Attributes::PrintDebugInfo(const std::wstring& indentation) const {
   Error::Debug(indentation, "Attributes:");
   for (const auto& kv : attributes_) {
     std::wstringstream wss;

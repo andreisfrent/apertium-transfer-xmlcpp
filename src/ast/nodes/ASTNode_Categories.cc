@@ -22,7 +22,7 @@ CategoryItem::CategoryItem(const XMLNode *xml_node) {
   }
 }
 
-ASTNode_Categories::ASTNode_Categories(const XMLNode *xml_node)
+Categories::Categories(const XMLNode *xml_node)
     : ASTNode(xml_node) {
   for (const XMLNode *xml_child : xml_node->get_children()) {
     if (xml_child->get_tag() == L"def-cat") {
@@ -33,10 +33,10 @@ ASTNode_Categories::ASTNode_Categories(const XMLNode *xml_node)
   }
 }
 
-ASTNode_Categories::~ASTNode_Categories() {
+Categories::~Categories() {
 }
 
-void ASTNode_Categories::HandleCatDefinition(const XMLNode *xml_node) {
+void Categories::HandleCatDefinition(const XMLNode *xml_node) {
   if (xml_node->get_attrs().find(L"n") == xml_node->get_attrs().end()) {
     Error::Fatal(*xml_node, "Category name is missing.");
   }
@@ -56,7 +56,7 @@ void ASTNode_Categories::HandleCatDefinition(const XMLNode *xml_node) {
   }
 }
 
-void ASTNode_Categories::PrintDebugInfo(const std::wstring& indentation) const {
+void Categories::PrintDebugInfo(const std::wstring& indentation) const {
   Error::Debug(indentation, "Category definitions:");
   Error::Debug(indentation, "NOTE each cat-item is listed as (name, lemma, tags)");
   for (const auto& kv : categories_) {

@@ -5,16 +5,16 @@
 
 namespace apertium {
 namespace xml2cpp {
-class ASTNode_GlobalMacros : public ASTNode {
+class GlobalMacros : public ASTNode {
  public:
-  ASTNode_GlobalMacros();
-  ASTNode_GlobalMacros(const XMLNode *xml_node);
-  ~ASTNode_GlobalMacros();
+  GlobalMacros();
+  GlobalMacros(const XMLNode *xml_node);
+  ~GlobalMacros();
 
   void PrintDebugInfo(const std::wstring& indentation = L"") const override;
 
  private:
-  std::unordered_map<std::wstring, ASTNode_Macro*> macros_;
+  std::unordered_map<std::wstring, Macro*> macros_;
 
   void HandleMacroDefinition(const XMLNode *xml_node);
 };

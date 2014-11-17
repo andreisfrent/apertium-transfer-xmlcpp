@@ -5,10 +5,10 @@
 
 namespace apertium {
 namespace xml2cpp {
-class ASTNode_Stage : public ASTNode {
+class Stage : public ASTNode {
  public:
-  ASTNode_Stage(const XMLNode *xml_node);
-  virtual ~ASTNode_Stage();
+  Stage(const XMLNode *xml_node);
+  virtual ~Stage();
 
   virtual void PrintDebugInfo(const std::wstring& indentation = L"") const override;
 
@@ -24,12 +24,12 @@ class ASTNode_Stage : public ASTNode {
   void CheckMandatorySections() const;
 
  protected:
-  ASTNode_GlobalVariables *global_variables_;
-  ASTNode_GlobalLists *global_lists_;
-  ASTNode_GlobalMacros *global_macros_;
-  ASTNode_Categories *lexical_categories_;
-  ASTNode_Attributes *attributes_;
-  ASTNode_Rules *rules_;
+  GlobalVariables *global_variables_;
+  GlobalLists *global_lists_;
+  GlobalMacros *global_macros_;
+  Categories *lexical_categories_;
+  Attributes *attributes_;
+  Rules *rules_;
 };
 } // namespace xml2cpp
 } // namespace apertium

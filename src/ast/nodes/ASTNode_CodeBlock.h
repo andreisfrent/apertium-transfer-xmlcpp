@@ -8,10 +8,10 @@
 
 namespace apertium {
 namespace xml2cpp {
-class ASTNode_CodeBlock : public ASTNode {
+class CodeBlock : public ASTNode {
  public:
-  ASTNode_CodeBlock(const XMLNode *xml_node);
-  ~ASTNode_CodeBlock();
+  CodeBlock(const XMLNode *xml_node);
+  ~CodeBlock();
 
  private:
   std::vector<Statement*> instructions_;

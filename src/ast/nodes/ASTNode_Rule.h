@@ -5,10 +5,10 @@
 
 namespace apertium {
 namespace xml2cpp {
-class ASTNode_Rule : public ASTNode {
+class Rule : public ASTNode {
  public:
-  ASTNode_Rule(const XMLNode *xml_node);
-  ~ASTNode_Rule();
+  Rule(const XMLNode *xml_node);
+  ~Rule();
 
   void PrintDebugInfo(const std::wstring& indentation = L"") const override;
   void HandleXMLNode_pattern(const XMLNode *xml_node);
@@ -17,7 +17,7 @@ class ASTNode_Rule : public ASTNode {
 
  private:
   std::vector<std::wstring> pattern_; // cat refs.
-  ASTNode_CodeBlock *code_;
+  CodeBlock *code_;
 };
 } // namespace xml2cpp
 } // namespace apertium

@@ -19,10 +19,10 @@ struct CategoryItem {
   std::wstring tags;
 };
 
-class ASTNode_Categories : public ASTNode {
+class Categories : public ASTNode {
  public:
-  ASTNode_Categories(const XMLNode *xml_node);
-  ~ASTNode_Categories();
+  Categories(const XMLNode *xml_node);
+  ~Categories();
 
   void PrintDebugInfo(const std::wstring& indentation = L"") const override;
 

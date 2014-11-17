@@ -13,7 +13,7 @@ class AST {
   void PrintDebugInfo() const;
 
  private:
-  ASTNode_Root *root_;
+  Root *root_;
 };
 } // namespace xml2cpp
 } // namespace apertium
