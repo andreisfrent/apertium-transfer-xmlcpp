@@ -6,6 +6,7 @@
 #include <vector>
 #include <iostream>
 #include <sstream>
+#include <set>
 
 namespace apertium {
 namespace xml2cpp {
@@ -27,6 +28,8 @@ class XMLNode {
   const std::vector<XMLNode*>& get_children() const;
   const std::vector<XMLNode*>& GetChildrenByTag(const std::wstring& tag) const;
 
+  void EmitWarningOnUnknownAttributes(
+      const std::set<std::wstring>& known_attributes) const;
   const std::wstring& GetMandatoryAttribute(
       const std::wstring& attribute) const;
   const std::wstring& GetOptionalAttribute(

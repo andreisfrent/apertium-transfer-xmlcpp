@@ -87,6 +87,16 @@ const std::wstring& XMLNode::GetOptionalAttribute(
     return default_value;
   }
 }
+
+void XMLNode::EmitWarningOnUnknownAttributes(
+    const std::set<std::wstring>& known_attributes) const {
+  for (const auto& it : attrs_) {
+    const std::wstring& attribute = it.first;
+    if (known_attributes.find(attribute) == known_attributes.end()) {
+      Error::Warning(*this, "Unknown attribute \"", attribute, "\".");
+    }
+  }
+}
 } // namespace xml2cpp
 } // namespace apertium
 
