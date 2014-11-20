@@ -5,6 +5,7 @@
 #include <unordered_map>
 #include <vector>
 #include <iostream>
+#include <sstream>
 
 namespace apertium {
 namespace xml2cpp {
@@ -25,6 +26,32 @@ class XMLNode {
   int get_line_no() const;
   const std::vector<XMLNode*>& get_children() const;
   const std::vector<XMLNode*>& GetChildrenByTag(const std::wstring& tag) const;
+
+  const std::wstring& GetMandatoryAttribute(
+      const std::wstring& attribute) const;
+  const std::wstring& GetOptionalAttribute(
+      const std::wstring& attribute, const std::wstring& default_value) const;
+
+  template<typename T>
+  T GetMandatoryAttributeAs(const std::wstring& attribute) const {
+    T result;
+    std::wstringstream wss;
+    const std::wstring& attr_val = GetMandatoryAttribute(attribute);
+    wss << attr_val;
+    wss >> result;
+    return result;
+  }
+
+  template<typename T>
+  T GetOptionalAttributeAs(
+      const std::wstring& attribute, const std::wstring& default_value) const {
+    T result;
+    std::wstringstream wss;
+    const std::wstring& attr_val = GetOptionalAttribute(attribute, default_value);
+    wss << attr_val;
+    wss >> result;
+    return result;
+  }
 
  private:
   std::unordered_map<std::wstring, std::wstring> attrs_;

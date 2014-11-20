@@ -65,6 +65,28 @@ const std::vector<XMLNode*>& XMLNode::GetChildrenByTag(const std::wstring& tag) 
     return empty_vector;
   }
 }
+
+const std::wstring& XMLNode::GetMandatoryAttribute(
+    const std::wstring& attribute) const {
+  static std::wstring ret_val;
+  const auto& it = attrs_.find(attribute);
+  if (it != attrs_.end()) {
+    return it->second;
+  } else {
+    Error::Fatal(*this, "Mandatory attribute \"", attribute, "\" is missing.");
+    return ret_val;
+  }
+}
+
+const std::wstring& XMLNode::GetOptionalAttribute(
+    const std::wstring& attribute, const std::wstring& default_value) const {
+  const auto& it = attrs_.find(attribute);
+  if (it != attrs_.end()) {
+    return it->second;
+  } else {
+    return default_value;
+  }
+}
 } // namespace xml2cpp
 } // namespace apertium
 
