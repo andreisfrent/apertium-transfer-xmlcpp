@@ -16,7 +16,6 @@ class CallMacro : public Statement {
 
   void HandleXMLAttributes(const XMLNode *xml_node);
   void ExtractArgumentsFromXMLNode(const XMLNode *xml_node);
-  void HandleArgumentNode(const XMLNode *xml_node);
 };
 } // namespace xml2cpp
 } // namespace apertium
