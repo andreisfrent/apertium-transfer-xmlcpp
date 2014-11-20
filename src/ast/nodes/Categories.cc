@@ -9,27 +9,16 @@ CategoryItem::CategoryItem() {
 }
 
 CategoryItem::CategoryItem(const XMLNode *xml_node) {
-  for (const auto& kv : xml_node->get_attrs()) {
-    if (kv.first == L"name") {
-      this->name = kv.second;
-    } else if (kv.first == L"lemma") {
-      this->lemma = kv.second;
-    } else if (kv.first == L"tags") {
-      this->tags = kv.second;
-    } else {
-      Error::Fatal(*xml_node, "Unknown attribute \"", kv.first, "\" of <cat-item>.");
-    }
-  }
+  xml_node->EmitWarningOnUnknownAttributes({L"name", L"lemma", L"tags"});
+  this->name = xml_node->GetOptionalAttribute(L"name", L"");
+  this->lemma = xml_node->GetOptionalAttribute(L"lemma", L"");
+  this->tags = xml_node->GetOptionalAttribute(L"tags", L"");
 }
 
 Categories::Categories(const XMLNode *xml_node)
     : ASTNode(xml_node) {
-  for (const XMLNode *xml_child : xml_node->get_children()) {
-    if (xml_child->get_tag() == L"def-cat") {
-      HandleCatDefinition(xml_child);
-    } else {
-      Error::Fatal(*xml_child, "Unexpected <", xml_child->get_tag(), "> in category definition section.");
-    }
+  for (const XMLNode *xml_child : xml_node->GetChildrenByTag(L"def-cat")) {
+    HandleCatDefinition(xml_child);
   }
 }
 
@@ -37,22 +26,17 @@ Categories::~Categories() {
 }
 
 void Categories::HandleCatDefinition(const XMLNode *xml_node) {
-  if (xml_node->get_attrs().find(L"n") == xml_node->get_attrs().end()) {
-    Error::Fatal(*xml_node, "Category name is missing.");
-  }
+  xml_node->EmitWarningOnUnknownAttributes({L"n", L"c"});
 
-  const std::wstring& category = xml_node->get_attrs().find(L"n")->second;
+  const std::wstring& category = xml_node->GetMandatoryAttribute(L"n");
+
   if (categories_.find(category) != categories_.end()) {
-    Error::Warning(*xml_node, "Multiple definitions of category \"", category, "\".");
+    Error::Fatal(*xml_node, "Multiple definitions of category \"", category, "\".");
   }
   categories_.insert(std::make_pair(category, std::vector<CategoryItem>()));
 
-  for (const XMLNode *xml_child : xml_node->get_children()) {
-    if (xml_child->get_tag() == L"cat-item") {
-      categories_[category].push_back(CategoryItem(xml_child));
-    } else {
-      Error::Fatal(*xml_child, "Unexpected <", xml_child->get_tag(), "> in definition of category \"", category, "\".");
-    }
+  for (const XMLNode *xml_child : xml_node->GetChildrenByTag(L"cat-item")) {
+    categories_[category].push_back(CategoryItem(xml_child));
   }
 }
 

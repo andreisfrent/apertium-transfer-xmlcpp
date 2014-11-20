@@ -7,9 +7,7 @@ namespace apertium {
 namespace xml2cpp {
 Attributes::Attributes(const XMLNode *xml_node)
     : ASTNode(xml_node) {
-  const std::vector<XMLNode*>& def_attr_nodes =
-    xml_node->GetChildrenByTag(L"def-attr");
-  for (const XMLNode *xml_child : def_attr_nodes) {
+  for (const XMLNode *xml_child : xml_node->GetChildrenByTag(L"def-attr")) {
     HandleAttrDefinition(xml_child);
   }
 }
@@ -25,9 +23,7 @@ void Attributes::HandleAttrDefinition(const XMLNode *xml_node) {
   }
   attributes_.insert(std::make_pair(attribute, std::set<std::wstring>()));
 
-  const std::vector<XMLNode*>& attr_item_nodes =
-    xml_node->GetChildrenByTag(L"attr-item");
-  for (const XMLNode *xml_child : attr_item_nodes) {
+  for (const XMLNode *xml_child : xml_node->GetChildrenByTag(L"attr-item")) {
     HandleAttrItemDefinition(xml_child, attribute);
   }
 }
