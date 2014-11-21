@@ -16,7 +16,8 @@ class GlobalVariables : public ASTNode {
   void PrintDebugInfo(const std::wstring& indentation = L"") const override;
 
  private:
-  std::set<std::wstring> var_names_;
+  std::set<std::wstring> vars_;
+  std::unordered_map<std::wstring, std::wstring> initial_values_;
 
   void HandleVariableDefinition(const XMLNode *xml_node);
 };

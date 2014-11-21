@@ -19,18 +19,23 @@ GlobalVariables::~GlobalVariables() {
 }
 
 void GlobalVariables::HandleVariableDefinition(const XMLNode *xml_node) {
-  xml_node->EmitWarningOnUnknownAttributes({L"n", L"c"});
+  xml_node->EmitWarningOnUnknownAttributes({L"n", L"c", L"v"});
+
   const std::wstring& var_name = xml_node->GetMandatoryAttribute(L"n");
-  if (var_names_.find(var_name) != var_names_.end()) {
+  const std::wstring& initial_value = xml_node->GetOptionalAttribute(L"v", L"");
+
+  if (vars_.find(var_name) != vars_.end()) {
     Error::Warning(*xml_node, "Multiple definitions of global variable \"", var_name, "\".");
   }
-  var_names_.insert(var_name);
+
+  vars_.insert(var_name);
+  initial_values_[var_name] = initial_value;
 }
 
 void GlobalVariables::PrintDebugInfo(
     const std::wstring& indentation) const {
   Error::Debug(indentation, "Global variables:");
-  for (const std::wstring& name : var_names_) {
+  for (const std::wstring& name : vars_) {
     Error::Debug(indentation, "  ", name);
   }
 }
