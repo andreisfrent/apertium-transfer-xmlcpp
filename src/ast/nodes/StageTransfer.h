@@ -16,10 +16,6 @@ class StageTransfer : public Stage {
   int get_transfer_mode() const;
 
  private:
-  void HandleXMLAttrs(const XMLNode *xml_node);
-  void HandleXMLAttr_default(const std::wstring& value);
-  void SetDefaultAttrs();
-
   int transfer_mode_;
 };
 } // namespace xml2cpp

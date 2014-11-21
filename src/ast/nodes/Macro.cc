@@ -13,23 +13,9 @@ Macro::~Macro() {
 }
 
 void Macro::HandleXMLAttributes(const XMLNode *xml_node) {
-  const auto& attrs = xml_node->get_attrs();
-
-  if (attrs.find(L"n") == attrs.end()) {
-    Error::Fatal(*xml_node, "Macro name is missing.");
-  }
-  if (attrs.find(L"npar") == attrs.end()) {
-    Error::Fatal(*xml_node, "Parameter count attribute is mising on <def-macro>.");
-  }
-
-  name_ = attrs.find(L"n")->second;
-  param_count_ = StringUtil::ConvertTo<int>(attrs.find(L"npar")->second);
-
-  for (const auto& kv : attrs) {
-    if (kv.first != L"n" && kv.first != L"npar") {
-      Error::Warning(*xml_node, "Unknown attribute \"", kv.first, "\" on <def-macro>");
-    }
-  }
+  xml_node->EmitWarningOnUnknownAttributes({L"n", L"npar", L"c"});
+  name_ = xml_node->GetMandatoryAttribute(L"n");
+  param_count_ = xml_node->GetMandatoryAttributeAs<int>(L"npar");
 }
 
 void Macro::PrintDebugInfo(const std::wstring& indentation) const {

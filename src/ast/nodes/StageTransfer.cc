@@ -4,35 +4,21 @@ namespace apertium {
 namespace xml2cpp {
 StageTransfer::StageTransfer(const XMLNode *xml_node)
     : Stage(xml_node) {
-  SetDefaultAttrs();
-  HandleXMLAttrs(xml_node);
+  xml_node->EmitWarningOnUnknownAttributes({L"default", L"c"});
+  std::wstring transfer_mode_str =
+    xml_node->GetOptionalAttribute(L"default", L"lu");
+
+  if (transfer_mode_str == L"lu") {
+    transfer_mode_ = kLu;
+  } else if (transfer_mode_str == L"chunk") {
+    transfer_mode_ = kChunk;
+  } else {
+    Error::Fatal(*xml_node,
+      "Unrecognized transfer mode \"", transfer_mode_str, "\".");
+  }
 }
 
 StageTransfer::~StageTransfer() {
-}
-
-void StageTransfer::HandleXMLAttrs(const XMLNode *xml_node) {
-  for (const auto& kv : xml_node->get_attrs()) {
-    if (kv.first == L"default") {
-      HandleXMLAttr_default(kv.second);
-    } else {
-      Error::Warning(*xml_node, "Ignoring attribute \"", kv.first, "\".");
-    }
-  }
-}
-
-void StageTransfer::SetDefaultAttrs() {
-  transfer_mode_ = kLu;
-}
-
-void StageTransfer::HandleXMLAttr_default(const std::wstring& value) {
-  if (value == L"lu") {
-    transfer_mode_ = kLu;
-  } else if (value == L"chunk") {
-    transfer_mode_ = kChunk;
-  } else {
-    Error::Fatal(*this, "Unrecognized transfer mode \"", value, "\".");
-  }
 }
 
 int StageTransfer::get_transfer_mode() const {

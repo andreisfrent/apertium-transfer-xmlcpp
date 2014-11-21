@@ -13,6 +13,7 @@ Root::Root(const XMLNode *xml_node)
   const XMLNode *xml_child = xml_node->get_children().at(0);
   const std::wstring& xml_child_tag = xml_child->get_tag();
 
+  // FIXME should be moved in a base class Stage and set by a factory method.
   stage_ = NULL;
   if (xml_child_tag == L"transfer") {
     stage_ = new StageTransfer(xml_child);

@@ -7,12 +7,8 @@ namespace apertium {
 namespace xml2cpp {
 GlobalLists::GlobalLists(const XMLNode *xml_node)
     : ASTNode(xml_node) {
-  for (const XMLNode *xml_child : xml_node->get_children()) {
-    if (xml_child->get_tag() == L"def-list") {
-      HandleListDefinition(xml_child);
-    } else {
-      Error::Fatal(*xml_child, "Unexpected <", xml_child->get_tag(), "> in lists definition section.");
-    }
+  for (const XMLNode *xml_child : xml_node->GetChildrenByTag(L"def-list")) {
+    HandleListDefinition(xml_child);
   }
 }
 
@@ -24,32 +20,24 @@ GlobalLists::~GlobalLists() {
 }
 
 void GlobalLists::HandleListDefinition(const XMLNode *xml_node) {
-  if (xml_node->get_attrs().find(L"n") == xml_node->get_attrs().end()) {
-    Error::Fatal(*xml_node, "List name is missing.");
+  xml_node->EmitWarningOnUnknownAttributes({L"n", L"c"});
+  const std::wstring& list_name = xml_node->GetMandatoryAttribute(L"n");
+
+  if (lists_.find(list_name) != lists_.end()) {
+    Error::Fatal(*xml_node, "Multiple definitions of list \"", list_name, "\".");
   }
 
-  const std::wstring& list_name = xml_node->get_attrs().find(L"n")->second;
-  if (lists_.find(list_name) != lists_.end()) {
-    Error::Warning(*xml_node, "Multiple definitions of list \"", list_name, "\".");
-  }
   lists_.insert(std::make_pair(list_name, std::set<std::wstring>()));
 
-  for (const XMLNode *xml_child : xml_node->get_children()) {
-    if (xml_child->get_tag() == L"list-item") {
-      HandleListElementDefinition(xml_child, list_name);
-    } else {
-      Error::Fatal(*xml_child, "Unexpected <", xml_child->get_tag(), "> in definition of list \"", list_name, "\".");
-    }
+  for (const XMLNode *xml_child : xml_node->GetChildrenByTag(L"list-item")) {
+    HandleListElementDefinition(xml_child, list_name);
   }
 }
 
 void GlobalLists::HandleListElementDefinition(
     const XMLNode *xml_node, const std::wstring& list_name) {
-  if (xml_node->get_attrs().find(L"v") == xml_node->get_attrs().end()) {
-    Error::Fatal(*xml_node, "List item value is missing.");
-  }
-
-  const std::wstring& list_item = xml_node->get_attrs().find(L"v")->second;
+  xml_node->EmitWarningOnUnknownAttributes({L"v", L"c"});
+  const std::wstring& list_item = xml_node->GetMandatoryAttribute(L"v");
   lists_[list_name].insert(list_item);
 }
 

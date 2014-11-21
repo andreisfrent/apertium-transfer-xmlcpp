@@ -52,12 +52,8 @@ void Rule::PrintDebugInfo(const std::wstring& indentation) const {
 }
 
 void Rule::HandleXMLNode_pattern(const XMLNode *xml_node) {
-  for (const XMLNode *xml_child : xml_node->get_children()) {
-    if (xml_child->get_tag() == L"pattern-item") {
-      HandleXMLNode_pattern_item(xml_child);
-    } else {
-      Error::Fatal(*xml_child, "Unexpected ", xml_child->get_tag(), " inside <pattern>.");
-    }
+  for (const XMLNode *xml_child : xml_node->GetChildrenByTag(L"pattern-item")) {
+    HandleXMLNode_pattern_item(xml_child);
   }
 }
 
@@ -66,12 +62,7 @@ void Rule::HandleXMLNode_pattern_item(const XMLNode *xml_node) {
     Error::Fatal(*xml_node, "Unexpected children for <pattern-item>.");
   }
 
-  const auto& name_attr = xml_node->get_attrs().find(L"n");
-  if (name_attr == xml_node->get_attrs().end()) {
-    Error::Fatal(*xml_node, "No pattern item name supplied.");
-  }
-
-  pattern_.push_back(name_attr->second);
+  pattern_.push_back(xml_node->GetMandatoryAttribute(L"n"));
 }
 
 void Rule::HandleXMLNode_action(const XMLNode *xml_node) {

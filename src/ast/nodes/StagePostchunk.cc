@@ -4,9 +4,7 @@ namespace apertium {
 namespace xml2cpp {
 StagePostchunk::StagePostchunk(const XMLNode *xml_node)
     : Stage(xml_node) {
-  if (xml_node->get_attrs().size() != 0) {
-    Error::Warning(*xml_node, "Extra attributes on <", xml_node->get_tag(), ">.");
-  }
+  xml_node->EmitWarningOnUnknownAttributes({L"c"});
 }
 
 StagePostchunk::~StagePostchunk() {

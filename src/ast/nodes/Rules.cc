@@ -6,12 +6,8 @@ namespace apertium {
 namespace xml2cpp {
 Rules::Rules(const XMLNode *xml_node)
     : ASTNode(xml_node) {
-  for (const XMLNode *xml_child : xml_node->get_children()) {
-    if (xml_child->get_tag() == L"rule") {
-      HandleRuleDefinition(xml_child);
-    } else {
-      Error::Fatal(*xml_child, "Unexpected <", xml_child->get_tag(), "> in rules section.");
-    }
+  for (const XMLNode *xml_child : xml_node->GetChildrenByTag(L"rule")) {
+    HandleRuleDefinition(xml_child);
   }
 }
 
