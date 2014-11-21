@@ -6,20 +6,32 @@
 
 #include "../error/Error.h"
 
+// Misc: strings.
 #include "../misc/StringUtil.h"
 
+// XML related headers.
 #include "../parsing/XMLNode.h"
 #include "../parsing/XMLTree.h"
 #include "../parsing/XMLParser.h"
 #include "../parsing/XMLUtil.h"
 
+// AST node base class.
 #include "../ast/nodes/ASTNode.h"
+
+// Different AST node types.
 #include "../ast/nodes/Statement.h"
-#include "../ast/nodes/CallMacro.h"
 #include "../ast/nodes/Condition.h"
+#include "../ast/nodes/LValue.h"
+#include "../ast/nodes/RValue.h"
+
+// AST: Statements.
+#include "../ast/nodes/CallMacro.h"
+
+// AST: Conditions
 #include "../ast/nodes/And.h"
 #include "../ast/nodes/Or.h"
 #include "../ast/nodes/Not.h"
+
 #include "../ast/nodes/CodeBlock.h"
 #include "../ast/nodes/Rule.h"
 #include "../ast/nodes/Rules.h"
