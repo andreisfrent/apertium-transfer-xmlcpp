@@ -21,3 +21,6 @@ apertium-xml2cpp
 
 # C++ object files.
 *.o
+
+# Kitchen.
+TODO
