@@ -34,6 +34,7 @@
 #include "../ast/nodes/And.h"
 #include "../ast/nodes/Or.h"
 #include "../ast/nodes/Not.h"
+#include "../ast/nodes/Equal.h"
 
 // AST: LValues.
 #include "../ast/nodes/Variable_LValue.h"
