@@ -114,5 +114,21 @@ void Stage::SetSectionPointersToNull() {
   attributes_ = NULL;
   rules_ = NULL;
 }
+
+Stage *Stage::FromXMLNode(const XMLNode *xml_node) {
+  if (xml_node->get_tag() == L"transfer") {
+    return new StageTransfer(xml_node);
+  } else if (xml_node->get_tag() == L"interchunk") {
+    return new StageInterchunk(xml_node);
+  } else if (xml_node->get_tag() == L"postchunk") {
+    return new StagePostchunk(xml_node);
+  }
+
+  Error::Fatal(*xml_node, L"Transfer stage unknown (should be one of <transfer>, <interchunk>, <postchunk>).");
+
+  // Avoid getting warnings from the compiler for not returning in a non-void
+  // function.
+  return NULL;
+}
 } // namespace xml2cpp
 } // namespace apertium

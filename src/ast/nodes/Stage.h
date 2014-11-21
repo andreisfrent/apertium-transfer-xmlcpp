@@ -12,6 +12,8 @@ class Stage : public ASTNode {
 
   virtual void PrintDebugInfo(const std::wstring& indentation = L"") const override;
 
+  static Stage *FromXMLNode(const XMLNode *xml_node);
+
  private:
   void SetSectionPointersToNull();
   void HandleXMLChild_section_def_vars(const XMLNode *xml_child);

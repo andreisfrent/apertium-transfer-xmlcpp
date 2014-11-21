@@ -13,17 +13,7 @@ Root::Root(const XMLNode *xml_node)
   const XMLNode *xml_child = xml_node->get_children().at(0);
   const std::wstring& xml_child_tag = xml_child->get_tag();
 
-  // FIXME should be moved in a base class Stage and set by a factory method.
-  stage_ = NULL;
-  if (xml_child_tag == L"transfer") {
-    stage_ = new StageTransfer(xml_child);
-  } else if (xml_child_tag == L"interchunk") {
-    stage_ = new StageInterchunk(xml_child);
-  } else if (xml_child_tag == L"postchunk") {
-    stage_ = new StagePostchunk(xml_child);
-  } else {
-    Error::Fatal(*xml_node, L"Transfer stage unknown (should be one of <transfer>, <interchunk>, <postchunk>).");
-  }
+  stage_ = Stage::FromXMLNode(xml_node);
 }
 
 void Root::PrintDebugInfo(const std::wstring& indentation) const {
