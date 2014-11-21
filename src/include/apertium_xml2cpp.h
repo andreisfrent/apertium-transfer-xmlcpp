@@ -24,6 +24,9 @@
 #include "../ast/nodes/LValue.h"
 #include "../ast/nodes/RValue.h"
 
+// Base classes for cross-type nodes.
+#include "../ast/nodes/VariableBase.h"
+
 // AST: Statements.
 #include "../ast/nodes/CallMacro.h"
 
@@ -31,6 +34,12 @@
 #include "../ast/nodes/And.h"
 #include "../ast/nodes/Or.h"
 #include "../ast/nodes/Not.h"
+
+// AST: LValues.
+#include "../ast/nodes/Variable_LValue.h"
+
+// AST: RValues.
+#include "../ast/nodes/Variable_RValue.h"
 
 #include "../ast/nodes/CodeBlock.h"
 #include "../ast/nodes/Rule.h"
