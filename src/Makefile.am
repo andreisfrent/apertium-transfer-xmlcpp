@@ -12,9 +12,9 @@ apertium_xml2cpp_SOURCES = \
   ast/nodes/ASTNode.cc \
   ast/nodes/Root.cc \
   ast/nodes/Stage.cc \
-  ast/nodes/StageInterchunk.cc \
-  ast/nodes/StagePostchunk.cc \
-  ast/nodes/StageTransfer.cc \
+  ast/nodes/Interchunk.cc \
+  ast/nodes/Postchunk.cc \
+  ast/nodes/Transfer.cc \
   ast/nodes/GlobalVariables.cc \
   ast/nodes/GlobalLists.cc \
   ast/nodes/GlobalMacros.cc \

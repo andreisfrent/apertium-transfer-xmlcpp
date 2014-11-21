@@ -117,11 +117,11 @@ void Stage::SetSectionPointersToNull() {
 
 Stage *Stage::FromXMLNode(const XMLNode *xml_node) {
   if (xml_node->get_tag() == L"transfer") {
-    return new StageTransfer(xml_node);
+    return new Transfer(xml_node);
   } else if (xml_node->get_tag() == L"interchunk") {
-    return new StageInterchunk(xml_node);
+    return new Interchunk(xml_node);
   } else if (xml_node->get_tag() == L"postchunk") {
-    return new StagePostchunk(xml_node);
+    return new Postchunk(xml_node);
   }
 
   Error::Fatal(*xml_node, L"Transfer stage unknown (should be one of <transfer>, <interchunk>, <postchunk>).");

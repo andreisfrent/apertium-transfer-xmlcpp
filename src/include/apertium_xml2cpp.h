@@ -53,9 +53,9 @@
 #include "../ast/nodes/Categories.h"
 #include "../ast/nodes/Attributes.h"
 #include "../ast/nodes/Stage.h"
-#include "../ast/nodes/StagePostchunk.h"
-#include "../ast/nodes/StageTransfer.h"
-#include "../ast/nodes/StageInterchunk.h"
+#include "../ast/nodes/Postchunk.h"
+#include "../ast/nodes/Transfer.h"
+#include "../ast/nodes/Interchunk.h"
 #include "../ast/nodes/Root.h"
 
 #include "../ast/AST.h"

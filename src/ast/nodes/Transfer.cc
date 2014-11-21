@@ -2,7 +2,7 @@
 
 namespace apertium {
 namespace xml2cpp {
-StageTransfer::StageTransfer(const XMLNode *xml_node)
+Transfer::Transfer(const XMLNode *xml_node)
     : Stage(xml_node) {
   xml_node->EmitWarningOnUnknownAttributes({L"default", L"c"});
   std::wstring transfer_mode_str =
@@ -18,10 +18,10 @@ StageTransfer::StageTransfer(const XMLNode *xml_node)
   }
 }
 
-StageTransfer::~StageTransfer() {
+Transfer::~Transfer() {
 }
 
-int StageTransfer::get_transfer_mode() const {
+int Transfer::get_transfer_mode() const {
   return transfer_mode_;
 }
 } // namespace xml2cpp

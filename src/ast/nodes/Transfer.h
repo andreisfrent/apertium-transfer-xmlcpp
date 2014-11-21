@@ -1,14 +1,14 @@
-#ifndef __APERTIUM_XML2CPP_AST_NODE_STAGETRANSFER_H
-#define __APERTIUM_XML2CPP_AST_NODE_STAGETRANSFER_H
+#ifndef __APERTIUM_XML2CPP_AST_NODE_TRANSFER_H
+#define __APERTIUM_XML2CPP_AST_NODE_TRANSFER_H
 
 #include <apertium_xml2cpp.h>
 
 namespace apertium {
 namespace xml2cpp {
-class StageTransfer : public Stage {
+class Transfer : public Stage {
  public:
-  StageTransfer(const XMLNode *xml_node);
-  ~StageTransfer();
+  Transfer(const XMLNode *xml_node);
+  ~Transfer();
 
   const int kLu = 0;
   const int kChunk = 1;

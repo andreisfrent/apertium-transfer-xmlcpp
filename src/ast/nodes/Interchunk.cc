@@ -2,12 +2,12 @@
 
 namespace apertium {
 namespace xml2cpp {
-StageInterchunk::StageInterchunk(const XMLNode *xml_node)
+Interchunk::Interchunk(const XMLNode *xml_node)
     : Stage(xml_node) {
   xml_node->EmitWarningOnUnknownAttributes({L"c"});
 }
 
-StageInterchunk::~StageInterchunk() {
+Interchunk::~Interchunk() {
 }
 } // namespace xml2cpp
 } // namespace apertium

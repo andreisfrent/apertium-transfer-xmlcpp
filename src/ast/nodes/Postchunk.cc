@@ -2,12 +2,12 @@
 
 namespace apertium {
 namespace xml2cpp {
-StagePostchunk::StagePostchunk(const XMLNode *xml_node)
+Postchunk::Postchunk(const XMLNode *xml_node)
     : Stage(xml_node) {
   xml_node->EmitWarningOnUnknownAttributes({L"c"});
 }
 
-StagePostchunk::~StagePostchunk() {
+Postchunk::~Postchunk() {
 }
 } // namespace xml2cpp
 } // namespace apertium
