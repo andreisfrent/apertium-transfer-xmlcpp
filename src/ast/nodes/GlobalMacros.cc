@@ -19,7 +19,6 @@ GlobalMacros::~GlobalMacros() {
 }
 
 void GlobalMacros::HandleMacroDefinition(const XMLNode *xml_node) {
-  xml_node->EmitWarningOnUnknownAttributes({L"n", L"c"});
   const std::wstring& macro_name = xml_node->GetMandatoryAttribute(L"n");
 
   if (macros_.find(macro_name) != macros_.end()) {
