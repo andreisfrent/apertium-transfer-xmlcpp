@@ -10,6 +10,10 @@ RValue::~RValue() {
 }
 
 RValue* RValue::FromXMLNode(const XMLNode *xml_node) {
+  if (xml_node->get_tag() == L"var") {
+    return static_cast<RValue*>(new Variable_RValue(xml_node));
+  }
+
   Error::Fatal(*xml_node, "Unrecognized RValue <", xml_node->get_tag(), ">.");
 
   // Avoid getting warnings from the compiler for not returning in a non-void
