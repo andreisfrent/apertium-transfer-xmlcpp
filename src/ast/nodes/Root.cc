@@ -13,7 +13,7 @@ Root::Root(const XMLNode *xml_node)
   const XMLNode *xml_child = xml_node->get_children().at(0);
   const std::wstring& xml_child_tag = xml_child->get_tag();
 
-  stage_ = Stage::FromXMLNode(xml_node);
+  stage_ = Stage::FromXMLNode(xml_child);
 }
 
 void Root::PrintDebugInfo(const std::wstring& indentation) const {
