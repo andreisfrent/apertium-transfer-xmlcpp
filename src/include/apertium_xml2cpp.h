@@ -35,7 +35,7 @@
 #include "../ast/nodes/Or.h"
 #include "../ast/nodes/Not.h"
 #include "../ast/nodes/Equal.h"
-#include "../ast/nodes/BeginsWith.h"
+#include "../ast/nodes/SubstrCmp.h"
 
 // AST: LValues.
 #include "../ast/nodes/Variable_LValue.h"

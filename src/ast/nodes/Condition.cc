@@ -18,6 +18,10 @@ Condition* Condition::FromXMLNode(const XMLNode *xml_node) {
     return static_cast<Condition*>(new Not(xml_node));
   } else if (xml_node->get_tag() == L"equal") {
     return static_cast<Condition*>(new Equal(xml_node));
+  } else if (xml_node->get_tag() == L"begins-with" ||
+             xml_node->get_tag() == L"ends-with" ||
+             xml_node->get_tag() == L"contains-substring") {
+    return static_cast<Condition*>(new SubstrCmp(xml_node));
   }
 
   Error::Fatal(*xml_node, "Unrecognized instruction <", xml_node->get_tag(), ">.");
