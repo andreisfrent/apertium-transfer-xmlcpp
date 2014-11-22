@@ -47,5 +47,6 @@ apertium_xml2cpp_SOURCES = \
   ast/nodes/Out.cc \
   ast/nodes/B.cc \
   ast/nodes/Lu.cc \
+  ast/nodes/Mlu.cc \
   ast/AST.cc \
   error/Error.cc
