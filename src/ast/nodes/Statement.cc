@@ -16,6 +16,8 @@ Statement* Statement::FromXMLNode(const XMLNode *xml_node) {
     return new Choose(xml_node);
   } else if (xml_node->get_tag() == L"let") {
     return new Let(xml_node);
+  } else if (xml_node->get_tag() == L"append") {
+    return new Append(xml_node);
   }
 
   Error::Fatal(*xml_node, "Unrecognized instruction <", xml_node->get_tag(), ">.");
