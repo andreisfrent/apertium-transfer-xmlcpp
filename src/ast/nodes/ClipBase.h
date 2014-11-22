@@ -12,20 +12,14 @@ class ClipBase {
   static const int kSourceLanguage;
   static const int kTargetLanguage;
 
-  static const int kLemma;
-  static const int kLemmaHead;
-  static const int kLemmaQueue;
-  static const int kWhole;
-
  protected:
   int pos_;
   int side_;
-  int part_;
+  std::wstring part_;
   bool queue_;
   int link_to_;
 
   int StringToSide(const XMLNode *xml_node, const std::wstring& side_str);
-  int StringToPart(const XMLNode *xml_node, const std::wstring& part_str);
   bool StringToQueue(const XMLNode *xml_node, const std::wstring& queue_str);
 };
 } // namespace xml2cpp
