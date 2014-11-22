@@ -29,6 +29,8 @@ RValue* RValue::FromXMLNode(const XMLNode *xml_node) {
     return static_cast<RValue*>(new Concat(xml_node));
   } else if (xml_node->get_tag() == L"case-of") {
     return static_cast<RValue*>(new CaseOf(xml_node));
+  } else if (xml_node->get_tag() == L"get-case-from") {
+    return static_cast<RValue*>(new GetCaseFrom(xml_node));
   }
 
   Error::Fatal(*xml_node, "Unrecognized RValue <", xml_node->get_tag(), ">.");
