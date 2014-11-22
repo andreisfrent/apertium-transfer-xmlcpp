@@ -39,5 +39,8 @@ apertium_xml2cpp_SOURCES = \
   ast/nodes/SubstrCmp.cc \
   ast/nodes/Choose.cc \
   ast/nodes/Let.cc \
+  ast/nodes/ClipBase.cc \
+  ast/nodes/Clip_LValue.cc \
+  ast/nodes/Clip_RValue.cc \
   ast/AST.cc \
   error/Error.cc

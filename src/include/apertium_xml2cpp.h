@@ -26,6 +26,7 @@
 
 // Base classes for cross-type nodes.
 #include "../ast/nodes/VariableBase.h"
+#include "../ast/nodes/ClipBase.h"
 
 // Multiple statements.
 #include "../ast/nodes/CodeBlock.h"
@@ -44,9 +45,11 @@
 
 // AST: LValues.
 #include "../ast/nodes/Variable_LValue.h"
+#include "../ast/nodes/Clip_LValue.h"
 
 // AST: RValues.
 #include "../ast/nodes/Variable_RValue.h"
+#include "../ast/nodes/Clip_RValue.h"
 
 #include "../ast/nodes/Rule.h"
 #include "../ast/nodes/Rules.h"
