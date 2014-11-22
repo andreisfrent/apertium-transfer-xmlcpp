@@ -45,6 +45,7 @@
 #include "../ast/nodes/Not.h"
 #include "../ast/nodes/Equal.h"
 #include "../ast/nodes/SubstrCmp.h"
+#include "../ast/nodes/SubstrCmpList.h"
 
 // AST: LValues.
 #include "../ast/nodes/Variable_LValue.h"
