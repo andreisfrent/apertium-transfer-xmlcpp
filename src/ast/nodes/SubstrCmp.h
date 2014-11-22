@@ -19,8 +19,8 @@ class SubstrCmp : public Condition {
   void HandleXMLChildren(const XMLNode *xml_node);
   void HandleXMLAttributes(const XMLNode *xml_node);
 
-  LValue *op1_;
-  LValue *op2_;
+  RValue *op1_;
+  RValue *op2_;
   bool caseless_;
   int where_;
 };

@@ -36,8 +36,8 @@ void SubstrCmp::HandleXMLChildren(const XMLNode *xml_node) {
     Error::Fatal(*xml_node, "Wrong number of operands.");
   }
 
-  op1_ = LValue::FromXMLNode(children.at(0));
-  op2_ = LValue::FromXMLNode(children.at(1));
+  op1_ = RValue::FromXMLNode(children.at(0));
+  op2_ = RValue::FromXMLNode(children.at(1));
 }
 
 void SubstrCmp::HandleXMLAttributes(const XMLNode *xml_node) {
