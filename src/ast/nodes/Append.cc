@@ -7,6 +7,10 @@ Append::Append(const XMLNode *xml_node)
   xml_node->EmitWarningOnUnknownAttributes({L"n"});
   var_name_ = xml_node->GetMandatoryAttribute(L"n");
 
+  Error::Assert(
+      xml_node->get_children().size() >= 1,
+      *xml_node, "No children.");
+
   for (const XMLNode *xml_child : xml_node->get_children()) {
     values_.push_back(RValue::FromXMLNode(xml_child));
   }
