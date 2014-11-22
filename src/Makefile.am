@@ -50,5 +50,6 @@ apertium_xml2cpp_SOURCES = \
   ast/nodes/Mlu.cc \
   ast/nodes/Concat.cc \
   ast/nodes/ModifyCase.cc \
+  ast/nodes/Chunk.cc \
   ast/AST.cc \
   error/Error.cc

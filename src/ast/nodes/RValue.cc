@@ -23,6 +23,8 @@ RValue* RValue::FromXMLNode(const XMLNode *xml_node) {
     return static_cast<RValue*>(new Lu(xml_node));
   } else if (xml_node->get_tag() == L"mlu") {
     return static_cast<RValue*>(new Mlu(xml_node));
+  } else if (xml_node->get_tag() == L"chunk") {
+    return static_cast<RValue*>(new Chunk(xml_node));
   } else if (xml_node->get_tag() == L"concat") {
     return static_cast<RValue*>(new Concat(xml_node));
   }
