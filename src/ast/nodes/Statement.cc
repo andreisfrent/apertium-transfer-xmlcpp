@@ -14,6 +14,8 @@ Statement* Statement::FromXMLNode(const XMLNode *xml_node) {
     return new CallMacro(xml_node);
   } else if (xml_node->get_tag() == L"choose") {
     return new Choose(xml_node);
+  } else if (xml_node->get_tag() == L"out") {
+    return new Out(xml_node);
   } else if (xml_node->get_tag() == L"let") {
     return new Let(xml_node);
   } else if (xml_node->get_tag() == L"append") {

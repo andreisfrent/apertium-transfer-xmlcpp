@@ -35,6 +35,7 @@
 #include "../ast/nodes/CallMacro.h"
 #include "../ast/nodes/Choose.h"
 #include "../ast/nodes/Let.h"
+#include "../ast/nodes/Out.h"
 #include "../ast/nodes/Append.h"
 
 // AST: Conditions
