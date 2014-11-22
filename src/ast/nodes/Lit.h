@@ -1,5 +1,5 @@
-#ifndef __APERTIUM_XML2CPP_LIT_RVALUE_H
-#define __APERTIUM_XML2CPP_LIT_RVALUE_H
+#ifndef __APERTIUM_XML2CPP_LIT_H
+#define __APERTIUM_XML2CPP_LIT_H
 
 #include <apertium_xml2cpp.h>
 
