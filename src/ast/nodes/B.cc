@@ -5,7 +5,7 @@ namespace xml2cpp {
 B::B(const XMLNode *xml_node)
     : RValue(xml_node) {
   xml_node->EmitWarningOnUnknownAttributes({L"pos"});
-  pos_ = xml_node->GetMandatoryAttribute(L"pos");
+  pos_ = xml_node->GetOptionalAttribute(L"pos", L"");
 
   Error::Assert(
       xml_node->get_children().size() == 0,
