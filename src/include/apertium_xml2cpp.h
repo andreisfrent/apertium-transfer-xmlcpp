@@ -27,8 +27,12 @@
 // Base classes for cross-type nodes.
 #include "../ast/nodes/VariableBase.h"
 
+// Multiple statements.
+#include "../ast/nodes/CodeBlock.h"
+
 // AST: Statements.
 #include "../ast/nodes/CallMacro.h"
+#include "../ast/nodes/Choose.h"
 
 // AST: Conditions
 #include "../ast/nodes/And.h"
@@ -43,7 +47,6 @@
 // AST: RValues.
 #include "../ast/nodes/Variable_RValue.h"
 
-#include "../ast/nodes/CodeBlock.h"
 #include "../ast/nodes/Rule.h"
 #include "../ast/nodes/Rules.h"
 #include "../ast/nodes/Macro.h"

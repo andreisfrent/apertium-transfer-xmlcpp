@@ -50,6 +50,20 @@ class Error {
   }
 
   static void Unimplemented(const std::string& method_name);
+
+  template<typename ... TArgs>
+  static void Assert(bool condition, const TArgs& ... t_args) {
+    if (!condition) {
+      Error::Fatal(t_args...);
+    }
+  }
+
+  template<typename ... TArgs>
+  static void AssertFalse(bool condition, const TArgs& ... t_args) {
+    if (condition) {
+      Error::Fatal(t_args...);
+    }
+  }
 };
 } // namespace xml2cpp
 } // namespace apertium

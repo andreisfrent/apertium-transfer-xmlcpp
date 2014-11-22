@@ -37,5 +37,6 @@ apertium_xml2cpp_SOURCES = \
   ast/nodes/Variable_RValue.cc \
   ast/nodes/Equal.cc \
   ast/nodes/SubstrCmp.cc \
+  ast/nodes/Choose.cc \
   ast/AST.cc \
   error/Error.cc
