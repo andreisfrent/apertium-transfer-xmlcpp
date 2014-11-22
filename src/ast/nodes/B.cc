@@ -6,6 +6,10 @@ B::B(const XMLNode *xml_node)
     : RValue(xml_node) {
   xml_node->EmitWarningOnUnknownAttributes({L"pos"});
   pos_ = xml_node->GetMandatoryAttribute(L"pos");
+
+  Error::Assert(
+      xml_node->get_children().size() == 0,
+      *xml_node, "Element should have no children.");
 }
 } // namespace xml2cpp
 } // namespace apertium
