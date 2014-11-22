@@ -57,6 +57,7 @@
 #include "../ast/nodes/B.h"
 #include "../ast/nodes/Lu.h"
 #include "../ast/nodes/Mlu.h"
+#include "../ast/nodes/Concat.h"
 
 #include "../ast/nodes/Rule.h"
 #include "../ast/nodes/Rules.h"
