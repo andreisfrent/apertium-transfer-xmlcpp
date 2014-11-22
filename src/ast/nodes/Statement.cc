@@ -18,6 +18,8 @@ Statement* Statement::FromXMLNode(const XMLNode *xml_node) {
     return new Out(xml_node);
   } else if (xml_node->get_tag() == L"let") {
     return new Let(xml_node);
+  } else if (xml_node->get_tag() == L"modify-case") {
+    return new ModifyCase(xml_node);
   } else if (xml_node->get_tag() == L"append") {
     return new Append(xml_node);
   }
