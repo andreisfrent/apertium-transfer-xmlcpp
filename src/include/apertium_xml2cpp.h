@@ -33,6 +33,7 @@
 // AST: Statements.
 #include "../ast/nodes/CallMacro.h"
 #include "../ast/nodes/Choose.h"
+#include "../ast/nodes/Let.h"
 
 // AST: Conditions
 #include "../ast/nodes/And.h"
