@@ -60,6 +60,7 @@
 #include "../ast/nodes/Mlu.h"
 #include "../ast/nodes/Concat.h"
 #include "../ast/nodes/Chunk.h"
+#include "../ast/nodes/CaseOf.h"
 
 #include "../ast/nodes/Rule.h"
 #include "../ast/nodes/Rules.h"
