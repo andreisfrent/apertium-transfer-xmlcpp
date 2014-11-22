@@ -9,17 +9,16 @@ class ClipBase {
  public:
   ClipBase(const XMLNode *xml_node);
 
-  static const int kSourceLanguage;
-  static const int kTargetLanguage;
+  static const std::wstring kSourceLanguage;
+  static const std::wstring kTargetLanguage;
 
  protected:
   int pos_;
-  int side_;
+  std::wstring side_;
   std::wstring part_;
   bool queue_;
   int link_to_;
 
-  int StringToSide(const XMLNode *xml_node, const std::wstring& side_str);
   bool StringToQueue(const XMLNode *xml_node, const std::wstring& queue_str);
 };
 } // namespace xml2cpp
