@@ -53,6 +53,7 @@
 #include "../ast/nodes/Variable_RValue.h"
 #include "../ast/nodes/Clip_RValue.h"
 #include "../ast/nodes/Lit.h"
+#include "../ast/nodes/B.h"
 
 #include "../ast/nodes/Rule.h"
 #include "../ast/nodes/Rules.h"

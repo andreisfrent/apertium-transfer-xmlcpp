@@ -17,6 +17,8 @@ RValue* RValue::FromXMLNode(const XMLNode *xml_node) {
   } else if (xml_node->get_tag() == L"lit" ||
              xml_node->get_tag() == L"lit-tag") {
     return static_cast<RValue*>(new Lit(xml_node));
+  } else if (xml_node->get_tag() == L"b") {
+    return static_cast<RValue*>(new B(xml_node));
   }
 
   Error::Fatal(*xml_node, "Unrecognized RValue <", xml_node->get_tag(), ">.");
