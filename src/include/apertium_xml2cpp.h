@@ -63,18 +63,22 @@
 #include "../ast/nodes/CaseOf.h"
 #include "../ast/nodes/GetCaseFrom.h"
 
+// Section related.
 #include "../ast/nodes/Rule.h"
 #include "../ast/nodes/Rules.h"
-#include "../ast/nodes/Macro.h"
 #include "../ast/nodes/GlobalVariables.h"
 #include "../ast/nodes/GlobalLists.h"
+#include "../ast/nodes/Macro.h"
 #include "../ast/nodes/GlobalMacros.h"
 #include "../ast/nodes/Categories.h"
 #include "../ast/nodes/Attributes.h"
+
+// Stages (transfer, interchunk, postchunk).
 #include "../ast/nodes/Stage.h"
 #include "../ast/nodes/Postchunk.h"
 #include "../ast/nodes/Transfer.h"
 #include "../ast/nodes/Interchunk.h"
+
 #include "../ast/nodes/Root.h"
 
 #include "../ast/AST.h"
