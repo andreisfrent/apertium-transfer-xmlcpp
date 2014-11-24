@@ -83,4 +83,6 @@
 
 #include "../ast/AST.h"
 
+#include "../comp/CompilationContext.h"
+
 #endif
