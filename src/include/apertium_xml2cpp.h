@@ -79,8 +79,6 @@
 #include "../ast/nodes/Transfer.h"
 #include "../ast/nodes/Interchunk.h"
 
-#include "../ast/nodes/Root.h"
-
 #include "../ast/AST.h"
 
 #include "../comp/CompilationContext.h"
