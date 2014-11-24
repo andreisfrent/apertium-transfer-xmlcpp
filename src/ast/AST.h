@@ -11,6 +11,7 @@ class AST {
   ~AST();
 
   void PrintDebugInfo() const;
+  void SemanticCheck(const CompilationContext *ctx) const;
 
  private:
   Stage *stage_;

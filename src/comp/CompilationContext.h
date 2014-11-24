@@ -5,6 +5,7 @@
 
 namespace apertium {
 namespace xml2cpp {
+class AST;
 class CompilationContext {
  public:
   CompilationContext(AST *ast);

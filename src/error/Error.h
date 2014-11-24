@@ -5,9 +5,6 @@
 #include <iostream>
 #include <string>
 
-#include "../parsing/XMLNode.h"
-#include "../ast/nodes/ASTNode.h"
-
 namespace apertium {
 namespace xml2cpp {
 class Error {
@@ -24,6 +21,12 @@ class Error {
   }
 
  public:
+  template<typename ... TArgs>
+  static void Unimplemented(const TArgs& ... t_args) {
+     std::wcerr << "\033[1;36mUNIMPLEMENTED\033[0m ";
+     _Out(t_args...);
+  }
+
   template<typename ... TArgs>
   static void Fatal(const TArgs& ... t_args) {
      std::wcerr << "\033[1;31mFATAL\033[0m ";
@@ -49,7 +52,7 @@ class Error {
      _Out(t_args...);
   }
 
-  static void Unimplemented(const std::string& method_name);
+  static void Unimplemented(const std::wstring& description);
 
   template<typename ... TArgs>
   static void Assert(bool condition, const TArgs& ... t_args) {

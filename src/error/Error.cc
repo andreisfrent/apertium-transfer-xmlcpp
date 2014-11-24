@@ -4,8 +4,5 @@
 
 namespace apertium {
 namespace xml2cpp {
-void Error::Unimplemented(const std::string& method_name) {
-  std::cerr << "\033[1;36mUNIMPLEMENTED\033[0m " << method_name << "." << std::endl;
-}
 } // namespace xml2cpp
 } // namespace apertium

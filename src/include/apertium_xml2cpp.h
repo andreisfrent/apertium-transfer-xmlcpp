@@ -4,8 +4,6 @@
 // NOTE NOTE NOTE
 // The order of headers in this file is important.
 
-#include "../error/Error.h"
-
 // Misc: strings.
 #include "../misc/StringUtil.h"
 
@@ -14,6 +12,8 @@
 #include "../parsing/XMLTree.h"
 #include "../parsing/XMLParser.h"
 #include "../parsing/XMLUtil.h"
+
+#include "../comp/CompilationContext.h"
 
 // AST node base class.
 #include "../ast/nodes/ASTNode.h"
@@ -81,6 +81,6 @@
 
 #include "../ast/AST.h"
 
-#include "../comp/CompilationContext.h"
+#include "../error/Error.h"
 
 #endif

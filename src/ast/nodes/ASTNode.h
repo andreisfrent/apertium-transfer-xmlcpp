@@ -12,9 +12,7 @@ class ASTNode {
   explicit ASTNode(const XMLNode *xml_node);
   virtual ~ASTNode();
 
-  // TODO virtual void FillMetadata(...);
-  // TODO virtual void Validate(..., metadata);
-  // TODO virtual void GenerateCode(..., metadata);
+  void SemanticCheck(const CompilationContext *ctx) const;
 
   void set_line_no(int line_no);
   int get_line_no() const;

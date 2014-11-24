@@ -18,5 +18,9 @@ AST::~AST() {
 void AST::PrintDebugInfo() const {
   stage_->PrintDebugInfo();
 }
+
+void AST::SemanticCheck(const CompilationContext *ctx) const {
+  stage_->SemanticCheck(ctx);
+}
 } // namespace apertium
 } // namespace xml2cpp
