@@ -14,5 +14,9 @@ Transfer::Transfer(const XMLNode *xml_node)
       transfer_mode_ == kLu || transfer_mode_ == kChunk,
       *xml_node, "Unrecognized transfer mode \"", transfer_mode_, "\".");
 }
+
+void Transfer::SemanticCheck(const CompilationContext *ctx) const {
+  Stage::SemanticCheck(ctx);
+}
 } // namespace xml2cpp
 } // namespace apertium

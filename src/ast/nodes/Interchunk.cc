@@ -7,7 +7,8 @@ Interchunk::Interchunk(const XMLNode *xml_node)
   xml_node->EmitWarningOnUnknownAttributes({L"c"});
 }
 
-Interchunk::~Interchunk() {
+void Interchunk::SemanticCheck(const CompilationContext *ctx) const {
+  Stage::SemanticCheck(ctx);
 }
 } // namespace xml2cpp
 } // namespace apertium

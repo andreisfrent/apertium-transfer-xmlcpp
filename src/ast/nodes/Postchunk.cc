@@ -7,7 +7,8 @@ Postchunk::Postchunk(const XMLNode *xml_node)
   xml_node->EmitWarningOnUnknownAttributes({L"c"});
 }
 
-Postchunk::~Postchunk() {
+void Postchunk::SemanticCheck(const CompilationContext *ctx) const {
+  Stage::SemanticCheck(ctx);
 }
 } // namespace xml2cpp
 } // namespace apertium
