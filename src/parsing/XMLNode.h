@@ -30,6 +30,7 @@ class XMLNode {
 
   void EmitWarningOnUnknownAttributes(
       const std::set<std::wstring>& known_attributes) const;
+  void EmitWarningOnAllAttributes() const;
   const std::wstring& GetMandatoryAttribute(
       const std::wstring& attribute) const;
   const std::wstring& GetOptionalAttribute(

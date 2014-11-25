@@ -97,6 +97,11 @@ void XMLNode::EmitWarningOnUnknownAttributes(
     }
   }
 }
+
+void XMLNode::EmitWarningOnAllAttributes() const {
+  static std::set<std::wstring> no_known_attributes;
+  EmitWarningOnUnknownAttributes(no_known_attributes);
+}
 } // namespace xml2cpp
 } // namespace apertium
 
