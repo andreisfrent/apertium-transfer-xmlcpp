@@ -12,7 +12,7 @@ class ASTNode {
   explicit ASTNode(const XMLNode *xml_node);
   virtual ~ASTNode();
 
-  void SemanticCheck(const CompilationContext *ctx) const;
+  bool SemanticCheck(const CompilationContext *ctx) const;
 
   void set_line_no(int line_no);
   int get_line_no() const;

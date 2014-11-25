@@ -20,7 +20,9 @@ void AST::PrintDebugInfo() const {
 }
 
 void AST::SemanticCheck(const CompilationContext *ctx) const {
-  stage_->SemanticCheck(ctx);
+  if (!stage_->SemanticCheck(ctx)) {
+    Error::Fatal("Semantic checks failed (see errors above).");
+  }
 }
 } // namespace apertium
 } // namespace xml2cpp
