@@ -1,5 +1,5 @@
-#ifndef __APERTIUM_XML2CPP_AST_NODE_CODEBLOCK_H
-#define __APERTIUM_XML2CPP_AST_NODE_CODEBLOCK_H
+#ifndef __APERTIUM_XML2CPP_CODEBLOCK_H
+#define __APERTIUM_XML2CPP_CODEBLOCK_H
 
 #include <apertium_xml2cpp.h>
 
@@ -16,8 +16,10 @@ class CodeBlock : public ASTNode {
       const std::vector<XMLNode*>::const_iterator& it_end);
   ~CodeBlock();
 
+  void SemanticCheck(const CompilationContext *ctx) const override;
+
  private:
-  std::vector<Statement*> instructions_;
+  std::vector<Statement*> statements_;
   void ctor_init(const XMLNode *xml_node,
       const std::vector<XMLNode*>::const_iterator& it_begin,
       const std::vector<XMLNode*>::const_iterator& it_end);
