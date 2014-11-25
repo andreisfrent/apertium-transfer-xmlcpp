@@ -15,9 +15,6 @@ GlobalVariables::GlobalVariables()
     : ASTNode() {
 }
 
-GlobalVariables::~GlobalVariables() {
-}
-
 void GlobalVariables::HandleVariableDefinition(const XMLNode *xml_node) {
   xml_node->EmitWarningOnUnknownAttributes({L"n", L"c", L"v"});
 
@@ -42,6 +39,9 @@ void GlobalVariables::PrintDebugInfo(
 
 bool GlobalVariables::HasVariable(const std::wstring& name) const {
   return vars_.find(name) != vars_.end();
+}
+
+void GlobalVariables::SemanticCheck(const CompilationContext *ctx) const {
 }
 } // namespace xml2cpp
 } // namespace apertium
