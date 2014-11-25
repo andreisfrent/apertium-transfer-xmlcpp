@@ -7,19 +7,18 @@ using apertium::xml2cpp::ASTNode;
 using apertium::xml2cpp::XMLParser;
 using apertium::xml2cpp::XMLTree;
 using apertium::xml2cpp::AST;
+using apertium::xml2cpp::CompilationContext;
 
 int main(int argc, char *argv[]) {
   std::wcerr << L"XML-to-C++ compiler for structural transfer in Apertium." << std::endl;
   xmlInitParser();
 
-  try {
-    XMLParser xml_parser(0);
-    XMLTree xml_tree;
-    xml_parser.Parse(&xml_tree);
-    AST ast(xml_tree);
-  } catch (std::exception& ex) {
-    std::cerr << ex.what() << std::endl;
-  }
+  XMLParser xml_parser(0);
+  XMLTree xml_tree;
+  xml_parser.Parse(&xml_tree);
+  AST ast(xml_tree);
+  CompilationContext ctx(&ast);
+  ast.SemanticCheck(&ctx);
 
   xmlCleanupParser();
   return 0;
