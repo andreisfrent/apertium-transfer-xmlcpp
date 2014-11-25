@@ -52,8 +52,6 @@ class Error {
      _Out(t_args...);
   }
 
-  static void Unimplemented(const std::wstring& description);
-
   template<typename ... TArgs>
   static void Assert(bool condition, const TArgs& ... t_args) {
     if (!condition) {
