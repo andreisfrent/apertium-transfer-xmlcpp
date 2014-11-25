@@ -35,6 +35,12 @@ class Error {
   }
 
   template<typename ... TArgs>
+  static void FatalWeak(const TArgs& ... t_args) {
+     std::wcerr << "\033[1;31m*\033[0m ";
+     _Out(t_args...);
+  }
+
+  template<typename ... TArgs>
   static void Warning(const TArgs& ... t_args) {
      std::wcerr << "\033[1;33mWARNING\033[0m ";
      _Out(t_args...);
