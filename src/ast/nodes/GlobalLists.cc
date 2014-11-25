@@ -12,17 +12,14 @@ GlobalLists::GlobalLists(const XMLNode *xml_node)
   }
 }
 
-GlobalLists::GlobalLists()
-    : ASTNode() {
-}
-
-GlobalLists::~GlobalLists() {
+GlobalLists::GlobalLists() : ASTNode() {
 }
 
 void GlobalLists::HandleListDefinition(const XMLNode *xml_node) {
   xml_node->EmitWarningOnUnknownAttributes({L"n", L"c"});
   const std::wstring& list_name = xml_node->GetMandatoryAttribute(L"n");
 
+  // TODO use Error::Assert.
   if (lists_.find(list_name) != lists_.end()) {
     Error::Fatal(*xml_node, "Multiple definitions of list \"", list_name, "\".");
   }
@@ -57,6 +54,9 @@ void GlobalLists::PrintDebugInfo(const std::wstring& indentation) const {
     wss << L"]";
     Error::Debug(indentation, "  ", wss.str());
   }
+}
+
+void GlobalLists::SemanticCheck(const CompilationContext *ctx) const {
 }
 } // namespace xml2cpp
 } // namespace apertium
