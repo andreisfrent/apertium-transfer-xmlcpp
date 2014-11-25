@@ -11,9 +11,9 @@ LValue::~LValue() {
 
 LValue* LValue::FromXMLNode(const XMLNode *xml_node) {
   if (xml_node->get_tag() == L"var") {
-    return static_cast<LValue*>(new Variable_LValue(xml_node));
+    return new Variable_LValue(xml_node);
   } else if (xml_node->get_tag() == L"clip") {
-    return static_cast<LValue*>(new Clip_LValue(xml_node));
+    return new Clip_LValue(xml_node);
   }
 
   Error::Fatal(*xml_node, "Unrecognized LValue <", xml_node->get_tag(), ">.");

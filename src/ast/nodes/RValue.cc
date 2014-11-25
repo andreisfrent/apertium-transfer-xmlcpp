@@ -11,26 +11,26 @@ RValue::~RValue() {
 
 RValue* RValue::FromXMLNode(const XMLNode *xml_node) {
   if (xml_node->get_tag() == L"var") {
-    return static_cast<RValue*>(new Variable_RValue(xml_node));
+    return new Variable_RValue(xml_node);
   } else if (xml_node->get_tag() == L"clip") {
-    return static_cast<RValue*>(new Clip_RValue(xml_node));
+    return new Clip_RValue(xml_node);
   } else if (xml_node->get_tag() == L"lit" ||
              xml_node->get_tag() == L"lit-tag") {
-    return static_cast<RValue*>(new Lit(xml_node));
+    return new Lit(xml_node);
   } else if (xml_node->get_tag() == L"b") {
-    return static_cast<RValue*>(new B(xml_node));
+    return new B(xml_node);
   } else if (xml_node->get_tag() == L"lu") {
-    return static_cast<RValue*>(new Lu(xml_node));
+    return new Lu(xml_node);
   } else if (xml_node->get_tag() == L"mlu") {
-    return static_cast<RValue*>(new Mlu(xml_node));
+    return new Mlu(xml_node);
   } else if (xml_node->get_tag() == L"chunk") {
-    return static_cast<RValue*>(new Chunk(xml_node));
+    return new Chunk(xml_node);
   } else if (xml_node->get_tag() == L"concat") {
-    return static_cast<RValue*>(new Concat(xml_node));
+    return new Concat(xml_node);
   } else if (xml_node->get_tag() == L"case-of") {
-    return static_cast<RValue*>(new CaseOf(xml_node));
+    return new CaseOf(xml_node);
   } else if (xml_node->get_tag() == L"get-case-from") {
-    return static_cast<RValue*>(new GetCaseFrom(xml_node));
+    return new GetCaseFrom(xml_node);
   }
 
   Error::Fatal(*xml_node, "Unrecognized RValue <", xml_node->get_tag(), ">.");
