@@ -10,6 +10,8 @@ class Or : public Condition {
   Or(const XMLNode *xml_node);
   ~Or();
 
+  void SemanticCheck(const CompilationContext *ctx) const override;
+
  private:
   std::vector<Condition*> children_;
 };

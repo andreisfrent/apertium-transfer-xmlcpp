@@ -13,6 +13,15 @@ Or::Or(const XMLNode *xml_node)
 }
 
 Or::~Or() {
+  for (Condition *child : children_) {
+    delete child;
+  }
+}
+
+void Or::SemanticCheck(const CompilationContext *ctx) const {
+  for (const ASTNode *child : children_) {
+    child->SemanticCheck(ctx);
+  }
 }
 } // namespace xml2cpp
 } // namespace apertium

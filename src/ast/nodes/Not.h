@@ -10,6 +10,8 @@ class Not : public Condition {
   Not(const XMLNode *xml_node);
   ~Not();
 
+  void SemanticCheck(const CompilationContext *ctx) const override;
+
  private:
   Condition *condition_;
 };

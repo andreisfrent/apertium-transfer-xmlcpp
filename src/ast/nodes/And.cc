@@ -21,9 +21,6 @@ And::~And() {
 }
 
 void And::SemanticCheck(const CompilationContext *ctx) const {
-  // Condition nodes always return true, so there is no need to check types.
-  // In other words, if we did not fail at AST building time, everything should
-  // be fine. Just propagate to children.
   for (const ASTNode *child : children_) {
     child->SemanticCheck(ctx);
   }
