@@ -1,5 +1,5 @@
-#ifndef __APERTIUM_XML2CPP_AST_NODE_GLOBALMACROS_H
-#define __APERTIUM_XML2CPP_AST_NODE_GLOBALMACROS_H
+#ifndef __APERTIUM_XML2CPP_GLOBALMACROS_H
+#define __APERTIUM_XML2CPP_GLOBALMACROS_H
 
 #include <apertium_xml2cpp.h>
 
@@ -12,6 +12,7 @@ class GlobalMacros : public ASTNode {
   ~GlobalMacros();
 
   void PrintDebugInfo(const std::wstring& indentation = L"") const override;
+  void SemanticCheck(const CompilationContext *ctx) const override;
 
  private:
   std::unordered_map<std::wstring, Macro*> macros_;

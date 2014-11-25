@@ -21,9 +21,9 @@ GlobalMacros::~GlobalMacros() {
 void GlobalMacros::HandleMacroDefinition(const XMLNode *xml_node) {
   const std::wstring& macro_name = xml_node->GetMandatoryAttribute(L"n");
 
-  if (macros_.find(macro_name) != macros_.end()) {
-    Error::Fatal(*xml_node, "Multiple definitions of macro \"", macro_name, "\".");
-  }
+  Error::Assert(
+      macros_.find(macro_name) == macros_.end(),
+      *xml_node, "Multiple definitions of macro \"", macro_name, "\".");
 
   macros_[macro_name] = new Macro(xml_node);
 }
@@ -32,6 +32,12 @@ void GlobalMacros::PrintDebugInfo(const std::wstring& indentation) const {
   Error::Debug(indentation, "Macro definitions:");
   for (const auto& kv : macros_) {
     kv.second->PrintDebugInfo(indentation + L"  ");
+  }
+}
+
+void GlobalMacros::SemanticCheck(const CompilationContext *ctx) const {
+  for (const auto& kv : macros_) {
+    kv.second->SemanticCheck(ctx);
   }
 }
 } // namespace xml2cpp
