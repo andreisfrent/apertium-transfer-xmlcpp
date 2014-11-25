@@ -10,7 +10,7 @@ class And : public Condition {
   And(const XMLNode *xml_node);
   ~And();
 
-  bool SemanticCheck(const CompilationContext *ctx) const;
+  void SemanticCheck(const CompilationContext *ctx) const override;
 
  private:
   std::vector<Condition*> children_;

@@ -14,6 +14,8 @@ class Stage : public ASTNode {
 
   static Stage *FromXMLNode(const XMLNode *xml_node);
 
+  const GlobalVariables *get_global_variables() const;
+
  private:
   void SetSectionPointersToNull();
   void HandleXMLChild_section_def_vars(const XMLNode *xml_child);

@@ -13,6 +13,8 @@ class AST {
   void PrintDebugInfo() const;
   void SemanticCheck(const CompilationContext *ctx) const;
 
+  const Stage *get_root() const;
+
  private:
   Stage *stage_;
 };

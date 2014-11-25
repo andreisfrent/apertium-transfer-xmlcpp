@@ -36,9 +36,8 @@ void ASTNode::PrintDebugInfo(const std::wstring& indentation) const {
   // Do nothing.
 }
 
-bool ASTNode::SemanticCheck(const CompilationContext *ctx) const {
+void ASTNode::SemanticCheck(const CompilationContext *ctx) const {
   Error::Unimplemented("Semantic checks for <", get_tag(), ">.");
-  return true;
 }
 } // namespace xml2cpp
 } // namespace apertium

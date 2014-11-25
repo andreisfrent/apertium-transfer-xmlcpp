@@ -14,6 +14,7 @@ class GlobalVariables : public ASTNode {
   ~GlobalVariables();
 
   void PrintDebugInfo(const std::wstring& indentation = L"") const override;
+  bool HasVariable(const std::wstring& name) const;
 
  private:
   std::set<std::wstring> vars_;

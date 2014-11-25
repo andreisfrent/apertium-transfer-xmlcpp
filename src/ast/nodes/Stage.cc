@@ -130,5 +130,9 @@ Stage *Stage::FromXMLNode(const XMLNode *xml_node) {
   // function.
   return NULL;
 }
+
+const GlobalVariables *Stage::get_global_variables() const {
+  return global_variables_;
+}
 } // namespace xml2cpp
 } // namespace apertium

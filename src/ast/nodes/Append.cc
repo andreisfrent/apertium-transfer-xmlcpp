@@ -23,5 +23,8 @@ Append::~Append() {
   values_.clear();
 }
 
+void Append::SemanticCheck(const CompilationContext *ctx) const {
+  ctx->AssertVariable(this, var_name_);
+}
 } // namespace xml2cpp
 } // namespace apertium

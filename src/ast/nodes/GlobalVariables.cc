@@ -39,5 +39,9 @@ void GlobalVariables::PrintDebugInfo(
     Error::Debug(indentation, "  ", name);
   }
 }
+
+bool GlobalVariables::HasVariable(const std::wstring& name) const {
+  return vars_.find(name) != vars_.end();
+}
 } // namespace xml2cpp
 } // namespace apertium

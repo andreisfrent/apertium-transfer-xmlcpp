@@ -10,6 +10,8 @@ class Append : public Statement {
   Append(const XMLNode *xml_node);
   ~Append();
 
+  void SemanticCheck(const CompilationContext *ctx) const override;
+
  private:
   std::wstring var_name_;
   std::vector<RValue*> values_;

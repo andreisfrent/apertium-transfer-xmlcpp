@@ -6,9 +6,12 @@
 namespace apertium {
 namespace xml2cpp {
 class AST;
+class ASTNode;
 class CompilationContext {
  public:
   CompilationContext(AST *ast);
+
+  void AssertVariable(const ASTNode *calling_node, const std::wstring& name) const;
 
  private:
   AST *ast_;
