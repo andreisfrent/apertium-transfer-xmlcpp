@@ -65,5 +65,15 @@ Choose::~Choose() {
     delete it.second;
   }
 }
+
+void Choose::SemanticCheck(const CompilationContext *ctx) const {
+  for (const auto& it : cases_) {
+    it.first->SemanticCheck(ctx);
+    it.second->SemanticCheck(ctx);
+  }
+  if (otherwise_) {
+    otherwise_->SemanticCheck(ctx);
+  }
+}
 } // namespace xml2cpp
 } // namespace apertium

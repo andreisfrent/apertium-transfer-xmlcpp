@@ -21,6 +21,7 @@ class Choose : public Statement {
   Condition *HandleXMLTest(const XMLNode *xml_node);
   void ExtractSingleOtherwise(const XMLNode *xml_node);
   void ExtractMultipleWhen(const XMLNode *xml_node);
+  void SemanticCheck(const CompilationContext *ctx) const override;
 };
 } // namespace xml2cpp
 } // namespace apertium
