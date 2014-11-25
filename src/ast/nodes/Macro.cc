@@ -9,7 +9,7 @@ Macro::Macro(const XMLNode *xml_node)
 }
 
 Macro::~Macro() {
-  if (code_) delete code_;
+  delete code_;
 }
 
 void Macro::HandleXMLAttributes(const XMLNode *xml_node) {
@@ -20,6 +20,10 @@ void Macro::HandleXMLAttributes(const XMLNode *xml_node) {
 
 void Macro::PrintDebugInfo(const std::wstring& indentation) const {
   Error::Debug(indentation, "Macro ", name_, " of arity ", param_count_, ":");
+}
+
+void Macro::SemanticCheck(const CompilationContext *ctx) const {
+  code_->SemanticCheck(ctx);
 }
 } // namespace xml2cpp
 } // namespace apertium

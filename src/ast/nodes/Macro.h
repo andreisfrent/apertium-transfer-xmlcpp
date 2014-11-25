@@ -1,5 +1,5 @@
-#ifndef __APERTIUM_XML2CPP_AST_NODE_MACRO_H
-#define __APERTIUM_XML2CPP_AST_NODE_MACRO_H
+#ifndef __APERTIUM_XML2CPP_MACRO_H
+#define __APERTIUM_XML2CPP_MACRO_H
 
 #include <apertium_xml2cpp.h>
 
@@ -12,6 +12,7 @@ class Macro : public ASTNode {
 
   void HandleXMLAttributes(const XMLNode *xml_node);
   void PrintDebugInfo(const std::wstring& indentation = L"") const override;
+  void SemanticCheck(const CompilationContext *ctx) const override;
 
  private:
   std::wstring name_;
