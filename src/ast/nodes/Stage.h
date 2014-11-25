@@ -1,5 +1,5 @@
-#ifndef __APERTIUM_XML2CPP_AST_NODE_STAGE_H
-#define __APERTIUM_XML2CPP_AST_NODE_STAGE_H
+#ifndef __APERTIUM_XML2CPP_STAGE_H
+#define __APERTIUM_XML2CPP_STAGE_H
 
 #include <apertium_xml2cpp.h>
 
@@ -15,6 +15,8 @@ class Stage : public ASTNode {
   static Stage *FromXMLNode(const XMLNode *xml_node);
 
   const GlobalVariables *get_global_variables() const;
+
+  void SemanticCheck(const CompilationContext *ctx) const override;
 
  private:
   void SetSectionPointersToNull();

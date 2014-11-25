@@ -2,27 +2,17 @@
 
 namespace apertium {
 namespace xml2cpp {
+const std::wstring Transfer::kLu(L"lu");
+const std::wstring Transfer::kChunk(L"chunk");
+
 Transfer::Transfer(const XMLNode *xml_node)
     : Stage(xml_node) {
   xml_node->EmitWarningOnUnknownAttributes({L"default", L"c"});
-  std::wstring transfer_mode_str =
-    xml_node->GetOptionalAttribute(L"default", L"lu");
+  transfer_mode_ = xml_node->GetOptionalAttribute(L"default", L"lu");
 
-  if (transfer_mode_str == L"lu") {
-    transfer_mode_ = kLu;
-  } else if (transfer_mode_str == L"chunk") {
-    transfer_mode_ = kChunk;
-  } else {
-    Error::Fatal(*xml_node,
-      "Unrecognized transfer mode \"", transfer_mode_str, "\".");
-  }
-}
-
-Transfer::~Transfer() {
-}
-
-int Transfer::get_transfer_mode() const {
-  return transfer_mode_;
+  Error::Assert(
+      transfer_mode_ == kLu || transfer_mode_ == kChunk,
+      *xml_node, "Unrecognized transfer mode \"", transfer_mode_, "\".");
 }
 } // namespace xml2cpp
 } // namespace apertium

@@ -134,5 +134,14 @@ Stage *Stage::FromXMLNode(const XMLNode *xml_node) {
 const GlobalVariables *Stage::get_global_variables() const {
   return global_variables_;
 }
+
+void Stage::SemanticCheck(const CompilationContext *ctx) const {
+  global_variables_->SemanticCheck(ctx);
+  global_lists_->SemanticCheck(ctx);
+  global_macros_->SemanticCheck(ctx);
+  lexical_categories_->SemanticCheck(ctx);
+  attributes_->SemanticCheck(ctx);
+  rules_->SemanticCheck(ctx);
+}
 } // namespace xml2cpp
 } // namespace apertium
