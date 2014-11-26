@@ -10,6 +10,8 @@ class Out : public Statement {
   Out(const XMLNode *xml_node);
   ~Out();
 
+  void SemanticCheck(const CompilationContext *ctx) const override;
+
  private:
   std::vector<RValue*> values_;
 };

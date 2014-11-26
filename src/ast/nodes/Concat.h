@@ -10,6 +10,8 @@ class Concat : public RValue {
   Concat(const XMLNode *xml_node);
   ~Concat();
 
+  void SemanticCheck(const CompilationContext *ctx) const override;
+
  private:
   std::vector<RValue*> values_;
 };

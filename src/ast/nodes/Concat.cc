@@ -20,5 +20,11 @@ Concat::~Concat() {
     delete rvalue;
   }
 }
+
+void Concat::SemanticCheck(const CompilationContext *ctx) const {
+  for (const RValue *rvalue : values_) {
+    rvalue->SemanticCheck(ctx);
+  }
+}
 } // namespace xml2cpp
 } // namespace apertium

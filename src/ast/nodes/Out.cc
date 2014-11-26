@@ -22,5 +22,10 @@ Out::~Out() {
   values_.clear();
 }
 
+void Out::SemanticCheck(const CompilationContext *ctx) const {
+  for (const RValue *rvalue : values_) {
+    rvalue->SemanticCheck(ctx);
+  }
+}
 } // namespace xml2cpp
 } // namespace apertium

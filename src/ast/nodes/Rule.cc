@@ -68,5 +68,9 @@ void Rule::HandleXMLNode_pattern_item(const XMLNode *xml_node) {
 void Rule::HandleXMLNode_action(const XMLNode *xml_node) {
   code_ = new CodeBlock(xml_node);
 }
+
+void Rule::SemanticCheck(const CompilationContext *ctx) const {
+  code_->SemanticCheck(ctx);
+}
 } // namespace xml2cpp
 } // namespace apertium
