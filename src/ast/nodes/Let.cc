@@ -15,5 +15,10 @@ Let::~Let() {
   delete left_;
   delete right_;
 }
+
+void Let::SemanticCheck(const CompilationContext *ctx) const {
+  left_->SemanticCheck(ctx);
+  right_->SemanticCheck(ctx);
+}
 } // namespace xml2cpp
 } // namespace apertium

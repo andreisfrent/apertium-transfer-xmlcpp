@@ -10,6 +10,8 @@ class Let : public Statement {
   Let(const XMLNode *xml_node);
   ~Let();
 
+  void SemanticCheck(const CompilationContext *ctx) const override;
+
  private:
   LValue *left_;
   RValue *right_;
