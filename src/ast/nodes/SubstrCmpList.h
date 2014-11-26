@@ -10,6 +10,8 @@ class SubstrCmpList : public Condition {
   SubstrCmpList(const XMLNode *xml_node);
   ~SubstrCmpList();
 
+  void SemanticCheck(const CompilationContext *ctx) const override;
+
   static const int kBegin;
   static const int kEnd;
   static const int kExact;

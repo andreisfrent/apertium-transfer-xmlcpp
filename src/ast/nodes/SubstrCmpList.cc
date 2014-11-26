@@ -59,5 +59,10 @@ void SubstrCmpList::HandleXMLAttributes(const XMLNode *xml_node) {
     Error::Fatal(*xml_node, "Invalid caseless value.");
   }
 }
+
+void SubstrCmpList::SemanticCheck(const CompilationContext *ctx) const {
+  ctx->AssertList(this, list_);
+  substr_->SemanticCheck(ctx);
+}
 } // namespace xml2cpp
 } // namespace apertium
