@@ -10,6 +10,8 @@ class GetCaseFrom : public RValue {
   GetCaseFrom(const XMLNode *xml_node);
   ~GetCaseFrom();
 
+  void SemanticCheck(const CompilationContext *ctx) const override;
+
  private:
   int pos_;
   RValue *value_;

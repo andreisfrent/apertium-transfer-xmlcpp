@@ -16,5 +16,9 @@ GetCaseFrom::GetCaseFrom(const XMLNode *xml_node) : RValue(xml_node) {
 GetCaseFrom::~GetCaseFrom() {
   delete value_;
 }
+
+void GetCaseFrom::SemanticCheck(const CompilationContext *ctx) const {
+  value_->SemanticCheck(ctx);
+}
 } // namespace xml2cpp
 } // namespace apertium

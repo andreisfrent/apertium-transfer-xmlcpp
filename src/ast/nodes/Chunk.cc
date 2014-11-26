@@ -46,5 +46,14 @@ void Chunk::ExtractValues(const XMLNode *xml_node) {
     values_.push_back(value);
   }
 }
+
+void Chunk::SemanticCheck(const CompilationContext *ctx) const {
+  for (const RValue *it : tags_) {
+    it->SemanticCheck(ctx);
+  }
+  for (const RValue *it : values_) {
+    it->SemanticCheck(ctx);
+  }
+}
 } // namespace xml2cpp
 } // namespace apertium

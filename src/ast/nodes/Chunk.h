@@ -10,6 +10,8 @@ class Chunk : public RValue {
   Chunk(const XMLNode *xml_node);
   ~Chunk();
 
+  void SemanticCheck(const CompilationContext *ctx) const override;
+
  private:
   std::vector<RValue*> tags_;
   std::vector<RValue*> values_;

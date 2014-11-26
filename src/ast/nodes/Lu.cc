@@ -20,5 +20,11 @@ Lu::~Lu() {
     delete rvalue;
   }
 }
+
+void Lu::SemanticCheck(const CompilationContext *ctx) const {
+  for (const RValue *rvalue : values_) {
+    rvalue->SemanticCheck(ctx);
+  }
+}
 } // namespace xml2cpp
 } // namespace apertium

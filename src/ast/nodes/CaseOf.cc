@@ -16,5 +16,8 @@ CaseOf::CaseOf(const XMLNode *xml_node) : RValue(xml_node) {
     side_ == L"sl" || side_ == L"tl",
     *xml_node, "Invalid side attribute.");
 }
+
+void CaseOf::SemanticCheck(const CompilationContext *ctx) const {
+}
 } // namespace xml2cpp
 } // namespace apertium

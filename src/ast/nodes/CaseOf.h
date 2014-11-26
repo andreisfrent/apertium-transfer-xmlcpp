@@ -12,6 +12,7 @@ class CaseOf : public RValue {
   static const std::wstring kSourceLanguage;
   static const std::wstring kTargetLanguage;
 
+  void SemanticCheck(const CompilationContext *ctx) const override;
  private:
   int pos_;
   std::wstring side_;
