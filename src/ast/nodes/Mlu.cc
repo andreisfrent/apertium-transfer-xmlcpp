@@ -16,8 +16,14 @@ Mlu::Mlu(const XMLNode *xml_node)
 }
 
 Mlu::~Mlu() {
-  for (Lu *lu: values_) {
+  for (Lu *lu : values_) {
     delete lu;
+  }
+}
+
+void Mlu::SemanticCheck(const CompilationContext *ctx) const {
+  for (const Lu *lu : values) {
+    lu->SemanticCheck(ctx);
   }
 }
 } // namespace xml2cpp

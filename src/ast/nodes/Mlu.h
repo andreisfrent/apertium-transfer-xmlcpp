@@ -10,6 +10,7 @@ class Mlu : public RValue {
   Mlu(const XMLNode *xml_node);
   ~Mlu();
 
+  void SemanticCheck(const CompilationContext *ctx) const override;
  private:
   std::vector<Lu*> values_;
 };
