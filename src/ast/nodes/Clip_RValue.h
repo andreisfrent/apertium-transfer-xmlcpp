@@ -8,6 +8,7 @@ namespace xml2cpp {
 class Clip_RValue : public RValue, public ClipBase {
  public:
   Clip_RValue(const XMLNode *xml_node);
+  void SemanticCheck(const CompilationContext *ctx) const override;
 };
 } // namespace xml2cpp
 } // namespace apertium

@@ -10,6 +10,8 @@ class ModifyCase : public Statement {
   ModifyCase(const XMLNode *xml_node);
   ~ModifyCase();
 
+  void SemanticCheck(const CompilationContext *ctx) const override;
+
  private:
   LValue *left_;
   RValue *right_;

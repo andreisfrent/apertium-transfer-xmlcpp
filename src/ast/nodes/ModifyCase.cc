@@ -15,5 +15,10 @@ ModifyCase::~ModifyCase() {
   delete left_;
   delete right_;
 }
+
+void ModifyCase::SemanticCheck(const CompilationContext *ctx) const {
+  left_->SemanticCheck(ctx);
+  right_->SemanticCheck(ctx);
+}
 } // namespace xml2cpp
 } // namespace apertium
