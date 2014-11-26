@@ -58,5 +58,9 @@ void GlobalLists::PrintDebugInfo(const std::wstring& indentation) const {
 
 void GlobalLists::SemanticCheck(const CompilationContext *ctx) const {
 }
+
+bool GlobalLists::HasList(const std::wstring& name) const {
+  return lists_.find(name) != lists_.end();
+}
 } // namespace xml2cpp
 } // namespace apertium

@@ -15,6 +15,7 @@ class GlobalLists : public ASTNode {
 
   void PrintDebugInfo(const std::wstring& indentation = L"") const override;
   void SemanticCheck(const CompilationContext *ctx) const override;
+  bool HasList(const std::wstring& name_) const;
 
  private:
   std::unordered_map<std::wstring, std::set<std::wstring>> lists_;

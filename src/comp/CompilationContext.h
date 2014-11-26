@@ -12,6 +12,7 @@ class CompilationContext {
   CompilationContext(AST *ast);
 
   void AssertVariable(const ASTNode *calling_node, const std::wstring& name) const;
+  void AssertList(const ASTNode *calling_node, const std::wstring& name) const;
 
  private:
   AST *ast_;

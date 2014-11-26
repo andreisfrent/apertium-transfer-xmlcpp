@@ -14,6 +14,7 @@ class Stage : public ASTNode {
   static Stage *FromXMLNode(const XMLNode *xml_node);
 
   const GlobalVariables *get_global_variables() const;
+  const GlobalLists *get_global_lists() const;
 
   void SemanticCheck(const CompilationContext *ctx) const override;
 
