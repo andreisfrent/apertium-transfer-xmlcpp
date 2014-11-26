@@ -25,6 +25,7 @@ class Categories : public ASTNode {
   ~Categories();
 
   void PrintDebugInfo(const std::wstring& indentation = L"") const override;
+  void SemanticCheck(const CompilationContext *ctx) const override;
 
  private:
   std::unordered_map<std::wstring, std::vector<CategoryItem>> categories_;

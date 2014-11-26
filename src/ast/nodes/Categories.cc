@@ -61,5 +61,8 @@ void Categories::PrintDebugInfo(const std::wstring& indentation) const {
     Error::Debug(indentation, "  ", wss.str());
   }
 }
+
+void Categories::SemanticCheck(const CompilationContext *ctx) const {
+}
 } // namespace xml2cpp
 } // namespace apertium

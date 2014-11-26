@@ -9,6 +9,7 @@ class B : public RValue {
  public:
   B(const XMLNode *xml_node);
 
+  void SemanticCheck(const CompilationContext *ctx) const override;
  private:
   std::wstring pos_;
 };

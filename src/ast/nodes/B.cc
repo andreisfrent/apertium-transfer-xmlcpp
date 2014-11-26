@@ -11,5 +11,8 @@ B::B(const XMLNode *xml_node)
       xml_node->get_children().size() == 0,
       *xml_node, "Element should have no children.");
 }
+
+void B::SemanticCheck(const CompilationContext *ctx) const {
+}
 } // namespace xml2cpp
 } // namespace apertium
