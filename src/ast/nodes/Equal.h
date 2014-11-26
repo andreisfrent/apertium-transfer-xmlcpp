@@ -10,6 +10,8 @@ class Equal : public Condition {
   Equal(const XMLNode *xml_node);
   ~Equal();
 
+  void SemanticCheck(const CompilationContext *ctx) const override;
+
  private:
   void HandleXMLChildren(const XMLNode *xml_node);
   void HandleXMLAttributes(const XMLNode *xml_node);

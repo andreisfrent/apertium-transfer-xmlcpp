@@ -35,5 +35,10 @@ void Equal::HandleXMLAttributes(const XMLNode *xml_node) {
     Error::Fatal(*xml_node, "Invalid caseless value.");
   }
 }
+
+void Equal::SemanticCheck(const CompilationContext *ctx) const {
+  op1_->SemanticCheck(ctx);
+  op2_->SemanticCheck(ctx);
+}
 } // namespace xml2cpp
 } // namespace apertium
