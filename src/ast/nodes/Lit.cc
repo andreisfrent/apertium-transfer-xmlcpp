@@ -15,5 +15,8 @@ Lit::Lit(const XMLNode *xml_node)
         "AST node Lit should only be constructed from lit and lit-tag XML nodes.");
   }
 }
+
+void Lit::SemanticCheck(const CompilationContext *ctx) const {
+}
 } // namespace xml2cpp
 } // namespace apertium

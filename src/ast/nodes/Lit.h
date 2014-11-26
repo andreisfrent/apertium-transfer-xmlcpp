@@ -8,6 +8,7 @@ namespace xml2cpp {
 class Lit : public RValue {
  public:
   Lit(const XMLNode *xml_node);
+  void SemanticCheck(const CompilationContext *ctx) const override;
 
  private:
   bool is_tag_;
