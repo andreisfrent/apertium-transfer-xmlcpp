@@ -6,9 +6,6 @@ Condition::Condition(const XMLNode *xml_node)
     : ASTNode(xml_node) {
 }
 
-Condition::~Condition() {
-}
-
 Condition* Condition::FromXMLNode(const XMLNode *xml_node) {
   if (xml_node->get_tag() == L"and") {
     return new And(xml_node);

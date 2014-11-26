@@ -6,9 +6,6 @@ Statement::Statement(const XMLNode *xml_node)
     : ASTNode(xml_node) {
 }
 
-Statement::~Statement() {
-}
-
 Statement* Statement::FromXMLNode(const XMLNode *xml_node) {
   if (xml_node->get_tag() == L"call-macro") {
     return new CallMacro(xml_node);

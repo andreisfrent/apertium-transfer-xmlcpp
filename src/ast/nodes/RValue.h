@@ -7,10 +7,10 @@ namespace apertium {
 namespace xml2cpp {
 class RValue : public ASTNode {
  public:
-  RValue(const XMLNode *xml_node);
-  ~RValue();
-
   static RValue *FromXMLNode(const XMLNode *xml_node);
+
+ protected:
+  RValue(const XMLNode *xml_node);
 };
 } // namespace xml2cpp
 } // namespace apertium

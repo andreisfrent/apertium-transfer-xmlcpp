@@ -6,9 +6,6 @@ RValue::RValue(const XMLNode *xml_node)
     : ASTNode(xml_node) {
 }
 
-RValue::~RValue() {
-}
-
 RValue* RValue::FromXMLNode(const XMLNode *xml_node) {
   if (xml_node->get_tag() == L"var") {
     return new Variable_RValue(xml_node);

@@ -7,10 +7,10 @@ namespace apertium {
 namespace xml2cpp {
 class Condition : public ASTNode {
  public:
-  Condition(const XMLNode *xml_node);
-  ~Condition();
-
   static Condition *FromXMLNode(const XMLNode *xml_node);
+
+ protected:
+  Condition(const XMLNode *xml_node);
 };
 } // namespace xml2cpp
 } // namespace apertium

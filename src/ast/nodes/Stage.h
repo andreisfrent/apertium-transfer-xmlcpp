@@ -7,7 +7,6 @@ namespace apertium {
 namespace xml2cpp {
 class Stage : public ASTNode {
  public:
-  Stage(const XMLNode *xml_node);
   virtual ~Stage();
 
   virtual void PrintDebugInfo(const std::wstring& indentation = L"") const override;
@@ -30,6 +29,8 @@ class Stage : public ASTNode {
   void CheckMandatorySections() const;
 
  protected:
+  Stage(const XMLNode *xml_node);
+
   GlobalVariables *global_variables_;
   GlobalLists *global_lists_;
   GlobalMacros *global_macros_;

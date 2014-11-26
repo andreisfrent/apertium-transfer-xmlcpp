@@ -18,6 +18,5 @@ Not::~Not() {
 void Not::SemanticCheck(const CompilationContext *ctx) const {
   condition_->SemanticCheck(ctx);
 }
-
 } // namespace xml2cpp
 } // namespace apertium

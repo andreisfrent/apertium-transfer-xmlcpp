@@ -7,10 +7,10 @@ namespace apertium {
 namespace xml2cpp {
 class Statement : public ASTNode {
  public:
-  Statement(const XMLNode *xml_node);
-  ~Statement();
-
   static Statement *FromXMLNode(const XMLNode *xml_node);
+
+ protected:
+  Statement(const XMLNode *xml_node);
 };
 } // namespace xml2cpp
 } // namespace apertium

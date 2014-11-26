@@ -52,7 +52,7 @@ Condition* Choose::HandleXMLTest(const XMLNode *xml_node) {
   Error::Assert(
       xml_node->get_children().size() == 1,
       *xml_node, "Should have exactly one child.");
-  return new Condition(xml_node->get_children().at(0));
+  return Condition::FromXMLNode(xml_node->get_children().at(0));
 }
 
 Choose::~Choose() {

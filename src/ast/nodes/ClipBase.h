@@ -7,12 +7,12 @@ namespace apertium {
 namespace xml2cpp {
 class ClipBase {
  public:
-  ClipBase(const XMLNode *xml_node);
-
   static const std::wstring kSourceLanguage;
   static const std::wstring kTargetLanguage;
 
  protected:
+  ClipBase(const XMLNode *xml_node);
+
   int pos_;
   std::wstring side_;
   std::wstring part_;

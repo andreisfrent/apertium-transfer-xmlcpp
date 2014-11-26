@@ -6,10 +6,8 @@
 namespace apertium {
 namespace xml2cpp {
 class VariableBase {
- public:
-  VariableBase(const XMLNode *xml_node);
-
  protected:
+  VariableBase(const XMLNode *xml_node);
   std::wstring name_;
 };
 } // namespace xml2cpp
