@@ -1,5 +1,5 @@
-#ifndef __APERTIUM_XML2CPP_AST_NODE_RULES_H
-#define __APERTIUM_XML2CPP_AST_NODE_RULES_H
+#ifndef __APERTIUM_XML2CPP_RULES_H
+#define __APERTIUM_XML2CPP_RULES_H
 
 #include <apertium_xml2cpp.h>
 #include <string>
@@ -13,6 +13,7 @@ class Rules : public ASTNode {
   ~Rules();
 
   void PrintDebugInfo(const std::wstring& indentation = L"") const override;
+  void SemanticCheck(const CompilationContext *ctx) const override;
 
  private:
   std::vector<Rule*> rules_;

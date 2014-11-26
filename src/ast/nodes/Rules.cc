@@ -27,5 +27,11 @@ void Rules::PrintDebugInfo(const std::wstring& indentation) const {
     rule->PrintDebugInfo(indentation + L"  ");
   }
 }
+
+void Rules::SemanticCheck(const CompilationContext *ctx) const {
+  for (const Rule *rule : rules_) {
+    rule->SemanticCheck(ctx);
+  }
+}
 } // namespace xml2cpp
 } // namespace apertium
