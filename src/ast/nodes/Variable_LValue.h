@@ -8,6 +8,7 @@ namespace xml2cpp {
 class Variable_LValue : public LValue, public VariableBase {
  public:
   Variable_LValue(const XMLNode *xml_node);
+  void SemanticCheck(const CompilationContext *ctx) const override;
 };
 } // namespace xml2cpp
 } // namespace apertium
