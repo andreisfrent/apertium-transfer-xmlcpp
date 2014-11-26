@@ -22,7 +22,7 @@ Mlu::~Mlu() {
 }
 
 void Mlu::SemanticCheck(const CompilationContext *ctx) const {
-  for (const Lu *lu : values) {
+  for (const Lu *lu : values_) {
     lu->SemanticCheck(ctx);
   }
 }
