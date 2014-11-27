@@ -55,4 +55,5 @@ apertium_xml2cpp_SOURCES = \
   ast/nodes/GetCaseFrom.cc \
   ast/AST.cc \
   comp/CompilationContext.cc \
+  comp/SymbolGenerator.cc \
   error/Error.cc

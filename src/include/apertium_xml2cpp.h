@@ -13,7 +13,9 @@
 #include "../parsing/XMLParser.h"
 #include "../parsing/XMLUtil.h"
 
+// Compilation context, symbols, etc.
 #include "../comp/CompilationContext.h"
+#include "../comp/SymbolGenerator.h"
 
 // AST node base class.
 #include "../ast/nodes/ASTNode.h"
