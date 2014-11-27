@@ -11,7 +11,6 @@ class Lit : public RValue {
   void SemanticCheck(const CompilationContext *ctx) const override;
 
  private:
-  bool is_tag_;
   std::wstring value_;
 };
 } // namespace xml2cpp
