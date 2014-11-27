@@ -139,6 +139,10 @@ const GlobalLists *Stage::get_global_lists() const {
   return global_lists_;
 }
 
+const GlobalMacros *Stage::get_global_macros() const {
+  return global_macros_;
+}
+
 void Stage::SemanticCheck(const CompilationContext *ctx) const {
   global_variables_->SemanticCheck(ctx);
   global_lists_->SemanticCheck(ctx);

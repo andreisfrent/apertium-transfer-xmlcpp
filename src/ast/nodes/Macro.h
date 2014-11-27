@@ -14,6 +14,9 @@ class Macro : public ASTNode {
   void PrintDebugInfo(const std::wstring& indentation = L"") const override;
   void SemanticCheck(const CompilationContext *ctx) const override;
 
+  int get_param_count() const;
+  const std::wstring& get_name() const;
+
  private:
   std::wstring name_;
   int param_count_;

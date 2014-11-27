@@ -13,6 +13,7 @@ class CompilationContext {
 
   void AssertVariable(const ASTNode *calling_node, const std::wstring& name) const;
   void AssertList(const ASTNode *calling_node, const std::wstring& name) const;
+  void AssertMacro(const ASTNode *calling_node, const std::wstring& name, int param_count) const;
 
  private:
   AST *ast_;

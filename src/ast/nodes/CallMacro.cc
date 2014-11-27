@@ -8,9 +8,6 @@ CallMacro::CallMacro(const XMLNode *xml_node)
   ExtractArgumentsFromXMLNode(xml_node);
 }
 
-CallMacro::~CallMacro() {
-}
-
 void CallMacro::HandleXMLAttributes(const XMLNode *xml_node) {
   xml_node->EmitWarningOnUnknownAttributes({L"n", L"c"});
   macro_ = xml_node->GetMandatoryAttribute(L"n");
@@ -23,5 +20,8 @@ void CallMacro::ExtractArgumentsFromXMLNode(const XMLNode *xml_node) {
   }
 }
 
+void CallMacro::SemanticCheck(const CompilationContext *ctx) const {
+  ctx->AssertMacro(this, macro_, args_.size());
+}
 } // namespace xml2cpp
 } // namespace apertium

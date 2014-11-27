@@ -13,6 +13,7 @@ class GlobalMacros : public ASTNode {
 
   void PrintDebugInfo(const std::wstring& indentation = L"") const override;
   void SemanticCheck(const CompilationContext *ctx) const override;
+  bool HasMacro(const std::wstring& name, int param_count) const;
 
  private:
   std::unordered_map<std::wstring, Macro*> macros_;

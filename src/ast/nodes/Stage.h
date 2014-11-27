@@ -15,6 +15,7 @@ class Stage : public ASTNode {
 
   const GlobalVariables *get_global_variables() const;
   const GlobalLists *get_global_lists() const;
+  const GlobalMacros *get_global_macros() const;
 
   void SemanticCheck(const CompilationContext *ctx) const override;
 

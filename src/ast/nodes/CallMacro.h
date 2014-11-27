@@ -8,7 +8,8 @@ namespace xml2cpp {
 class CallMacro : public Statement {
  public:
   CallMacro(const XMLNode *xml_node);
-  ~CallMacro();
+
+  void SemanticCheck(const CompilationContext *ctx) const override;
 
  private:
   std::wstring macro_;

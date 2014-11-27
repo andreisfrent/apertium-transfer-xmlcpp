@@ -25,5 +25,13 @@ void Macro::PrintDebugInfo(const std::wstring& indentation) const {
 void Macro::SemanticCheck(const CompilationContext *ctx) const {
   code_->SemanticCheck(ctx);
 }
+
+int Macro::get_param_count() const {
+  return param_count_;
+}
+
+const std::wstring& Macro::get_name() const {
+  return name_;
+}
 } // namespace xml2cpp
 } // namespace apertium

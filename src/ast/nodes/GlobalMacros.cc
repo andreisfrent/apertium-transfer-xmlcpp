@@ -40,5 +40,19 @@ void GlobalMacros::SemanticCheck(const CompilationContext *ctx) const {
     kv.second->SemanticCheck(ctx);
   }
 }
+
+bool GlobalMacros::HasMacro(const std::wstring& name, int param_count) const {
+  const auto it = macros_.find(name);
+  if (it != macros_.end()) {
+    const Macro *macro = it->second;
+    if (macro->get_param_count() == param_count) {
+      return true;
+    } else {
+      return false;
+    }
+  } else {
+    return false;
+  }
+}
 } // namespace xml2cpp
 } // namespace apertium
