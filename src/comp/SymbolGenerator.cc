@@ -8,7 +8,7 @@ namespace apertium {
 namespace xml2cpp {
 const int SymbolGenerator::kCounterLimit = 99999;
 
-SymbolGenerator::SymbolGenerator(std::wstring& prefix)
+SymbolGenerator::SymbolGenerator(const std::wstring& prefix)
     : prefix_(prefix), counter_(0) {
 }
 

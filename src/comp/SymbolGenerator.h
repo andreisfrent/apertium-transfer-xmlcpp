@@ -7,7 +7,7 @@ namespace apertium {
 namespace xml2cpp {
 class SymbolGenerator {
  public:
-  SymbolGenerator(std::wstring& prefix);
+  SymbolGenerator(const std::wstring& prefix);
   std::wstring Next();
 
  private:
