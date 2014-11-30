@@ -19,6 +19,7 @@ int main(int argc, char *argv[]) {
   AST ast(xml_tree);
   CompilationContext ctx(&ast);
   ast.SemanticCheck(&ctx);
+  ast.GenerateCode(&ctx);
 
   xmlCleanupParser();
   return 0;

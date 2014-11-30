@@ -26,5 +26,9 @@ void AST::SemanticCheck(const CompilationContext *ctx) const {
 const Stage *AST::get_root() const {
   return stage_;
 }
+
+void AST::GenerateCode(CompilationContext *ctx) const {
+  stage_->GenerateCode(ctx);
+}
 } // namespace apertium
 } // namespace xml2cpp

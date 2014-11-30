@@ -1,5 +1,5 @@
-#ifndef __APERTIUM_XML2CPP_NEW_AST_H
-#define __APERTIUM_XML2CPP_NEW_AST_H
+#ifndef __APERTIUM_XML2CPP_AST_H
+#define __APERTIUM_XML2CPP_AST_H
 
 #include <apertium_xml2cpp.h>
 
@@ -12,6 +12,7 @@ class AST {
 
   void PrintDebugInfo() const;
   void SemanticCheck(const CompilationContext *ctx) const;
+  void GenerateCode(CompilationContext *ctx) const;
 
   const Stage *get_root() const;
 

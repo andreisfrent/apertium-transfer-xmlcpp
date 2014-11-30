@@ -19,6 +19,9 @@ class Stage : public ASTNode {
 
   void SemanticCheck(const CompilationContext *ctx) const override;
 
+  // TODO should be pure virtual.
+  virtual void GenerateCode(CompilationContext *ctx);
+
  private:
   void SetSectionPointersToNull();
   void HandleXMLChild_section_def_vars(const XMLNode *xml_child);

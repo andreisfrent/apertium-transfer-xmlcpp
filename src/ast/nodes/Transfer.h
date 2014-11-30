@@ -13,6 +13,7 @@ class Transfer : public Stage {
   static const std::wstring kChunk;
 
   void SemanticCheck(const CompilationContext *ctx) const override;
+  void GenerateCode(CompilationContext *ctx) override;
 
  private:
   std::wstring transfer_mode_;

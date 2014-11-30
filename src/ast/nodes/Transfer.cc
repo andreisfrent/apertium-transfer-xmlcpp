@@ -18,5 +18,9 @@ Transfer::Transfer(const XMLNode *xml_node)
 void Transfer::SemanticCheck(const CompilationContext *ctx) const {
   Stage::SemanticCheck(ctx);
 }
+
+void Transfer::GenerateCode(CompilationContext *ctx) {
+  Error::Debug("Transfer::GenerateCode");
+}
 } // namespace xml2cpp
 } // namespace apertium

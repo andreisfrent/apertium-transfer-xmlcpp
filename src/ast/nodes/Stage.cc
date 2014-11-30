@@ -151,5 +151,9 @@ void Stage::SemanticCheck(const CompilationContext *ctx) const {
   attributes_->SemanticCheck(ctx);
   rules_->SemanticCheck(ctx);
 }
+
+void Stage::GenerateCode(CompilationContext *ctx) {
+  Error::Fatal("Call to Stage::GenerateCode.");
+}
 } // namespace xml2cpp
 } // namespace apertium

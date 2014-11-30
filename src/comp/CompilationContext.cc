@@ -4,6 +4,11 @@ namespace apertium {
 namespace xml2cpp {
 CompilationContext::CompilationContext(AST *ast)
     : ast_(ast) {
+  symbol_table_ = new SymbolTable();
+}
+
+CompilationContext::~CompilationContext() {
+  delete symbol_table_;
 }
 
 void CompilationContext::AssertVariable(
@@ -25,6 +30,10 @@ void CompilationContext::AssertMacro(
   Error::Assert(
       ast_->get_root()->get_global_macros()->HasMacro(name, param_count),
       *calling_node, "Macro ", name, "/", param_count, " not defined.");
+}
+
+SymbolTable *CompilationContext::get_symbol_table() {
+  return symbol_table_;
 }
 } // namespace apertium
 } // namespace xml2cpp
