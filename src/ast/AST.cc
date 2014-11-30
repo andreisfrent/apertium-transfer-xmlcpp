@@ -28,7 +28,15 @@ const Stage *AST::get_root() const {
 }
 
 void AST::GenerateCode(CompilationContext *ctx) const {
+  // Generate includes.
+  std::wcout << L"#include <string>" << std::endl;
+
+  // Generate code from the tree.
   stage_->GenerateCode(ctx);
+
+  // Generare main.
+  std::wcout << L"int main() {" << std::endl;
+  std::wcout << L"}" << std::endl;
 }
 } // namespace apertium
 } // namespace xml2cpp
