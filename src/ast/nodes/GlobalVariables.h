@@ -1,12 +1,13 @@
 #ifndef __APERTIUM_XML2CPP_GLOBALVARIABLES_H
 #define __APERTIUM_XML2CPP_GLOBALVARIABLES_H
 
-#include <apertium_xml2cpp.h>
 #include <string>
 #include <set>
 
 namespace apertium {
 namespace xml2cpp {
+class XMLNode;
+class CompilationContext;
 class GlobalVariables : public ASTNode {
  public:
   GlobalVariables();
@@ -15,6 +16,7 @@ class GlobalVariables : public ASTNode {
   void PrintDebugInfo(const std::wstring& indentation = L"") const override;
   bool HasVariable(const std::wstring& name) const;
   void SemanticCheck(const CompilationContext *ctx) const override;
+  void GenerateCode(CompilationContext *ctx);
 
  private:
   std::set<std::wstring> vars_;

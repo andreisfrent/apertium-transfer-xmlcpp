@@ -43,5 +43,9 @@ bool GlobalVariables::HasVariable(const std::wstring& name) const {
 
 void GlobalVariables::SemanticCheck(const CompilationContext *ctx) const {
 }
+
+void GlobalVariables::GenerateCode(CompilationContext *ctx) {
+  Error::Debug("GlobalVariables::GenerateCode");
+}
 } // namespace xml2cpp
 } // namespace apertium

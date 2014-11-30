@@ -1,10 +1,12 @@
-#ifndef __APERTIUM_XML2CPP_AST_NODE_TRANSFER_H
-#define __APERTIUM_XML2CPP_AST_NODE_TRANSFER_H
+#ifndef __APERTIUM_XML2CPP_TRANSFER_H
+#define __APERTIUM_XML2CPP_TRANSFER_H
 
-#include <apertium_xml2cpp.h>
+#include <string>
 
 namespace apertium {
 namespace xml2cpp {
+class CompilationContext;
+class XMLNode;
 class Transfer : public Stage {
  public:
   Transfer(const XMLNode *xml_node);
@@ -13,7 +15,6 @@ class Transfer : public Stage {
   static const std::wstring kChunk;
 
   void SemanticCheck(const CompilationContext *ctx) const override;
-  void GenerateCode(CompilationContext *ctx) override;
 
  private:
   std::wstring transfer_mode_;

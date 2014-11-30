@@ -153,7 +153,7 @@ void Stage::SemanticCheck(const CompilationContext *ctx) const {
 }
 
 void Stage::GenerateCode(CompilationContext *ctx) {
-  Error::Fatal("Call to Stage::GenerateCode.");
+  global_variables_->GenerateCode(ctx);
 }
 } // namespace xml2cpp
 } // namespace apertium
