@@ -13,7 +13,7 @@ SymbolGenerator::SymbolGenerator(const std::wstring& prefix)
 }
 
 std::wstring SymbolGenerator::Next() {
-  Error::Assert(counter_ > kCounterLimit,
+  Error::Assert(counter_ < kCounterLimit,
       "Symbol count for prefix \"", prefix_, "\" exceeded maximum value of ",
       kCounterLimit, ".");
   std::wostringstream wss;

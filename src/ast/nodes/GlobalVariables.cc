@@ -46,6 +46,22 @@ void GlobalVariables::SemanticCheck(const CompilationContext *ctx) const {
 
 void GlobalVariables::GenerateCode(CompilationContext *ctx) {
   Error::Debug("GlobalVariables::GenerateCode");
+
+  SymbolTable *symbol_table = ctx->get_symbol_table();
+
+  for (const auto& it : initial_values_) {
+    const std::wstring& var_name = it.first;
+    const std::wstring& var_value = it.second;
+    const std::wstring& symbol_name =
+        symbol_table->RegisterSymbol(SymbolType::kVariable, var_name);
+    if (var_value.empty()) {
+      std::wcout << L"std::wstring " << symbol_name
+          << L";" << std::endl;
+    } else {
+      std::wcout << L"std::wstring " << symbol_name
+          << L"(L\"" << var_value << L"\");" << std::endl;
+    }
+  }
 }
 } // namespace xml2cpp
 } // namespace apertium

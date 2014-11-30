@@ -2,15 +2,11 @@
 #define __APERTIUM_XML2CPP_SYMBOLTABLE_H
 
 #include <unordered_map>
+#include <string>
 
 namespace apertium {
 namespace xml2cpp {
-enum SymbolType {
-  LitSymbol,
-  VariableSymbol,
-  MacroSymbol
-};
-
+class SymbolGenerator;
 class SymbolTable {
  public:
   SymbolTable();
@@ -18,16 +14,16 @@ class SymbolTable {
 
   static const std::wstring kNoSuchMapping;
 
-  void RegisterSymbol(
-      SymbolType symbol_type, const std::wstring& symbol_name);
+  const std::wstring& RegisterSymbol(
+      const std::wstring& symbol_type, const std::wstring& symbol_name);
   const std::wstring& GetMapping(
-      SymbolType symbol_type, const std::wstring& symbol_name) const;
+      const std::wstring& symbol_type, const std::wstring& symbol_name) const;
   bool HasSymbol(
-      SymbolType symbol_type, const std::wstring& symbol_name) const;
+      const std::wstring& symbol_type, const std::wstring& symbol_name) const;
 
  private:
   std::unordered_map<
-      int,
+      std::wstring,
       std::unordered_map<std::wstring, std::wstring>> mappings_;
   SymbolGenerator *symbol_generator_;
 };

@@ -17,6 +17,7 @@
 #include "../comp/CompilationContext.h"
 #include "../comp/SymbolGenerator.h"
 #include "../comp/SymbolTable.h"
+#include "../comp/SymbolType.h"
 
 // AST node base class.
 #include "../ast/nodes/ASTNode.h"
